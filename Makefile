@@ -4,7 +4,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft
 LIBFT = ${LIBFT_DIR}/bin/libft.a
-LDFLAGS = -L${LIBFT_DIR}/bin -lft 
+LDFLAGS = -L${LIBFT_DIR}/bin -lft -lreadline 
 INCLUDE = -Iinclude -I${LIBFT_DIR}/include
 
 SRCS = ${SRC_DIR}/minishell.c 
