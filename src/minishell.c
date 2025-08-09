@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/09 15:07:29 by your_login       ###   ########.fr       */
+/*   Created: 2025/08/04 19:29:49 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/08/09 16:29:08 by your_login       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "ft_printf.h"
+int	main(int argc, char **argv, char **env)
+{
+	(void)argc;
+	(void)argv;
+	(void)env;
+	ft_printf("tudo dando certo");
 
-
-
-#endif
+	return (0);
+}
