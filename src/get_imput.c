@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   get_imput.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
+/*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 19:29:49 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/09 22:00:11 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/08/09 21:42:16 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/08/09 22:00:04 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+int	get_input(char	*imput)
 {
-	char	*input;
-
-	(void)argc;
-	(void)argv;
-	(void)env;
-	while (1)
-	{
-		input = readline(">");
-		if (input)
-		{
-			add_history(input);
-			ft_printf("The imput was %s\n", input);	
-		}
-		free(input);
-	}
-	return (0);
+	input = readline(">");
+	if (!imput)
 }
