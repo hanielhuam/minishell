@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/09 19:43:45 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/16 18:34:55 by your_login       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 # include <readline/history.h>
 # include "ft_printf.h"
 
+int	get_input(char	**imput);
 
 #endif

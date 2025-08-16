@@ -6,17 +6,17 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:42:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/10 21:59:31 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/16 18:37:42 by your_login       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	get_input(char	**imput)
+int	get_input(char	**input)
 {
 	*input = readline(">");
-	if (!*imput || !**imput)
+	if (!*input || !**input)
 		return (-1);
-		add_history(*imput);
+	add_history(*input);
 	return (0);
 }
