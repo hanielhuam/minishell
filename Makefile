@@ -2,6 +2,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 SRC_DIR = src
 OBJ_DIR = obj
+TEST_DIR = test
 LIBFT_DIR = libft
 LIBFT = ${LIBFT_DIR}/bin/libft.a
 LDFLAGS = -L${LIBFT_DIR}/bin -lft -lreadline 

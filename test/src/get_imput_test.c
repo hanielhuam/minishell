@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   get_imput_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 19:29:49 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/17 20:57:14 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/08/17 19:51:52 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/08/17 21:53:17 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-int	main(int argc, char **argv, char **env)
+#include "test.h"
+/*
+static int	setup(void **state)
 {
-	char	*input;
+	char	*imput;
 
-	(void)argc;
-	(void)argv;
-	(void)env;
-	while (1)
-	{
-		if (!get_input(&input))
-
-		free(input);
-	}
+	*state = &imput;
 	return (0);
+}
+
+static int	teardown(void **state)
+{
+	 free(*((char **)*state));
+	 return (0);
+}
+*/
+
+static int	get_imput_return_NULL_test(vaoid **state)
+{
+	char	imput;
+
+	(void)state;
+	imput = NULL;
+
+
 }

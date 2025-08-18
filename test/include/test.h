@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 19:29:49 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/17 20:57:14 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/08/17 19:56:48 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/08/17 20:34:25 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef TEST_H
 
-int	main(int argc, char **argv, char **env)
-{
-	char	*input;
+# include <stdarg.h>
+# include <stddef.h>
+# include <setjmp.h>
+# include <cmocka.h>
+# include "minishell.h"
 
-	(void)argc;
-	(void)argv;
-	(void)env;
-	while (1)
-	{
-		if (!get_input(&input))
+int	run_get_imput_test(void);
 
-		free(input);
-	}
-	return (0);
-}
+#endif
