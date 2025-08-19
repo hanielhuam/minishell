@@ -6,17 +6,9 @@ LIBFT_DIR = libft
 LIBFT = ${LIBFT_DIR}/bin/libft.a
 LDFLAGS = -L${LIBFT_DIR}/bin -lft -lreadline 
 INCLUDE = -Iinclude -I${LIBFT_DIR}/include
-TEST_DIR = test
-SRC_TEST_DIR = ${TEST_DIR}/src
-OBJ_TEST_DIR = ${TEST_DIR}/obj
-TEST_LDFLAGS = ${LDFLAGS} -lcmocka -Wl,--wrap=readline 
-TEST_INCLUDE = ${INCLUDE} -I${TEST_DIR}/include
 
 SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/get_imput.c
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
-
-TEST_SRCS = ${SRC_TEST_DIR}/test_runner.c ${SRC_TEST_DIR}/get_imput_test.c
-TEST_OBJS = ${TEST_SRCS:${SRC_TEST_DIR}/%.c=${OBJ_TEST_DIR}/%.o}
 
 NAME = minishell
 
@@ -32,8 +24,8 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 ${LIBFT}:
 	make -C ${LIBFT_DIR}
 
-test: ${LIBFT} ${OBJS} ${TEST_OBJ}
-	$(CC) ${CFLAGS} ${OBJS} ${TEST_OBJS} ${TEST_LDFLAGS} -o ${TEST_DIR}/test
+test: 
+	make -C ${TEST_DIR}
 	./${TEST_DIR}/test
 
 ${TEST_OBJ_DIR}/%.o: ${TEST_SRC_DIR}/%.c
