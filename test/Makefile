@@ -11,7 +11,8 @@ LDFLAGS = -L${LIBFT_DIR}/bin -lft -lcmocka -Wl,--wrap=readline
 INCLUDE = -I${SRC_DIR}/include -I${LIBFT_DIR}/include -Iinclude
 
 SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/get_imput.c
-SRCS += ${SRC_TEST_DIR}/test_runner.c ${SRC_TEST_DIR}/get_imput_test.c
+SRCS += ${SRC_TEST_DIR}/test_runner.c ${SRC_TEST_DIR}/get_imput_test.c \
+		${SRC_TEST_DIR}/wrap_readline.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 OBJS += ${SRCS:${SRC_TEST_DIR}/%.c=${OBJ_DIR}/%.o}

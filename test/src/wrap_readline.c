@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_runner.c                                      :+:      :+:    :+:   */
+/*   wrap_readline.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 21:51:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/19 21:53:46 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/08/19 21:08:22 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/08/19 21:13:18 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 
-int	main (void)
+char	*__wrap_readline(cont char *pronpt)
 {
-	int	result;
-
-	reuslt = 0;
-	result += get_imput_return_NULL_test();
-
-	return result;
+	check_expected_ptr(ptr);
+	return (char *)mock();
 }
