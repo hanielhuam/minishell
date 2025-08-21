@@ -6,14 +6,14 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:08:22 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/19 21:13:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/21 20:04:45 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 
-char	*__wrap_readline(cont char *pronpt)
+char	*__wrap_readline(const char *pronpt)
 {
-	check_expected_ptr(ptr);
+	check_expected_ptr(pronpt);
 	return (char *)mock();
 }

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:51:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/19 21:53:46 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/21 19:55:23 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	main (void)
 {
 	int	result;
 
-	reuslt = 0;
-	result += get_imput_return_NULL_test();
+	result = 0;
+	result += run_get_imput_test();
 
 	return result;
 }

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 19:51:52 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/19 21:50:51 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/21 20:01:10 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	teardown(void **state)
 }
 */
 
-static int	get_imput_return_NULL_test(vaoid **state)
+static void	test_get_imput_return_NULL(void **state)
 {
 	char	*imput;
 	int		result;
@@ -35,14 +35,14 @@ static int	get_imput_return_NULL_test(vaoid **state)
 	(void)state;
 	imput = NULL;
 	will_return(__wrap_readline, NULL);
-	result = get_imput(&imput);
+	result = get_input(&imput);
 	assert_int_equal(result, 1); 
 }
 
 int run_get_imput_test(void)
 {
 	const struct CMUnitTest tests[] = {
-		cmocka_unit_test(get_imput_return_NULL)
+		cmocka_unit_test(test_get_imput_return_NULL)
 	};
 	return cmocka_run_group_tests(tests, NULL, NULL);
 }
