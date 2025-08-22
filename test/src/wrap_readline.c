@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:08:22 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/21 20:04:45 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/22 19:55:31 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 char	*__wrap_readline(const char *pronpt)
 {
-	check_expected_ptr(pronpt);
+	(void)pronpt;
 	return (char *)mock();
+}
+
+void	__wrap_add_history(const char *line)
+{
+	check_expected_ptr(line);
 }

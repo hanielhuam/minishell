@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 19:51:52 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/21 20:01:10 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/22 19:56:19 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	test_get_imput_return_NULL(void **state)
 	imput = NULL;
 	will_return(__wrap_readline, NULL);
 	result = get_input(&imput);
-	assert_int_equal(result, 1); 
+	assert_int_equal(result, -1); 
 }
 
 int run_get_imput_test(void)

@@ -8,10 +8,11 @@ LIBFT_DIR = ../libft
 LIBFT = ${LIBFT_DIR}/bin/libft.a
 # LDFLAGS =  -lreadline 
 # INCLUDE = -Iinclude -I${LIBFT_DIR}/include
-LDFLAGS = -L${LIBFT_DIR}/bin -lft -lcmocka -Wl,--wrap=readline 
+LDFLAGS = -L${LIBFT_DIR}/bin -lft -lcmocka -Wl,--wrap=readline \
+	-Wl,--wrap=add_history 
 INCLUDE = -I${MINISHELL_DIR}/include -I${LIBFT_DIR}/include -Iinclude
 
-SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/get_imput.c
+SRCS = ${SRC_DIR}/get_imput.c
 TEST_SRCS = ${SRC_TEST_DIR}/test_runner.c ${SRC_TEST_DIR}/get_imput_test.c \
 		${SRC_TEST_DIR}/wrap_readline.c
 
