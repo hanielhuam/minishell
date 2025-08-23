@@ -7,7 +7,7 @@ LIBFT = ${LIBFT_DIR}/bin/libft.a
 LDFLAGS = -L${LIBFT_DIR}/bin -lft -lreadline 
 INCLUDE = -Iinclude -I${LIBFT_DIR}/include
 
-SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/get_imput.c
+SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/get_imput.c ${SRC_DIR}/get_env.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
