@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/23 17:14:45 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/23 21:53:26 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ typedef struct t_shell
 	t_list **tokens;
 }
 
-int	get_input(char	**imput);
+int		get_input(char	**imput);
 t_list	**get_env_list(char **env);
+void	show_error(char *str);
+void	*safe_malloc(size_t nmemb, size_t size, char *err_mensage);
+void	del_t_env(t_env *env);
 
 #endif
