@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   show_error.c                                       :+:      :+:    :+:   */
+/*   del_t_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 19:44:05 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/25 20:42:14 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/08/23 21:53:41 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/08/25 20:47:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	show_error(char *str)
+void	del_t_env(void *env)
 {
-	ft_putstr_fd(str, STDERR_FILENO);
+	t_env	*tenv;
+	
+	tenv = (t_env *)env;
+	free(tenv->name);
+	free(tenv->value);
+	free(env);
+	env = NULL;
 }

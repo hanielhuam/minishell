@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   show_error.c                                       :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 19:44:05 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/25 20:42:14 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/08/25 20:24:00 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/08/25 20:25:37 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	show_error(char *str)
+void	parser(t_shell *shell, char *input)
 {
-	ft_putstr_fd(str, STDERR_FILENO);
+	(void)shell;
+	(void)input;
 }

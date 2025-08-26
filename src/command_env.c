@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dell_t_env.c                                       :+:      :+:    :+:   */
+/*   command_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 21:53:41 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/23 21:56:29 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/08/25 19:01:34 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/08/25 20:30:13 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	del_t_env(t_env *env)
+static void	show_env(void *content)
 {
-	free(env->name);
-	free(env->value;
-	free(env);
+	t_env	*env;
+
+	env = (t_env *)content;
+	ft_printf("%s=%s\n", env->name, env->value);
+}
+
+void	command_env(t_list	**env_list)
+{
+	ft_lstiter(*env_list, show_env);
 }

@@ -6,28 +6,46 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 19:29:49 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/22 21:58:37 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/25 20:33:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+static void	begin_loop(t_shell *shell)
 {
+	(void)shell;
+	/*
 	char	*input;
-	t_shell	*shell;
-
-	(void)argc;
-	(void)argv;
-	t_shell->env = get_env_list(env);
 	while (1)
 	{
 		if (!get_input(&input))
 		{
-			parser(shell, imput);
+			parser(shell, input);
 			free(input);
-			imput = NULL;
+			input = NULL;
 		}
-	}
+	}*/
+}
+
+static void	start_shell(char **env)
+{
+	t_shell	*shell;
+
+	shell = safe_malloc(1, sizeof(t_shell *), "Error when alloc t_shell\n");
+	if (!shell)
+		exit(EXIT_FAILURE);
+	shell->env = get_env_list(env);
+	if (!shell->env)	
+		exit(EXIT_FAILURE);
+	command_env(shell->env);
+	begin_loop(shell);
+}
+
+int	main(int argc, char **argv, char **env)
+{
+	(void)argc;
+	(void)argv;
+	start_shell(env);
 	return (0);
 }
