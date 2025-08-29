@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   del_t_env.c                                        :+:      :+:    :+:   */
+/*   destroy_shell.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 21:53:41 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/26 18:22:18 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/08/26 17:45:42 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/08/26 18:24:28 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	del_t_env(void *env)
+void	destroy_shell(t_shell *shell)
 {
-	t_env	*tenv;
-	
-	tenv = (t_env *)env;
-	free(tenv->name);
-	free(tenv->value);
-	free(env);
-	env = NULL;
-}
-
-void	del_env_list(t_list **env_list)
-{
-	ft_lstclear(env_list, del_t_env);
-	free(env_list);
+	del_env_list(shell->env);
+	free(shell);
 }

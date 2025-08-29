@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:57:03 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/25 21:29:50 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/26 18:27:44 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_env	*build_t_env(char *str_env, int count)
 	env = safe_malloc(1, sizeof(t_env), "Error when alloc t_env\n");
 	if (!env)
 		return (NULL);	
-	env->name = ft_substr(str_env, 0, count - 1);
+	env->name = ft_substr(str_env, 0, count);
 	if (!env->name)
 	{
 		show_error("Error when alloc name of env\n");

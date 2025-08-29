@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 19:29:49 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/25 20:33:14 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/26 18:39:17 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,11 @@
 
 static void	begin_loop(t_shell *shell)
 {
-	(void)shell;
-	/*
 	char	*input;
-	while (1)
-	{
-		if (!get_input(&input))
-		{
-			parser(shell, input);
-			free(input);
-			input = NULL;
-		}
-	}*/
+
+	if (!get_input(&input))
+		parser(shell, input);
+	destroy_shell(shell);
 }
 
 static void	start_shell(char **env)
@@ -36,8 +29,11 @@ static void	start_shell(char **env)
 	if (!shell)
 		exit(EXIT_FAILURE);
 	shell->env = get_env_list(env);
-	if (!shell->env)	
+	if (!shell->env)
+	{
+		free(shell);
 		exit(EXIT_FAILURE);
+	}
 	command_env(shell->env);
 	begin_loop(shell);
 }
