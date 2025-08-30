@@ -1,1 +1,29 @@
+[ ] Então o primeiro passo é acrescentar um espaço em todos os metacaracteres “&& || | ( ) > >> < <<” 
+
+[ ] depois criar uma split diferenciada que além de fazer uma matriz com todas as palavras dívididas por “ “ ela vai xonsiderar a abertura e o fechamento das “ uma coisa só
+	[ ] tem que verificar se “ que abre tem um fechamento e caso não tenha da um syntax error.
+
+[ ] depois com essa matriz eu vou categoriza (lexer) e até então foi um pre-processamento
+	[ ] eu vou primeiro categorizar os tokens que tem a hierarquia maior, que no caso é “&&” e “||”
+	[ ] depois vem os “(” e “)”
+	[ ] depois os pipes “|”
+	[ ] depois os redirectes e os files ou delimitador no caso de here_doc “> file_out” “>> file_out” “< file_in” “<< delimitador”
+	[ ] por fim eu vou categorizar os comandos como o token que vem após um meta caracter
+	[ ] e por fim vou categorizar os argumentos como os tokens que vem após o comando e que seria todo o resto dos tokens que ainda não foram categorizados
+
+[ ] Depois disso vamos fazer algumas validações de sintaxe para ver por exemplo se não tem 2 metacaracteres um em sequência do outro. ou se tem o fechamento do parentenses adequadamente ou se tem coisa após o “&&” ou o “||” e por aí vai
+
+[ ] depois disso vou montar uma estrutura de àrvore que contén a informação do left, right, prev, type um outro ponteiro que no caso do comando serve para pegar as informações dos argumentos.
+	[ ] para fazer essa árvore primeiro você deve saber que é um lista encadeada com essas informações que a gente acabou de descrever lá em cima.
+	[ ] além disso a cabeça da àrvore tem que ser o “&&” ou o “||” mais a direita
+	*false && ls não roda; false || ls roda; true && ls roda; true || ls não roda
+	[ ] Quando for montar a àrvore você vai ter que agrupar os comandos e os argumentos, depois você vai considerar tudo que está entre () um bloco só para você rodar chamar novamente a minishell para rodar o que está entre parenteses
+	[ ] por fim depois de montado a àrvore eu vou passar para o executor e nele ou na verdade antes dele eu vou expandir as variáveis. e depois realmente executar.
+
+[ ] no final eu vou ter que limpar toda a àrvore e a bagunça e rodar tudo de novo
+
+[ ] vou ter que depois lidar com o histórico da readline
+
+[ ] também vou ter que lidar com os sinais que vão atravessar a execução
+
 valgrind --suppressions=valgrind.supp --leak-check=full --track-fds=yes --show-leak-kinds=all ./minishell

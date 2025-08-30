@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 19:29:49 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/26 18:39:17 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/29 21:05:59 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ static void	begin_loop(t_shell *shell)
 {
 	char	*input;
 
-	if (!get_input(&input))
-		parser(shell, input);
+	if (!get_input(&input) && !parser(shell, input))
+	{
+		
+	}
 	destroy_shell(shell);
 }
 
