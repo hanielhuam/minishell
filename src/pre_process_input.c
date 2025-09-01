@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:12:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/31 21:43:47 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/01 18:21:36 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*pre_process_input(char *input)
 {
 	char	*new_input;
 
-	new_input = NULL;
+	new_input = "qualquer coisa";
 	if (validate_quotes(input))
 	{
 		show_error("syntax error: unclosd quote\n");

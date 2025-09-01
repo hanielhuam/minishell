@@ -7,7 +7,7 @@ LIBFT = ${LIBFT_DIR}/bin/libft.a
 LDFLAGS = -L${LIBFT_DIR}/bin -lft -lreadline 
 INCLUDE = -Iinclude -I${LIBFT_DIR}/include
 
-SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/get_imput.c ${SRC_DIR}/get_env_list.c \
+SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/get_input.c ${SRC_DIR}/get_env_list.c \
 	   ${SRC_DIR}/show_error.c ${SRC_DIR}/safe_malloc.c \
 	   ${SRC_DIR}/del_t_env.c ${SRC_DIR}/command_env.c ${SRC_DIR}/parser.c \
 	   ${SRC_DIR}/destroy_shell.c ${SRC_DIR}/pre_process_input.c \
