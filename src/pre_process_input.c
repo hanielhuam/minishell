@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   pre_process_input.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 20:24:00 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/31 21:42:19 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/08/31 20:12:56 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/08/31 21:43:47 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	parser(t_shell *shell, char *input)
+char	*pre_process_input(char *input)
 {
-	char	*process_input;
+	char	*new_input;
 
-	process_input = pre_process_input(input);
-	if (!process_input)
+	new_input = NULL;
+	if (validate_quotes(input))
 	{
-		destroy_shell(shell);
-		return (-1);
+		show_error("syntax error: unclosd quote\n");
+		return (NULL);
 	}
-	free(input);
-	return (0);
+	ft_printf("passou da validação das aspas\n");
+	return (new_input);
 }

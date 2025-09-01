@@ -15,7 +15,7 @@
 void	del_t_env(void *env)
 {
 	t_env	*tenv;
-	
+
 	tenv = (t_env *)env;
 	free(tenv->name);
 	free(tenv->value);

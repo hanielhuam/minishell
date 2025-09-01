@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/26 18:21:43 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/08/31 21:44:55 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	*safe_malloc(size_t nmemb, size_t size, char *err_mensage);
 void	del_t_env(void *env);
 void	del_env_list(t_list	**env_list);
 void	command_env(t_list **env_list);
-void	parser(t_shell *shell, char *input);
+int		parser(t_shell *shell, char *input);
 void	destroy_shell(t_shell *shell);
+char	*pre_process_input(char	*input);
+int		validate_quotes(char *input);
+void	executor(t_shell *shell);
 
 #endif
