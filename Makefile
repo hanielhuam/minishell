@@ -12,7 +12,8 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/get_input.c ${SRC_DIR}/get_env_list.c \
 	   ${SRC_DIR}/del_t_env.c ${SRC_DIR}/command_env.c ${SRC_DIR}/parser.c \
 	   ${SRC_DIR}/destroy_shell.c ${SRC_DIR}/pre_process_input.c \
 	   ${SRC_DIR}/validate_quote.c ${SRC_DIR}/executor.c \
-	   ${SRC_DIR}/del_t_token.c
+	   ${SRC_DIR}/del_t_token.c ${SRC_DIR}/build_tree.c \
+	   ${SRC_DIR}/get_tokens.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

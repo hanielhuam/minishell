@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:12:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/01 20:58:50 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/02 19:41:26 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ char	*pre_process_input(char *input)
 		show_error("syntax error: unclosd quote\n");
 		return (NULL);
 	}
+	ft_printf("passou pela validação das aspas\n");
+	new_input = ft_strdup("qualquer coisa");
 	return (new_input);
 }
