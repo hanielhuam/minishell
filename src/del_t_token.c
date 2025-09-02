@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_process_input.c                                :+:      :+:    :+:   */
+/*   del_t_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/31 20:12:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/01 20:58:50 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/09/01 20:59:46 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/09/01 21:21:09 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*pre_process_input(char *input)
+void	del_t_token(void *content)
 {
-	char	*new_input;
+	t_token	*token;
 
-	if (validate_quotes(input))
-	{
-		show_error("syntax error: unclosd quote\n");
-		return (NULL);
-	}
-	return (new_input);
+	token = (t_token *)content;
+	free(token->str);
+	free(token);
+}
+
+void	del_token_list(t_lst **token_list)
+{
+	ft_lstclear(token_list, del_t_token);
+	free(token_list);
 }

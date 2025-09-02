@@ -20,7 +20,7 @@ void	del_t_env(void *env)
 	free(tenv->name);
 	free(tenv->value);
 	free(env);
-	env = NULL;
+	*env = NULL;
 }
 
 void	del_env_list(t_list **env_list)
