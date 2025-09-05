@@ -29,7 +29,7 @@ static void	start_shell(char **env)
 {
 	t_shell	*shell;
 
-	shell = safe_malloc(1, sizeof(t_shell *), "Error when alloc t_shell\n");
+	shell = safe_malloc(1, sizeof(t_shell), "Error when alloc t_shell\n");
 	if (!shell)
 		exit(EXIT_FAILURE);
 	shell->env = get_env_list(env);

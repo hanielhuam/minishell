@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/02 19:36:56 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/04 20:57:28 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,47 @@
 # include <readline/history.h>
 # include "ft_printf.h"
 
-enum	e_tok_type
-{
-	REDIRECT_IN,
-	FILE_INi,
-	HERE_DOC,
-	DELIMITER,
-	REDIRECT_OUT,
-	REDIRECT_OUT_OUT,
-	FILE_OUT,
-	COMMAND,
-	ARGUMENT,
-	PIPE,
-	AND,
-	OR,
-	OPEN_PARENTH,
-	CLOSE_PARENTH
-};
+# define REDIRECT_IN "<"
+# define HERE_DOC "<<"
+# define REDIRECT_OUT ">"
+# define REDIRECT_OUT_OUT ">>"
+# define PIPE "|" 
+# define AND "&&"
+# define OR "||"
+# define OPEN_PARENTH "("
+# define CLOSE_PARENTH ")"
 
-typedef struct	s_env
+typedef enum e_tok_type
+{
+	TK_REDIRECT_IN,
+	TK_FILE_INi,
+	TK_HERE_DOC,
+	TK_DELIMITER,
+	TK_REDIRECT_OUT,
+	TK_REDIRECT_OUT_OUT,
+	TK_FILE_OUT,
+	TK_COMMAND,
+	TK_ARGUMENT,
+	TK_PIPE,
+	TK_AND,
+	TK_OR,
+	TK_OPEN_PARENTH,
+	TK_CLOSE_PARENTH
+}	t_tok_type;
+
+typedef struct s_env
 {
 	char	*name;
 	char	*value;
 }			t_env;
 
-typedef struct	s_token
+typedef struct s_token
 {
-	char			*str;
-	enum e_tok_type	type;
-}					t_token;
+	char		*str;
+	t_tok_type	type;
+}				t_token;
 
-typedef struct	s_abs_tree
+typedef struct s_abs_tree
 {
 	struct s_abs_tree	*prev;
 	struct s_abs_tree	*left;
@@ -58,7 +68,7 @@ typedef struct	s_abs_tree
 	void				*anything;
 }						t_abs_tree;
 
-typedef struct	s_shell
+typedef struct s_shell
 {
 	t_list		**env;
 	t_list		**tokens;
@@ -81,5 +91,7 @@ int			validate_quotes(char *input);
 t_list		**get_tokens(char *input);
 t_abs_tree	**build_tree(t_list **tokens);
 void		executor(t_shell *shell);
+char		**get_meta_caracters(void);
+char		*add_space_after_caracters(char *input);
 
 #endif
