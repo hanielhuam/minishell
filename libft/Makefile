@@ -36,7 +36,8 @@ SRCS = ${SRC_DIR}/ft_isalpha.c ${SRC_DIR}/ft_isdigit.c \
 	${SRC_DIR}/ft_printf/ft_transl_digits.c \
 	${SRC_DIR}/ft_printf/ft_transl_no.c \
 	${SRC_DIR}/ft_printf/ft_transl_udigits.c ${SRC_DIR}/ft_printf/t_print.c \
-	${SRC_DIR}/GNL/get_next_line.c ${SRC_DIR}/GNL/get_next_line_utils.c
+	${SRC_DIR}/GNL/get_next_line.c ${SRC_DIR}/GNL/get_next_line_utils.c \
+	${SRC_DIR}/ft_strmerge.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

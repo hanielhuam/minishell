@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:08:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/04 20:45:09 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/05 21:36:32 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 char	**get_meta_caaracters(void)
 {
-	char	**caracters;
+	char	caracters[10][2];
 
-	caracters = safe_malloc(10, sizeof(char *), "Error when alloc caracters\n");
-	if (!caracters)
-		return (NULL);
 	caracters[0] = REDIRECT_IN;
 	caracters[1] = HERE_DOC;
 	caracters[2] = REDIRECT_OUT;
