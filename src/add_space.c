@@ -6,29 +6,52 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:59:10 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/05 23:08:31 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/06 23:23:09 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	addspacer(int *count, char *input, char *new_str, char **caracters)
+static int	size_into_quotes(int count, char *input)
 {
-	if (*input == '\"' || *input == '\'')
+	char	quote;
+
+	quote = *input++;
+	count++;
+	while(*input && *input != quote)
 	{
-		count += size_into_quotes(count, input);
-		return (1);
+		input++;
+		count++;
 	}
-	else if (compare_with_oneof(input, caracters))
+	return (count);
+}
+
+static char	*add_space(char *input, int start, int len, char *new_input)
+{
+	new_input = copy_and_paste(input, start, len, new_input);
+	if (!new_input)
+		return (NULL);
+	return (ft_strmerge(new_input, ft_strdup(" ")));
+}
+
+static int	addspacer(int *count, int *start,  char *input, char **new_input)
+{
+	char	*temp;
+
+	if (input[*count] == '\"' || input[*count] == '\'')
+		*count = size_into_quotes(*count, &input[*count]);
+	temp = compare_meta_caracters(input);
+	if (temp)
 	{
-		if (!add_space(&count, &input[count], new_str, caracters))
-			return (-1);
+		*count += ft_strlen(temp);
+		*new_input = add_space(input, *start, *count - *start, *new_input);
+		if (!*new_input)
+			return (1);
+		*start = *count;
 	}
 	else
-	{
-		count++;
-		return (0);
-	}
+		(*count)++;
+	return (0);
 }
 
 char	*add_space_after_caracters(char *input)
@@ -36,10 +59,7 @@ char	*add_space_after_caracters(char *input)
 	int		start;
 	int		count;
 	char	*new_input;
-	int		temp;
-	char	**meta_caracters;
 
-	meta_caracters = get_meta_caracters;
 	count = 0;
 	start = count;
 	new_input = strdup("");
@@ -47,11 +67,14 @@ char	*add_space_after_caracters(char *input)
 		return (NULL);
 	while (input[count])
 	{
-		temp = add_spacer(&count, &input[count], new_input, meta_caracters);
-		if (temp < 0)
+		if (addspacer(&count, &start, input, &new_input))
 			return (NULL);
-		else if (temp > 0)
-			start = count;
+	}
+	if (start < count)
+	{
+		new_input = copy_and_paste(input, start, count - start, new_input);
+		if (!new_input)
+			return (NULL);
 	}
 	return (new_input);
 }

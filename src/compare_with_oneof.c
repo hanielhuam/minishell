@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_meta_caracters.c                               :+:      :+:    :+:   */
+/*   compare_with_oneof.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 20:08:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/06 23:00:32 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/09/06 20:43:33 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/09/06 23:24:44 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "minishell.c"
 
-char	**get_meta_caaracters(void)
+char	*compare_with_oneof(char *str, char **strings)
 {
-	static char	*caracters[10] = {
-		REDIRECT_IN,
-		HERE_DOC,
-		REDIRECT_OUT,
-		REDIRECT_OUT_OUT,
-		PIPE,
-		AND,
-		OR,
-		OPEN_PARENTH,
-		CLOSE_PARENTH,
-		NULL
-	};
-	return (caracters);
-}
-
-char	*compare_meta_caracters(char *input)
-{
-	char	**caracters;
-
-	caracters = get_meta_caracters();
-	return (compare_with_oneof(input, caracters));
+	while (*strings)
+	{
+		if (!ft_strncmp(str, *strings, ft_strlen(*strings)))
+			return (*strings);
+		strings++;
+	}
+	return (NULL);
 }

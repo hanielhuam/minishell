@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/04 20:57:28 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/06 23:30:54 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,8 @@ t_abs_tree	**build_tree(t_list **tokens);
 void		executor(t_shell *shell);
 char		**get_meta_caracters(void);
 char		*add_space_after_caracters(char *input);
+char		*copy_and_paste(char *src, int start, int len, char *dest);
+char		*compare_with_oneof(char *str, char **strings);
+char	*compare_meta_caracters(char *input);
 
 #endif

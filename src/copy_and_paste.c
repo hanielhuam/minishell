@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_meta_caracters.c                               :+:      :+:    :+:   */
+/*   copy_and_paste.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 20:08:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/06 23:00:32 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/09/06 20:26:56 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/09/06 23:24:17 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**get_meta_caaracters(void)
+char	*copy_and_paste(char *src, int start, int len, char *dest)
 {
-	static char	*caracters[10] = {
-		REDIRECT_IN,
-		HERE_DOC,
-		REDIRECT_OUT,
-		REDIRECT_OUT_OUT,
-		PIPE,
-		AND,
-		OR,
-		OPEN_PARENTH,
-		CLOSE_PARENTH,
-		NULL
-	};
-	return (caracters);
-}
-
-char	*compare_meta_caracters(char *input)
-{
-	char	**caracters;
-
-	caracters = get_meta_caracters();
-	return (compare_with_oneof(input, caracters));
+	char	*substring;
+	
+	substring = ft_substr(src, start, len);
+	if (!substring)
+	{
+		free(dest);
+		show_error("Error when alloc substring\n");
+		return (NULL);
+	}
+	dest = ft_strmerge(substring, dest);
+	if (!dest)
+		show_error("Error when alloc merge_str\n");
+	return (dest);
 }

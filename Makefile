@@ -14,7 +14,8 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/get_input.c ${SRC_DIR}/get_env_list.c \
 	   ${SRC_DIR}/validate_quote.c ${SRC_DIR}/executor.c \
 	   ${SRC_DIR}/del_t_token.c ${SRC_DIR}/build_tree.c \
 	   ${SRC_DIR}/get_tokens.c ${SRC_DIR}/get_meta_caracters.c \
-	   ${SRC_DIR}/add_space.c
+	   ${SRC_DIR}/add_space.c ${SRC_DIR}/copy_and_paste.c \
+	   ${SRC_DIR}/compare_with_oneof.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
