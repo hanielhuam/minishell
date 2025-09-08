@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:59:10 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/07 22:06:04 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/07 23:04:13 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	addspacer(int *count, int *start,  char *input, char **new_input)
 	char	*temp;
 
 	if (input[*count] == '\"' || input[*count] == '\'')
-		*count = size_into_quotes(*count, &input[*count]);
+		*count += size_into_quotes(&input[*count]);
 	temp = compare_meta_caracters(&input[*count]);
 	if (temp)
 	{

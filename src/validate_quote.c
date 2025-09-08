@@ -40,12 +40,13 @@ int	validate_quotes(char *input)
 	return (validate_quotes(second_quote + 1));
 }
 
-int	size_into_quotes(int count, char *input)
+int	size_into_quotes(char *input)
 {
+	int		count;
 	char	quote;
 
 	quote = *input++;
-	count++;
+	count = 1;
 	while(*input && *input != quote)
 	{
 		input++;
