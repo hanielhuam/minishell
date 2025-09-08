@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 20:26:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/06 23:24:17 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/07 18:38:02 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*copy_and_paste(char *src, int start, int len, char *dest)
 		show_error("Error when alloc substring\n");
 		return (NULL);
 	}
-	dest = ft_strmerge(substring, dest);
+	dest = ft_strmerge(dest, substring);
 	if (!dest)
 		show_error("Error when alloc merge_str\n");
 	return (dest);

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/06 23:30:54 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:20:03 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int			parser(t_shell *shell, char *input);
 void		destroy_shell(t_shell *shell);
 char		*pre_process_input(char	*input);
 int			validate_quotes(char *input);
+int			size_into_quotes(int count, char *input);
 t_list		**get_tokens(char *input);
 t_abs_tree	**build_tree(t_list **tokens);
 void		executor(t_shell *shell);
@@ -95,6 +96,6 @@ char		**get_meta_caracters(void);
 char		*add_space_after_caracters(char *input);
 char		*copy_and_paste(char *src, int start, int len, char *dest);
 char		*compare_with_oneof(char *str, char **strings);
-char	*compare_meta_caracters(char *input);
+char		*compare_meta_caracters(char *input);
 
 #endif

@@ -6,22 +6,22 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:08:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/06 23:00:32 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/07 18:51:38 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**get_meta_caaracters(void)
+char	**get_meta_caracters(void)
 {
 	static char	*caracters[10] = {
-		REDIRECT_IN,
 		HERE_DOC,
-		REDIRECT_OUT,
+		REDIRECT_IN,
 		REDIRECT_OUT_OUT,
-		PIPE,
+		REDIRECT_OUT,
 		AND,
 		OR,
+		PIPE,
 		OPEN_PARENTH,
 		CLOSE_PARENTH,
 		NULL

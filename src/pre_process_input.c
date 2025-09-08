@@ -22,5 +22,6 @@ char	*pre_process_input(char *input)
 		return (NULL);
 	}
 	new_input = add_space_after_caracters(input);
+	ft_printf(new_input);
 	return (new_input);
 }
