@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 23:07:14 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/07 23:49:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/08 20:02:10 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static size_t	count_words(const char *s, char c)
 	if (*s != c)
 	{
 		count++;
-		s++;
+		s += (check_size_into_quotes(s) + 1);
 	}
 	while (*s)
 	{
 		if (*s != c && *(s - 1) == c)
 			count++;
-		s++;
+		s += (check_size_into_quotes(s) + 1);
 	}
 	return (count);
 }
@@ -39,12 +39,7 @@ static size_t	end_word(const char *s, char c)
 
 	i = 0;
 	while (s[i] && s[i] != c)
-	{
-		if (s[i] == '\"' || s[i] == '\'')
-			i += (size_t)size_into_quotes(&s[i]);
-		else
-			i++;
-	}
+		 i += (check_size_into_quotes(&s[i]) + 1);
 	return (i);
 }
 

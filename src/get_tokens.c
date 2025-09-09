@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:52:36 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/07 23:44:48 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/08 17:36:00 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ t_list	**get_tokens(char *input)
 		return (NULL);
 	input_split = modified_split(process_input, ' ');
 	free(process_input);
-	if (input_split)
+	if (!input_split)
 		return (NULL);
 	tokens = build_token_list(input_split);
-	free(input_split);
+	del_split(input_split);
 	if (!tokens)
 		return (NULL);
 	return (tokens);

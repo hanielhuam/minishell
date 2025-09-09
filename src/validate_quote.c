@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:38:02 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/07 20:16:49 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/08 19:51:01 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	validate_quotes(char *input)
 	return (validate_quotes(second_quote + 1));
 }
 
-int	size_into_quotes(char *input)
+int	size_into_quotes(const char *input)
 {
 	int		count;
 	char	quote;
@@ -53,4 +53,11 @@ int	size_into_quotes(char *input)
 		count++;
 	}
 	return (count);
+}
+
+int	check_size_into_quotes(const char *input)
+{
+	if (*input == '\"' || *input == '\'')
+		return (size_into_quotes(input));
+	return (0);
 }

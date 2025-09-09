@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/07 23:50:57 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/08 19:51:24 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,14 @@ void		del_t_env(void *content);
 void		del_env_list(t_list	**env_list);
 void		del_t_token(void *content);
 void		del_token_list(t_list **tokens);
+void		del_split(char **split);
 void		command_env(t_list **env_list);
 int			parser(t_shell *shell, char *input);
 void		destroy_shell(t_shell *shell);
 char		*pre_process_input(char	*input);
 int			validate_quotes(char *input);
 int			size_into_quotes(const char *input);
+int			check_size_into_quotes(const char *input);
 t_list		**get_tokens(char *input);
 t_abs_tree	**build_tree(t_list **tokens);
 void		executor(t_shell *shell);
