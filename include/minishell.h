@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/08 19:51:24 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/10 19:02:59 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ char		*copy_and_paste(char *src, int start, int len, char *dest);
 char		*compare_with_oneof(char *str, char **strings);
 char		*compare_meta_caracters(char *input);
 char		**modified_split(char const *str, char c);
+t_token		*create_t_token(char *str, t_tok_type type);
 
 #endif
