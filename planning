@@ -1,7 +1,7 @@
-[ ] Então o primeiro passo é acrescentar um espaço em todos os metacaracteres “&& || | ( ) > >> < <<” 
+[X] Então o primeiro passo é acrescentar um espaço em todos os metacaracteres “&& || | ( ) > >> < <<” 
 
-[ ] depois criar uma split diferenciada que além de fazer uma matriz com todas as palavras dívididas por “ “ ela vai xonsiderar a abertura e o fechamento das “ uma coisa só
-	[ ] tem que verificar se “ que abre tem um fechamento e caso não tenha da um syntax error.
+[X] depois criar uma split diferenciada que além de fazer uma matriz com todas as palavras dívididas por “ “ ela vai xonsiderar a abertura e o fechamento das “ uma coisa só
+	[X] tem que verificar se “ que abre tem um fechamento e caso não tenha da um syntax error.
 
 [ ] depois com essa matriz eu vou categoriza (lexer) e até então foi um pre-processamento
 	[ ] eu vou primeiro categorizar os tokens que tem a hierarquia maior, que no caso é “&&” e “||”
