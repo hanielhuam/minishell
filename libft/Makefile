@@ -19,7 +19,7 @@ SRCS = ${SRC_DIR}/ft_isalpha.c ${SRC_DIR}/ft_isdigit.c \
 	${SRC_DIR}/ft_putstr_fd.c ${SRC_DIR}/ft_putendl_fd.c \
 	${SRC_DIR}/ft_putnbr_fd.c ${SRC_DIR}/ft_separate.c \
 	${SRC_DIR}/ft_litoa_base.c ${SRC_DIR}/ft_ulitoa_base.c \
-	${SRC_DIR}/ft_atol.c ${SRC_DIR}/ft_isspace.c \
+	${SRC_DIR}/ft_atol.c ${SRC_DIR}/ft_isspace.c ${SRC_DIR}/ft_strmerge.c \
 	${SRC_DIR}/stack/ft_stcknew.c ${SRC_DIR}/stack/ft_stckadd_front.c \
 	${SRC_DIR}/stack/ft_stcksize.c ${SRC_DIR}/stack/ft_stcklast.c \
 	${SRC_DIR}/stack/ft_stckadd_back.c ${SRC_DIR}/stack/ft_stckdelone.c \
@@ -37,8 +37,12 @@ SRCS = ${SRC_DIR}/ft_isalpha.c ${SRC_DIR}/ft_isdigit.c \
 	${SRC_DIR}/ft_printf/ft_transl_no.c \
 	${SRC_DIR}/ft_printf/ft_transl_udigits.c ${SRC_DIR}/ft_printf/t_print.c \
 	${SRC_DIR}/GNL/get_next_line.c ${SRC_DIR}/GNL/get_next_line_utils.c \
-	${SRC_DIR}/ft_strmerge.c
-
+	${SRC_DIR}/dlist/ft_dlstadd_back.c ${SRC_DIR}/dlist/ft_dlstclear.c \
+	${SRC_DIR}/dlist/ft_dlstiter.c ${SRC_DIR}/dlist/ft_dlstlast.c \
+	${SRC_DIR}/dlist/ft_dlstnew.c ${SRC_DIR}/dlist/ft_dlstadd_front.c \
+	${SRC_DIR}/dlist/ft_dlstdelone.c ${SRC_DIR}/dlist/ft_dlstiter_s.c \
+	${SRC_DIR}/dlist/ft_dlstmap.c ${SRC_DIR}/dlist/ft_dlstsize.c
+	
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
 NAME = ${BIN_DIR}/libft.a
