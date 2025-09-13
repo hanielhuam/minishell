@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stckdelone.c                                    :+:      :+:    :+:   */
+/*   ft_dlstdelone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 20:46:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/04/12 19:46:15 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/12 23:26:02 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stack.h"
+#include "ft_dlist.h"
 
-void	ft_stckdelone(t_stack *element, void (*del)(void*))
+void	ft_dlstdelone(t_dlist *element, void (*del)(void*))
 {
 	if (!element)
 		return ;
@@ -20,7 +20,6 @@ void	ft_stckdelone(t_stack *element, void (*del)(void*))
 	free(element);
 }
 
-/*
 #include <stdio.h>
 
 int	*newint_point(int nu)
@@ -40,13 +39,13 @@ void	del_stck(void * content)
 int	main(void)
 {
 	int	*nu;
-	t_stack *el;
+	t_dlist *el;
 
 	nu = newint_point(42);
-	el = ft_stcknew(nu);
-	printf("index of el is %d\nint of nu is %d\n", el->index, *nu);
-	ft_stckdelone(el, del_stck);
+	el = ft_dlstnew(nu);
+	printf("next of el is %p\n", el->next);
+	ft_dlstdelone(el, del_stck);
 	printf("after delone\n");
-	printf("index of el is %d\nint of nu is %d\n", el->index, *nu);
+	printf("next of el is %p\n", el->next);
 	return (0);
-}*/
+}
