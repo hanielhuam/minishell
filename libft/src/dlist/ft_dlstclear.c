@@ -6,15 +6,15 @@
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 18:07:46 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/12 23:35:19 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/13 19:23:19 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dlist.h"
 
-void	ft_dlstclear(ft_dlist **list, void (*del)(void *))
+void	ft_dlstclear(t_dlist **list, void (*del)(void *))
 {
-	ft_dlist	*temp;
+	t_dlist	*temp;
 
 	while (*list)
 	{
@@ -24,7 +24,7 @@ void	ft_dlstclear(ft_dlist **list, void (*del)(void *))
 	}
 	*list = NULL;
 }
-
+/*
 #include <stdio.h>
 
 int	*newint_point(int nu)
@@ -36,50 +36,43 @@ int	*newint_point(int nu)
 	return (nup);
 }
 
-void	print_ft_dlist(ft_dlist *element)
+void	print_t_dlist(t_dlist *element)
 {
 	printf("element->before = %p\n", element->before);
 	printf("element->next = %p\n", element->next);
-	printf("element->content = %d\n", *((int *)element->content));
+	printf("element->content = %s\n", (char *)element->content);
 }
 
-void	prinft_dlist(ft_dlist **list)
+void	print_dlist(t_dlist *list)
 {
-	ft_dlist	*temp;
 
-	if (!list || !*list)
+	if (!list)
 	{
 		printf("list está nula\n");
 		return ;
 	}
-	print_ft_dlist(*list);
-	temp = (*list)->next;
-	while (temp != *list)
+	while (list)
 	{
-		printf("\n");
-		print_ft_dlist(temp);
-		temp = temp->next;
+		print_t_dlist(list);
+		list = list->next;
 	}
-	printf("\n");
 }
 
-void	del_stck(void * content)
+void	del_list(void * content)
 {
 	free(content);
 }
 
 int	main(void)
 {
-	ft_dlist	**list;
-	ft_dlist *tmp;
+	t_dlist	**list;
 
-	tmp = ft_dlstnew(newint_point(42));
-	list = &tmp;
-	ft_dlstadd_front(list, ft_dlstnew(newint_point(24)));
-	ft_dlstadd_back(list, ft_dlstnew(newint_point(84)));
-	prinft_dlist(list);
-	ft_dlstclear(list, del_stck);
-	printf("depois da ft_clear\n");
-	prinft_dlist(list);
+	list = ft_calloc(1, sizeof(t_dlist *));
+	ft_dlstadd_back(list, ft_dlstnew(ft_strdup("haniel")));
+	ft_dlstadd_back(list, ft_dlstnew(ft_strdup("Huam")));
+	print_dlist(*list);
+	ft_dlstclear(list, del_list);
+	print_dlist(*list);
+	free(list);
 	return (0);
-}
+}*/

@@ -40,8 +40,8 @@ SRCS = ${SRC_DIR}/ft_isalpha.c ${SRC_DIR}/ft_isdigit.c \
 	${SRC_DIR}/dlist/ft_dlstadd_back.c ${SRC_DIR}/dlist/ft_dlstclear.c \
 	${SRC_DIR}/dlist/ft_dlstiter.c ${SRC_DIR}/dlist/ft_dlstlast.c \
 	${SRC_DIR}/dlist/ft_dlstnew.c ${SRC_DIR}/dlist/ft_dlstadd_front.c \
-	${SRC_DIR}/dlist/ft_dlstdelone.c ${SRC_DIR}/dlist/ft_dlstiter_s.c \
-	${SRC_DIR}/dlist/ft_dlstmap.c ${SRC_DIR}/dlist/ft_dlstsize.c
+	${SRC_DIR}/dlist/ft_dlstdelone.c ${SRC_DIR}/dlist/ft_dlstmap.c \
+	${SRC_DIR}/dlist/ft_dlstsize.c
 	
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

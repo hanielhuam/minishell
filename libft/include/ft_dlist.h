@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 19:17:52 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/12 19:39:21 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/13 20:58:44 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ void	ft_dlstdelone(t_dlist *element, void (*del)(void *));
 void	ft_dlstclear(t_dlist **dlist, void (*del)(void *));
 void	ft_dlstiter(t_dlist *dlist, void (*f)(void *));
 t_dlist	*ft_lstmap(t_dlist *dlist, void *(*f)(void *), void (*del)(void *));
-void	ft_dlstiter_s(t_dlist *dlist, void (*f)(t_dlist *));
 
 #endif 

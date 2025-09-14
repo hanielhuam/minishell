@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 20:46:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/12 23:26:02 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/13 18:12:45 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_dlstdelone(t_dlist *element, void (*del)(void*))
 	del(element->content);
 	free(element);
 }
-
+/*
 #include <stdio.h>
 
 int	*newint_point(int nu)
@@ -48,4 +48,4 @@ int	main(void)
 	printf("after delone\n");
 	printf("next of el is %p\n", el->next);
 	return (0);
-}
+}*/

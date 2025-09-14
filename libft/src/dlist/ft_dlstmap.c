@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stckmap.c                                       :+:      :+:    :+:   */
+/*   ft_dlstmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hmacedo-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:17:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/04/21 18:22:46 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/13 20:46:47 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stack.h"
+#include "ft_dlist.h"
 
-t_stack	*ft_stckmap(t_stack *stack, void *(*f)(void *), void (*del)(void *))
+t_dlist	*ft_dlstmap(t_dlist *list, void *(*f)(void *), void (*del)(void *))
 {
-	t_stack	*start;
-	t_stack	*temp;
-	t_stack	*newstack;
+	t_dlist	*maplist;
+	t_dlist	*tmp;
 
-	if (ft_stckcheck(&stack))
-		return (NULL);
-	newstack = ft_stcknew(f(stack->content));
-	if (!newstack)
-		return (NULL);
-	start = stack->next;
-	while (start != stack)
+	maplist = NULL;
+	while (list)
 	{
-		temp = ft_stcknew(f(start->content));
-		if (!temp)
+		tmp = ft_dlstnew(f(list->content));
+		if (!tmp)
 		{
-			ft_stckclear(&newstack, del);
+			ft_dlstclear(&maplist, del);
 			return (NULL);
 		}
-		ft_stckadd_back(&newstack, temp);
-		start = start->next;
+		ft_dlstadd_back(&maplist, tmp);
+		list = list->next;
 	}
-	return (newstack);
+	return (maplist);
 }
 /*
 #include <stdio.h>
@@ -49,56 +43,48 @@ int	*newint_point(int nu)
 	return (nup);
 }
 
-void	print_t_stack(t_stack *element)
+void	print_t_dlist(t_dlist *element)
 {
-	printf("element->index = %d\n", element->index);
 	printf("element->before = %p\n", element->before);
 	printf("element->next = %p\n", element->next);
 	printf("element->content = %d\n", *((int *)element->content));
 }
 
-void	print_stack(t_stack **stack)
+void	print_dlist(t_dlist *list)
 {
-	t_stack	*temp;
-
-	if (!stack || !*stack)
+	if (!list)
 	{
-		printf("stack está nula\n");
+		printf("list está nula\n");
 		return ;
 	}
-	print_t_stack(*stack);
-	temp = (*stack)->next;
-	while (temp != *stack)
+	while (list)
 	{
-		printf("\n");
-		print_t_stack(temp);
-		temp = temp->next;
+		print_t_dlist(list);
+		list = list->next;
 	}
-	printf("\n");
 }
 
 void	*plusone(void * content)
 {
 	int	*result;
 
-	result = malloc(sizeof(int) * 1);
+	result = ft_calloc(1, sizeof(int));
 	*result = *((int *)content) + 1;
 	return ((void *)result);
 }
 
 int	main(void)
 {
-	t_stack	**stack;
-	t_stack *tmp;
-	t_stack *result;
+	t_dlist	**list;
+	t_dlist *result;
 
-	tmp = ft_stcknew(newint_point(42));
-	stack = &tmp;
-	ft_stckadd_front(stack, ft_stcknew(newint_point(24)));
-	ft_stckadd_back(stack, ft_stcknew(newint_point(84)));
-	print_stack(stack);
-	result = ft_stckmap(*stack, plusone, free);
-	printf("depois da ft_stckiter\n");
-	print_stack(&result);
+	list = ft_calloc(1, sizeof(t_dlist *));
+	ft_dlstadd_back(list, ft_dlstnew(newint_point(42)));
+	ft_dlstadd_front(list, ft_dlstnew(newint_point(24)));
+	ft_dlstadd_back(list, ft_dlstnew(newint_point(84)));
+	print_dlist(*list);
+	result = ft_dlstmap(*list, plusone, free);
+	printf("depois da ft_dlstmap\n");
+	print_dlist(result);
 	return (0);
 }*/
