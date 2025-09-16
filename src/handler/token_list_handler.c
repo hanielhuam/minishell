@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   token_list_handler.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 20:24:00 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/02 19:13:41 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/09/16 14:14:12 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/09/16 15:03:56 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-int	parser(t_shell *shell, char *input)
+static t_dlist	**subshell_token_handler(t_dlist **tokens)
 {
-	t_list		**tokens;
+	return (tokens);
+}
 
-	tokens = get_tokens(input);
-	if (!tokens)
+int	token_list_handler(t_dlist **tokens)
+{
+	if (validate_token_list(tokens))
 		return (-1);
-	if (token_list_handler(tokens))
-	{
-		del_token_list(tokens);
-		return (-1)
-	}
-	shell->tree = build_tree(tokens);
-	del_token_list(tokens);
-	if (!shell->tree)
+	if (!subshell_token_handler(tokens))
 		return (-1);
 	return (0);
 }

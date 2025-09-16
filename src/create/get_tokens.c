@@ -6,13 +6,13 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:52:36 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/10 20:51:46 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/16 17:08:48 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_list	*create_token(char *str)
+static t_list	*create_token(char *str, t_token *token_list)
 {
 	char	*dup;
 	t_toke	*token;
@@ -33,18 +33,18 @@ static t_dlist	**build_token_list(char **input_split)
 	t_dlint	*temp;
 	t_dlist	**tokens;
 
-	tokens = safe_malloc(1, sizeof(t_list *), "Error when malloc token list\n");
+	tokens = safe_malloc(1, sizeof(t_dlist *), "Error when malloc token list\n");
 	if (!tokens)
 		return (NULL);
 	while (*input_split)
 	{
-		temp = create_token(*input);
+		temp = create_token(*input, *tokens);
 		if (!temp)
 		{
 			dell_token_list(tokens);
 			return (NULL);
 		}
-		ft_dlst_addback(tokens, temp);
+		ft_dlstadd_back(tokens, temp);
 	}
 	return (tokens);
 }

@@ -17,7 +17,9 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/create/get_tokens.c ${SRC_DIR}/create/get_meta_caracters.c \
 	   ${SRC_DIR}/pre_process/add_space.c ${SRC_DIR}/utils/copy_and_paste.c \
 	   ${SRC_DIR}/pre_process/modified_split.c ${SRC_DIR}/del/del_split.c \
-	   ${SRC_DIR}/create/create_t_token.c ${SRC_DIR}/create/get_input.c
+	   ${SRC_DIR}/create/create_t_token.c ${SRC_DIR}/create/get_input.c \
+	   ${SRC_DIR}/handler/token_list_handler.c \
+	   ${SRC_DIR}/validate/validate_token_list.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
