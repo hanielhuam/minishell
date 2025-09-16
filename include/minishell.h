@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/10 19:02:59 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/15 21:24:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "ft_printf.h"
+# include "ft_tree.h"
+# include "ft_list.h"
+# include "ft_dlist.h"
 
 # define REDIRECT_IN "<"
 # define HERE_DOC "<<"
@@ -57,49 +60,73 @@ typedef struct s_token
 {
 	char		*str;
 	t_tok_type	type;
+	t_dlist		**subshell
 }				t_token;
 
-typedef struct s_abs_tree
+typedef struct s_pipe
 {
-	struct s_abs_tree	*prev;
-	struct s_abs_tree	*left;
-	struct s_abs_tree	*right;
-	t_token				*token;
-	void				*anything;
-}						t_abs_tree;
+	int	pipe[2];
+}		t_pipe;
+
+typedef struct s_redir
+{
+	t_tok_type	type;
+	char		*file;
+	char		*eof;
+	int			fd;
+}				t_redir;
+
+typedef struct s_command
+{
+	char	**cmd_args;
+	char	*path;
+	t_	*redir_list;
+}			t_command;
+
+typedef union u_doable
+{
+	t_pipe		pipe;
+	t_command	command;
+}				t_doable;
+
+typedef struct s_data_tree
+{
+	t_tok_type	*type;
+	t_tree		*subtree;
+	t_doable	*doable;
+}				t_data_tree;
 
 typedef struct s_shell
 {
-	t_list		**env;
-	t_list		**tokens;
-	t_abs_tree	**tree;
-}				t_shell;
+	t_list	**env;
+	t_tree	**tree;
+}			t_shell;
 
-int			get_input(char	**imput);
-t_list		**get_env_list(char **env);
-void		show_error(char *str);
-void		*safe_malloc(size_t nmemb, size_t size, char *err_mensage);
-void		del_t_env(void *content);
-void		del_env_list(t_list	**env_list);
-void		del_t_token(void *content);
-void		del_token_list(t_list **tokens);
-void		del_split(char **split);
-void		command_env(t_list **env_list);
-int			parser(t_shell *shell, char *input);
-void		destroy_shell(t_shell *shell);
-char		*pre_process_input(char	*input);
-int			validate_quotes(char *input);
-int			size_into_quotes(const char *input);
-int			check_size_into_quotes(const char *input);
-t_list		**get_tokens(char *input);
-t_abs_tree	**build_tree(t_list **tokens);
-void		executor(t_shell *shell);
-char		**get_meta_caracters(void);
-char		*add_space_after_caracters(char *input);
-char		*copy_and_paste(char *src, int start, int len, char *dest);
-char		*compare_with_oneof(char *str, char **strings);
-char		*compare_meta_caracters(char *input);
-char		**modified_split(char const *str, char c);
-t_token		*create_t_token(char *str, t_tok_type type);
+int		get_input(char	**imput);
+t_list	**get_env_list(char **env);
+void	show_error(char *str);
+void	*safe_malloc(size_t nmemb, size_t size, char *err_mensage);
+void	del_t_env(void *content);
+void	del_env_list(t_list	**env_list);
+void	del_t_token(void *content);
+void	del_token_list(t_list **tokens);
+void	del_split(char **split);
+void	command_env(t_list **env_list);
+int		parser(t_shell *shell, char *input);
+void	destroy_shell(t_shell *shell);
+char	*pre_process_input(char	*input);
+int		validate_quotes(char *input);
+int		size_into_quotes(const char *input);
+int		check_size_into_quotes(const char *input);
+t_dlist	**get_tokens(char *input);
+t_tree	**build_tree(t_dlist **tokens);
+void	executor(t_shell *shell);
+char	**get_meta_caracters(void);
+char	*add_space_after_caracters(char *input);
+char	*copy_and_paste(char *src, int start, int len, char *dest);
+char	*compare_with_oneof(char *str, char **strings);
+char	*compare_meta_caracters(char *input);
+char	**modified_split(char const *str, char c);
+t_token	*create_t_token(char *str, t_tok_type type);
 
 #endif

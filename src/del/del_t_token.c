@@ -18,11 +18,13 @@ void	del_t_token(void *content)
 
 	token = (t_token *)content;
 	free(token->str);
+	if (subshell)
+		ft_dlstclear(&subshell, del_t_token);
 	free(token);
 }
 
-void	del_token_list(t_list **token_list)
+void	del_token_list(t_dlist **token_list)
 {
-	ft_lstclear(token_list, del_t_token);
+	ft_dlstclear(token_list, del_t_token);
 	free(token_list);
 }

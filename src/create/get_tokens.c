@@ -28,10 +28,10 @@ static t_list	*create_token(char *str)
 
 }
 
-static t_list	**build_token_list(char **input_split)
+static t_dlist	**build_token_list(char **input_split)
 {
-	t_lint	*temp;
-	t_list	**tokens;
+	t_dlint	*temp;
+	t_dlist	**tokens;
 
 	tokens = safe_malloc(1, sizeof(t_list *), "Error when malloc token list\n");
 	if (!tokens)
@@ -44,16 +44,16 @@ static t_list	**build_token_list(char **input_split)
 			dell_token_list(tokens);
 			return (NULL);
 		}
-		ft_lst_addback(tokens, temp);
+		ft_dlst_addback(tokens, temp);
 	}
 	return (tokens);
 }
 
-t_list	**get_tokens(char *input)
+t_dlist	**get_tokens(char *input)
 {
 	char	*process_input;
 	char	**input_split;
-	t_list	**tokens;
+	t_dlist	**tokens;
 
 	process_input = pre_process_input(input);
 	if (!process_input)

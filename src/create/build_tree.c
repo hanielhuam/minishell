@@ -12,12 +12,12 @@
 
 #include "minishell.h"
 
-t_abs_tree	**build_tree(t_list **tokens)
+t_tree	**build_tree(t_dlist **tokens)
 {
-	t_abs_tree	**tree;
+	t_tree	**tree;
 
 	(void)tokens;
-	tree = safe_malloc(1, sizeof(t_abs_tree *), "Error when malloc tree\n");
+	tree = safe_malloc(1, sizeof(t_tree *), "Error when malloc tree\n");
 	if (!tree)
 		return (NULL);
 	return (tree);
