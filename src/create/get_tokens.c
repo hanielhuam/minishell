@@ -6,17 +6,18 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:52:36 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/16 17:08:48 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/16 21:27:50 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_list	*create_token(char *str, t_token *token_list)
+static t_list	*create_token(char *str, t_dlist *token_before)
 {
 	char	*dup;
 	t_toke	*token;
 
+	(void)token_before;
 	dup = ft_strdup(str);
 	if (!dup)
 	{
@@ -25,6 +26,11 @@ static t_list	*create_token(char *str, t_token *token_list)
 	}
 	token = is_meta_caracter_token(dup);
 	if (token)
+	{
+		token = creat_t_token(dup, token->t_tok_type);
+		if (!token)
+
+	}
 
 }
 
@@ -38,7 +44,7 @@ static t_dlist	**build_token_list(char **input_split)
 		return (NULL);
 	while (*input_split)
 	{
-		temp = create_token(*input, *tokens);
+		temp = create_token(*input, ft_dlstlast(*tokens));
 		if (!temp)
 		{
 			dell_token_list(tokens);

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:08:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/16 17:08:44 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/16 21:27:55 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ char	*compare_meta_caracters(char *input)
 	return (compare_with_oneof(input, caracters));
 }
 
+t_token	*compare_meta_caracters_tokens(char *input)
+{
+	t_token	*tokens;
+
+	tokens = get_meta_caracters_token();
+	return (compare_with_oneof_tokens(input, tokens);
+}
+
 static t_token	*token_atribution(char	*caracters, t_tok_type type)
 {
 	t_token	*tok;
@@ -60,4 +68,5 @@ t_token	*get_meta_caracteres_tokens(void)
 		token_atribution(CLOSE_PARENTH, TK_CLOSE_PARENTH),
 		NULL
 	};
+	return (caracters);
 }
