@@ -39,7 +39,7 @@ char	*compare_meta_caracters(char *input)
 
 t_token	*compare_meta_caracters_tokens(char *input)
 {
-	t_token	*tokens;
+	t_token	**tokens;
 
 	tokens = get_meta_caracters_token();
 	return (compare_with_oneof_tokens(input, tokens);
@@ -56,7 +56,7 @@ static t_token	*token_atribution(char	*caracters, t_tok_type type)
 
 t_token	*get_meta_caracteres_tokens(void)
 {
-	static t_token	tokens[10] = {
+	static t_token	*tokens[10] = {
 		token_atribution(HERE_DOC, TK_HERE_DOC),
 		token_atribution(REDIRECT_IN, TK_REDIRECT_IN),
 		token_atribution(REDIRECT_OUT_OUT, TK_REDIRECT_OUT_OUT),
