@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/16 21:19:25 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:20:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef enum e_tok_type
 	TK_REDIRECT_OUT,
 	TK_REDIRECT_OUT_OUT,
 	TK_FILE_OUT,
+	TK_FILE_OUT_OUT,
 	TK_COMMAND,
 	TK_ARGUMENT,
 	TK_PIPE,
@@ -80,7 +81,7 @@ typedef struct s_command
 {
 	char	**cmd_args;
 	char	*path;
-	t_	*redir_list;
+	t_redir	*list;
 }			t_command;
 
 typedef union u_doable
@@ -132,5 +133,6 @@ char	*compare_meta_caracters(char *input);
 char	**modified_split(char const *str, char c);
 int		token_list_handler(t_dlist tokens);
 int		validate_token_list(t_dlist tokens);
+t_token	*is_redirect_file_token(char *str, t_token *token_before);
 
 #endif
