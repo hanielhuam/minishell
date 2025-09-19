@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/18 17:20:14 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/18 23:39:37 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 typedef enum e_tok_type
 {
 	TK_REDIRECT_IN,
-	TK_FILE_INi,
+	TK_FILE_IN,
 	TK_HERE_DOC,
 	TK_DELIMITER,
 	TK_REDIRECT_OUT,
@@ -134,5 +134,6 @@ char	**modified_split(char const *str, char c);
 int		token_list_handler(t_dlist tokens);
 int		validate_token_list(t_dlist tokens);
 t_token	*is_redirect_file_token(char *str, t_token *token_before);
+t_token	*is_command_token(char *str, t_token *token_before);
 
 #endif

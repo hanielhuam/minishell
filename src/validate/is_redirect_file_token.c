@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 14:44:48 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/18 17:20:07 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/18 22:47:23 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ t_token	*is_redirect_token(char *str, t_token *token_before)
 	if (token_before->type == TK_HERE_DOC)
 		token->type = TK_DELIMITER;
 	else if (token_before->type == TK_REDIRECT_IN)
-		token->type = TK_
+		token->type = TK_FILE_IN;
+	else if (token_before->type == TK_REDIRECT_OUT_OUT)
+		token->type = TK_FILE_OUT_OUT;
+	else if (token_before->type == TK_REDIRECT_OUT)
+		token->type = TK_FILE_OUT;
 	return (token);
 }
