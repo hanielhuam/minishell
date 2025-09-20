@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 20:05:30 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/14 20:09:49 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/19 23:20:15 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_treeadd_left(t_tree **tree, t_tree *element)
 {
-	t_tree *far_left;
+	t_tree	*far_left;
 
 	if (!*tree)
 	{

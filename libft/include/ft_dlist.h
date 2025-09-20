@@ -30,6 +30,6 @@ void	ft_dlstadd_back(t_dlist **dlist, t_dlist *new);
 void	ft_dlstdelone(t_dlist *element, void (*del)(void *));
 void	ft_dlstclear(t_dlist **dlist, void (*del)(void *));
 void	ft_dlstiter(t_dlist *dlist, void (*f)(void *));
-t_dlist	*ft_lstmap(t_dlist *dlist, void *(*f)(void *), void (*del)(void *));
+t_dlist	*ft_dlstmap(t_dlist *dlist, void *(*f)(void *), void (*del)(void *));
 
 #endif 

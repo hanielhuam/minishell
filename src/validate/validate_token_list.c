@@ -6,11 +6,13 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:06:14 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/16 15:14:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/19 17:51:03 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	validate_token_list(t_dlist **token);
+#include "minishell.h"
+
+int	validate_token_list(t_dlist *tokens)
 {
 	(void)tokens;
 	return (0);

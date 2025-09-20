@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 23:07:14 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/08 20:02:10 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/19 23:30:28 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static size_t	end_word(const char *s, char c)
 
 	i = 0;
 	while (s[i] && s[i] != c)
-		 i += (check_size_into_quotes(&s[i]) + 1);
+		i += (check_size_into_quotes(&s[i]) + 1);
 	return (i);
 }
 

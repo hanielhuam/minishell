@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:38:02 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/08 19:51:01 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/19 23:33:59 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	size_into_quotes(const char *input)
 
 	quote = *input++;
 	count = 1;
-	while(*input && *input != quote)
+	while (*input && *input != quote)
 	{
 		input++;
 		count++;

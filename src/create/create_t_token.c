@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.c"
+#include "minishell.h"
 
-t_token	*creat_t_token(char *str, t_tok_type typr)
+t_token	*create_t_token(char *str, t_tok_type type)
 {
 	t_token	*token;
 

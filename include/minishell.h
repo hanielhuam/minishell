@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/18 23:39:37 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/19 22:50:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ typedef enum e_tok_type
 	TK_AND,
 	TK_OR,
 	TK_OPEN_PARENTH,
-	TK_CLOSE_PARENTH
+	TK_CLOSE_PARENTH,
+	TK_SUBSHELL,
+	TK_NO_TYPE
 }	t_tok_type;
 
 typedef struct s_env
@@ -61,7 +63,7 @@ typedef struct s_token
 {
 	char		*str;
 	t_tok_type	type;
-	t_dlist		**subshell
+	t_dlist		**subshell;
 }				t_token;
 
 typedef struct s_pipe
@@ -110,7 +112,7 @@ void	*safe_malloc(size_t nmemb, size_t size, char *err_mensage);
 void	del_t_env(void *content);
 void	del_env_list(t_list	**env_list);
 void	del_t_token(void *content);
-void	del_token_list(t_list **tokens);
+void	del_token_list(t_dlist **tokens);
 void	del_split(char **split);
 void	command_env(t_list **env_list);
 int		parser(t_shell *shell, char *input);
@@ -124,16 +126,17 @@ t_tree	**build_tree(t_dlist **tokens);
 t_token	*create_t_token(char *str, t_tok_type type);
 void	executor(t_shell *shell);
 char	**get_meta_caracters(void);
-t_token	*get_meta_caracters_tokens(void);
+t_token	*get_meta_caracteres_tokens(void);
 char	*add_space_after_caracters(char *input);
 char	*copy_and_paste(char *src, int start, int len, char *dest);
 char	*compare_with_oneof(char *str, char **strings);
-t_token	*compare_with_oneof_tokens(char *str, t_token *tokens);
+t_token	compare_with_oneof_tokens(char *str, t_token *tokens);
 char	*compare_meta_caracters(char *input);
+t_token	compare_meta_caracters_tokens(char *input);
 char	**modified_split(char const *str, char c);
-int		token_list_handler(t_dlist tokens);
-int		validate_token_list(t_dlist tokens);
-t_token	*is_redirect_file_token(char *str, t_token *token_before);
-t_token	*is_command_token(char *str, t_token *token_before);
+int		token_list_handler(t_dlist **tokens);
+int		validate_token_list(t_dlist *tokens);
+t_token	is_redirect_file_token( t_token *token_before);
+t_token	is_command_token(t_token *token_before);
 
 #endif

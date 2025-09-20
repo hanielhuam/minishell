@@ -21,7 +21,7 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/handler/token_list_handler.c \
 	   ${SRC_DIR}/validate/validate_token_list.c \
 	   ${SRC_DIR}/validate/is_redirect_file_token.c \
-	   ${SRC_DIR}/validate/is_command_token.
+	   ${SRC_DIR}/validate/is_command_token.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

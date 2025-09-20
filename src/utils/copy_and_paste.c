@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 20:26:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/07 18:38:02 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/19 23:33:16 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*copy_and_paste(char *src, int start, int len, char *dest)
 {
 	char	*substring;
-	
+
 	substring = ft_substr(src, start, len);
 	if (!substring)
 	{

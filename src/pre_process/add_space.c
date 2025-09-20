@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:59:10 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/07 23:04:13 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/19 23:31:21 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*add_space(char *input, int start, int len, char *new_input)
 	return (ft_strmerge(new_input, ft_strdup(" ")));
 }
 
-static int	addspacer(int *count, int *start,  char *input, char **new_input)
+static int	addspacer(int *count, int *start, char *input, char **new_input)
 {
 	char	*temp;
 

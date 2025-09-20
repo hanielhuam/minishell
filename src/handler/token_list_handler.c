@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
+
 static t_dlist	**subshell_token_handler(t_dlist **tokens)
 {
 	return (tokens);
@@ -17,7 +19,7 @@ static t_dlist	**subshell_token_handler(t_dlist **tokens)
 
 int	token_list_handler(t_dlist **tokens)
 {
-	if (validate_token_list(tokens))
+	if (validate_token_list(*tokens))
 		return (-1);
 	if (!subshell_token_handler(tokens))
 		return (-1);

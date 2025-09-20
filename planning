@@ -3,13 +3,13 @@
 [X] depois criar uma split diferenciada que além de fazer uma matriz com todas as palavras dívididas por “ “ ela vai xonsiderar a abertura e o fechamento das “ uma coisa só
 	[X] tem que verificar se “ que abre tem um fechamento e caso não tenha da um syntax error.
 
-[ ] depois com essa matriz eu vou categoriza (lexer) e até então foi um pre-processamento
-	[ ] eu vou primeiro categorizar os tokens que tem a hierarquia maior, que no caso é “&&” e “||”
-	[ ] depois vem os “(” e “)”
-	[ ] depois os pipes “|”
-	[ ] depois os redirectes e os files ou delimitador no caso de here_doc “> file_out” “>> file_out” “< file_in” “<< delimitador”
-	[ ] por fim eu vou categorizar os comandos como o token que vem após um meta caracter
-	[ ] e por fim vou categorizar os argumentos como os tokens que vem após o comando e que seria todo o resto dos tokens que ainda não foram categorizados
+[X] depois com essa matriz eu vou categoriza (lexer) e até então foi um pre-processamento
+	[X] eu vou primeiro categorizar os tokens que tem a hierarquia maior, que no caso é “&&” e “||”
+	[X] depois vem os “(” e “)”
+	[X] depois os pipes “|”
+	[X] depois os redirectes e os files ou delimitador no caso de here_doc “> file_out” “>> file_out” “< file_in” “<< delimitador”
+	[X] por fim eu vou categorizar os comandos como o token que vem após um meta caracter
+	[X] e por fim vou categorizar os argumentos como os tokens que vem após o comando e que seria todo o resto dos tokens que ainda não foram categorizados
 
 [ ] Depois disso vamos fazer algumas validações de sintaxe para ver por exemplo se não tem 2 metacaracteres um em sequência do outro. ou se tem o fechamento do parentenses adequadamente ou se tem coisa após o “&&” ou o “||” e por aí vai
 
@@ -26,4 +26,10 @@
 
 [ ] também vou ter que lidar com os sinais que vão atravessar a execução
 
+
+
 valgrind --suppressions=valgrind.supp --leak-check=full --track-fds=yes --show-leak-kinds=all ./minishell
+
+
+
+(<< EOF ls | grep "test" > a > b) && ls || export $PAP:lasanha | touch test2 test3 test4 && env | < fork.xd cd .. | echo tchau >>nothing.txt

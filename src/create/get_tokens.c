@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:52:36 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/17 20:49:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/19 23:39:01 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_token	*create_token(char *str, t_dlist *token_before)
 {
 	char	*dup;
-	t_token	*token;
+	t_token	token;
 
 	dup = ft_strdup(str);
 	if (!dup)
@@ -24,21 +24,23 @@ static t_token	*create_token(char *str, t_dlist *token_before)
 		return (NULL);
 	}
 	token = compare_meta_caracters_tokens(dup);
-	if (token)
-		return (create_t_token(dup, token->type));
-	token = is_redirect_file_token(dup, token_before);
-	if (token)
-		return (create_t_token(dup, token->type));
-	token = is_command_token(dup, token_before);
-	if (token)
-		return (create_t_token(dup, token->type));
-	else 
+	if (token.type != TK_NO_TYPE)
+		return (create_t_token(dup, token.type));
+	if (!token_before)
+		return (create_t_token(dup, TK_COMMAND));
+	token = is_redirect_file_token(token_before->content);
+	if (token.type != TK_NO_TYPE)
+		return (create_t_token(dup, token.type));
+	token = is_command_token(token_before->content);
+	if (token.type != TK_NO_TYPE)
+		return (create_t_token(dup, token.type));
+	else
 		return (create_t_token(dup, TK_ARGUMENT));
 }
 
 static t_dlist	**build_token_list(char **input_split)
 {
-	t_dlint	*temp;
+	t_dlist	*temp;
 	t_dlist	**tokens;
 	t_token	*token;
 
@@ -47,15 +49,15 @@ static t_dlist	**build_token_list(char **input_split)
 		return (NULL);
 	while (*input_split)
 	{
-		token = create_token(*input, ft_dlstlast(*tokens));
+		token = create_token(*input_split++, ft_dlstlast(*tokens));
 		temp = ft_dlstnew(token);
 		if (!token || !temp)
 		{
 			if (!temp)
-				show_error("Error when create list node\N");
+				show_error("Error when create list node\n");
 			else
 				free(temp);
-			dell_token_list(tokens);
+			del_token_list(tokens);
 			return (NULL);
 		}
 		ft_dlstadd_back(tokens, temp);
