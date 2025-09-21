@@ -1,0 +1,39 @@
+minishell validations:
+
+[X] validar se as aspas estão fechando corretamente
+
+[} Não é permitido o primeiro caracter:
+&&, ||, |, )
+
+[] Não é permitido o ultimo caracter:
+&&, ||, |, (, <<, <, >>, >
+
+[] é preciso validar se os parenteses estão fechando corretamente
+
+[] validações do token '<'
+só pode ter o TK_FILE_IN após
+
+[] validações do token '<<'
+só pode ter o TK_DELIMITTER após
+
+[] validações do token '>'
+só pode ter o TK_FILE_OUT após
+
+[] validações do token '>>'
+só pode ter o TK_FILE_OUT_OUT após
+
+[] validações dos tokens TK_FILE_IN, TK_DELIMITTER, TK_FILE_OUT e TK_FILE_OUT_OUT
+não pode ter TK_ARGUMENT e '(' após
+
+[] validações dos tokens TK_COMMAND e TK_ARGUMENT
+não pode haver '(', TK_FILE_IN, TK_DELIMITTER, TK_FILE_OUT e TK_FILE_OUT_OUT após
+
+[] validações dos tokens '|' e '('
+só pode ter TK_COMMAND, '<', '<<', '>' e '>>' após
+
+[] validações dos tokens '&&' e '||'
+só pode ter TK_COMMAND, '<', '<<', '>', '>>' e '(' após
+
+[] validações do ')'
+só pode ter '&&', '||' e NULL
+

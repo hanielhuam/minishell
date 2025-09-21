@@ -28,8 +28,8 @@
 
 
 
-valgrind --suppressions=valgrind.supp --leak-check=full --track-fds=yes --show-leak-kinds=all ./minishell
+valgrind --suppressions=valgrind.supp --leak-check=full --track-origins=yes --trace-children=yes --track-fds=yes --show-leak-kinds=all ./minishell
 
 
 
-(<< EOF ls | grep "test" > a > b) && ls || export $PAP:lasanha | touch test2 test3 test4 && env | < fork.xd cd .. | echo tchau >>nothing.txt
+(<< EOF ls | grep "test o test" > a > b) && ls || export $PAP:lasanha | touch 'test2 test3' test4 teste5 && env | < fork.xd cd .. | echo tchau >>nothing.txt
