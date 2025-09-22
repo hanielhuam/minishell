@@ -2,8 +2,8 @@ minishell validations:
 
 [X] validar se as aspas estão fechando corretamente
 
-[} Não é permitido o primeiro caracter:
-&&, ||, |, )
+[X} Não é permitido o primeiro caracter:
+&&, ||, |, ), TK_FILE_IN, TK_DELIMITTER, TK_FILE_OUT, TK_FILE_OUT_OUT, TK_ARGUMENT
 
 [] Não é permitido o ultimo caracter:
 &&, ||, |, (, <<, <, >>, >

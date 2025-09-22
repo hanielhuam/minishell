@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/19 22:50:14 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/21 23:24:37 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct s_shell
 int		get_input(char	**imput);
 t_list	**get_env_list(char **env);
 void	show_error(char *str);
+void	syntax_error(char *err_msg, char *etc);
 void	*safe_malloc(size_t nmemb, size_t size, char *err_mensage);
 void	del_t_env(void *content);
 void	del_env_list(t_list	**env_list);
@@ -138,5 +139,12 @@ int		token_list_handler(t_dlist **tokens);
 int		validate_token_list(t_dlist *tokens);
 t_token	is_redirect_file_token( t_token *token_before);
 t_token	is_command_token(t_token *token_before);
+int		validate_first_token(t_token *token);
+int		forbidden_tokens(t_tok_type value, t_tok_type *fobidden_tokens);
+int		validate_last_token(t_token *token);
+int		validate_parenthesis(t_dlist *tokens);
+t_dlist	*is_there_parenthesis(t_dlist *tokens);
+int		validate_after_redirect_in_token(t_dlist *token);
+int		only_accept_tokens(t_tok_type value, t_tok_type *accept_tokens);
 
 #endif

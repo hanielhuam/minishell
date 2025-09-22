@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_first_token.c                             :+:      :+:    :+:   */
+/*   only_accept_tokens.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/21 15:50:02 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/21 18:47:36 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/09/21 22:57:51 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/09/21 23:08:46 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	validate_first_token(t_token *token)
+int	only_accept_tokens(t_tok_type value, t_tok_type *accept)
 {
-	static t_tok_type	types[10] = {
-		TK_FILE_IN,
-		TK_DELIMITER,
-		TK_FILE_OUT,
-		TK_FILE_OUT_OUT,
-		TK_ARGUMENT,
-		TK_PIPE,
-		TK_AND,
-		TK_OR,
-		TK_CLOSE_PARENTH,
-		TK_NO_TYPE
-	};
+	int i;
 
-	if (forbidden_tokens(token->type, types))
+	i = 0;
+	while (accept[i] != TK_NO_TYPE)
 	{
-		syntax_error("first token mustn`t be ", token->str);
-		return (1);
+		if (value == accept[i++])
+			return (0);
 	}
-	return (0);
+	return (1);
 }

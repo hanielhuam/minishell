@@ -23,14 +23,16 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/validate/is_redirect_file_token.c \
 	   ${SRC_DIR}/validate/is_command_token.c \
 	   ${SRC_DIR}/validate/validate_first_token.c \
+	   ${SRC_DIR}/validate/forbidden_tokens.c \
 	   ${SRC_DIR}/validate/validate_last_token.c \
 	   ${SRC_DIR}/validate/validate_parenthesis.c \
 	   ${SRC_DIR}/validate/validate_redirect_tokens.c \
-	   ${SRC_DIR}/validate/validate_redirect_file_tokens.c \
-	   ${SRC_DIR}/validate/validate_command_arg_token.c \
-	   ${SRC_DIR}/validate/validate_and_or_token \
-	   ${SRC_DIR}/validate/validate_pipe_token.c \
-	   ${SRC_DIR}/validate/validate_parenthesis_token.c
+	   ${SRC_DIR}/validate/only_accept_tokens.c \
+	   ## ${SRC_DIR}/validate/validate_redirect_file_tokens.c \
+	   ## ${SRC_DIR}/validate/validate_command_arg_token.c \
+	   ## ${SRC_DIR}/validate/validate_and_or_token \
+	   ## ${SRC_DIR}/validate/validate_pipe_token.c \
+	   ## ${SRC_DIR}/validate/validate_parenthesis_token.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
