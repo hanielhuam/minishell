@@ -19,7 +19,7 @@ void	show_error(char *str)
 
 void	syntax_error(char *err_msg, char *etc)
 {
-	show_error("sintax error: ");
+	show_error("syntax error: ");
 	show_error(err_msg);
 	show_error(etc);
 	show_error("\n");

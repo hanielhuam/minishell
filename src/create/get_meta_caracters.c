@@ -15,7 +15,7 @@
 char	**get_meta_caracters(void)
 {
 	static char	*caracters[10] = {
-		HERE_DOC,
+		HEREDOC,
 		REDIRECT_IN,
 		REDIRECT_OUT_OUT,
 		REDIRECT_OUT,
@@ -49,7 +49,7 @@ t_token	compare_meta_caracters_tokens(char *input)
 t_token	*get_meta_caracteres_tokens(void)
 {
 	static t_token	tokens[10] = {
-	{HERE_DOC, TK_HERE_DOC, NULL},
+	{HEREDOC, TK_HEREDOC, NULL},
 	{REDIRECT_IN, TK_REDIRECT_IN, NULL},
 	{REDIRECT_OUT_OUT, TK_REDIRECT_OUT_OUT, NULL},
 	{REDIRECT_OUT, TK_REDIRECT_OUT, NULL},

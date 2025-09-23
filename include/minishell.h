@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/21 23:24:37 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/22 20:50:42 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "ft_dlist.h"
 
 # define REDIRECT_IN "<"
-# define HERE_DOC "<<"
+# define HEREDOC "<<"
 # define REDIRECT_OUT ">"
 # define REDIRECT_OUT_OUT ">>"
 # define PIPE "|" 
@@ -36,7 +36,7 @@ typedef enum e_tok_type
 {
 	TK_REDIRECT_IN,
 	TK_FILE_IN,
-	TK_HERE_DOC,
+	TK_HEREDOC,
 	TK_DELIMITER,
 	TK_REDIRECT_OUT,
 	TK_REDIRECT_OUT_OUT,
@@ -145,6 +145,20 @@ int		validate_last_token(t_token *token);
 int		validate_parenthesis(t_dlist *tokens);
 t_dlist	*is_there_parenthesis(t_dlist *tokens);
 int		validate_after_redirect_in_token(t_dlist *token);
+int		validate_after_heredoc_token(t_dlist *token);
+int		validate_after_redirect_out_token(t_dlist *token);
+int		validate_after_redirect_out_out_token(t_dlist *token);
 int		only_accept_tokens(t_tok_type value, t_tok_type *accept_tokens);
+int		validate_after_file_in_token(t_dlist *token);
+int		validate_after_file_out_token(t_dlist *token);
+int		validate_after_delimiter_token(t_dlist *token);
+int		validate_after_file_out_out_token(t_dlist *token);
+int		validate_after_command_token(t_dlist *token);
+int		validate_after_argument_token(t_dlist *token);
+int		validate_after_pipe_token(t_dlist *token);
+int		validate_after_and_token(t_dlist *token);
+int		validate_after_or_token(t_dlist *token);
+int		validate_after_open_parenthesis_token(t_dlist *token);
+int		validate_after_close_parenthesis_token(t_dlist *token);
 
 #endif

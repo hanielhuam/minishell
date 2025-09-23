@@ -18,7 +18,7 @@ static void	show_t_token(void *content)
 	static char	*types[16] = {
 		"TK_REDIRECT_IN",
 		"TK_FILE_IN",
-		"TK_HERE_DOC",
+		"TK_HEREDOC",
 		"TK_DELIMITER",
 		"TK_REDIRECT_OUT",
 		"TK_REDIRECT_OUT_OUT",

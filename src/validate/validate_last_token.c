@@ -16,7 +16,7 @@ int	validate_last_token(t_token *token)
 {
 	static t_tok_type	types[9] = {
 		TK_REDIRECT_IN,
-		TK_HERE_DOC,
+		TK_HEREDOC,
 		TK_REDIRECT_OUT,
 		TK_REDIRECT_OUT_OUT,
 		TK_PIPE,

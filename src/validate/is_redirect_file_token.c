@@ -19,7 +19,7 @@ t_token	is_redirect_file_token(t_token *token_before)
 	token.type = TK_NO_TYPE;
 	if (!token_before)
 		return (token);
-	else if (token_before->type == TK_HERE_DOC)
+	else if (token_before->type == TK_HEREDOC)
 		token.type = TK_DELIMITER;
 	else if (token_before->type == TK_REDIRECT_IN)
 		token.type = TK_FILE_IN;
