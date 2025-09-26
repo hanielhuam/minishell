@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 20:51:13 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/22 21:29:47 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:16:43 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	validate_after_open_parenthesis_token(t_dlist *token)
 		TK_OPEN_PARENTH,
 		TK_NO_TYPE
 	};
-	
+
 	if (!token || only_accept_tokens(((t_token *)token->content)->type, types))
 	{
 		syntax_error("after '(' mustn`t be ", \
@@ -42,7 +42,7 @@ int	validate_after_close_parenthesis_token(t_dlist *token)
 		TK_CLOSE_PARENTH,
 		TK_NO_TYPE
 	};
-	
+
 	if (token && only_accept_tokens(((t_token *)token->content)->type, types))
 	{
 		syntax_error("after ')' mustn`t be ", \

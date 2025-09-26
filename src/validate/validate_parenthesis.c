@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 19:35:46 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/21 21:35:04 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:07:58 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_dlist	*is_there_parenthesis(t_dlist *tokens)
 	{
 		if (((t_token *)tokens->content)->type == TK_OPEN_PARENTH || \
 				((t_token *)tokens->content)->type == TK_CLOSE_PARENTH)
-			return tokens;
+			return (tokens);
 		tokens = tokens->next;
 	}
 	return (NULL);

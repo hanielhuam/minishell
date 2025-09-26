@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:31:14 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/22 19:27:57 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:55:52 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 static int	validate_file_token(t_tok_type value)
 {
-	static t_tok_type	types[] = {
+	static t_tok_type	types[7] = {
 		TK_ARGUMENT,
 		TK_OPEN_PARENTH,
 		TK_FILE_IN,
 		TK_DELIMITER,
 		TK_FILE_OUT,
-		TK_FILE_OUT_OUT
+		TK_FILE_OUT_OUT,
+		TK_NO_TYPE
 	};
 
 	return (forbidden_tokens(value, types));

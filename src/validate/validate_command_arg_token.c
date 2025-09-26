@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 19:19:08 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/22 20:01:52 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:06:44 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	validate_cmd_arg_tok(t_tok_type value)
 
 int	validate_after_command_token(t_dlist *token)
 {
-
 	if (token && validate_cmd_arg_tok(((t_token *)token->content)->type))
 	{
 		syntax_error("after a command mustn`t be ", \

@@ -28,12 +28,15 @@ não pode ter TK_ARGUMENT e '(' após
 [X] validações dos tokens TK_COMMAND e TK_ARGUMENT
 não pode haver '(', TK_FILE_IN, TK_DELIMITTER, TK_FILE_OUT e TK_FILE_OUT_OUT após
 
-[X] validações dos tokens '|' e '('
+[X] validações do token '|'
 só pode ter TK_COMMAND, '<', '<<', '>' e '>>' após
+
+[X] validações do token '('
+só pode ter TK_COMMAND, '<', '<<', '>', '>>' e '(' após
 
 [X] validações dos tokens '&&' e '||'
 só pode ter TK_COMMAND, '<', '<<', '>', '>>' e '(' após
 
 [X] validações do ')'
-só pode ter '&&', '||' e NULL
+só pode ter '&&', '||', '(', ')' e NULL
 

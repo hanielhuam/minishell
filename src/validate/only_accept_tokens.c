@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 22:57:51 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/21 23:08:46 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:05:27 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	only_accept_tokens(t_tok_type value, t_tok_type *accept)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (accept[i] != TK_NO_TYPE)
