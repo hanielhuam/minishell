@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
+/*   is_all_space.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/09 21:42:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/25 23:08:09 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/09/25 23:10:05 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/09/25 23:14:23 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	get_input(char	**input)
+int	is_all_space(char *str)
 {
-	*input = readline("minishell> ");
-	if (!*input || !**input || is_all_space(*input))
+	while (*str)
 	{
-		if (*input)
-			free(*input);
-		return (-1);
+		if (!ft_isspace(*str++))
+			return (0);
 	}
-	add_history(*input);
-	return (0);
+	return (1);
 }

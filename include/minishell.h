@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/22 20:50:42 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/25 23:09:53 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,6 @@ int		validate_after_and_token(t_dlist *token);
 int		validate_after_or_token(t_dlist *token);
 int		validate_after_open_parenthesis_token(t_dlist *token);
 int		validate_after_close_parenthesis_token(t_dlist *token);
+int		is_all_space(char *str);
 
 #endif
