@@ -33,7 +33,8 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/validate/validate_and_or_token.c \
 	   ${SRC_DIR}/validate/validate_pipe_token.c \
 	   ${SRC_DIR}/validate/validate_parenthesis_token.c \
-	   ${SRC_DIR}/validate/is_all_space.c
+	   ${SRC_DIR}/validate/is_all_space.c \
+	   ${SRC_DIR}/handler/parenthesis_to_subshell_handler.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

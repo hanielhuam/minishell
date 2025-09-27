@@ -11,7 +11,7 @@
 	[X] por fim eu vou categorizar os comandos como o token que vem após um meta caracter
 	[X] e por fim vou categorizar os argumentos como os tokens que vem após o comando e que seria todo o resto dos tokens que ainda não foram categorizados
 
-[ ] Depois disso vamos fazer algumas validações de sintaxe para ver por exemplo se não tem 2 metacaracteres um em sequência do outro. ou se tem o fechamento do parentenses adequadamente ou se tem coisa após o “&&” ou o “||” e por aí vai
+[X] Depois disso vamos fazer algumas validações de sintaxe para ver por exemplo se não tem 2 metacaracteres um em sequência do outro. ou se tem o fechamento do parentenses adequadamente ou se tem coisa após o “&&” ou o “||” e por aí vai
 
 [ ] depois disso vou montar uma estrutura de àrvore que contén a informação do left, right, prev, type um outro ponteiro que no caso do comando serve para pegar as informações dos argumentos.
 	[ ] para fazer essa árvore primeiro você deve saber que é um lista encadeada com essas informações que a gente acabou de descrever lá em cima.
