@@ -34,7 +34,9 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/validate/validate_pipe_token.c \
 	   ${SRC_DIR}/validate/validate_parenthesis_token.c \
 	   ${SRC_DIR}/validate/is_all_space.c \
-	   ${SRC_DIR}/handler/parenthesis_to_subshell_handler.c
+	   ${SRC_DIR}/handler/parenthesis_to_subshell_handler.c \
+	   ${SRC_DIR}/handler/validate_subshell.c \
+	   ${SRC_DIR}/utils/join_all_words_between_tokens.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

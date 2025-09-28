@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 19:35:46 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/25 21:07:58 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/27 20:41:30 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,26 @@ t_dlist	*is_there_parenthesis(t_dlist *tokens)
 	return (NULL);
 }
 
+t_dlist	*find_close_parenthesis(t_dlist *token)
+{
+	int	count;
+
+	count = 1;
+	while (token)
+	{
+		if (((t_token *)token->content)->type == TK_OPEN_PARENTH)
+			count++;
+		if (((t_token *)token->content)->type == TK_CLOSE_PARENTH)
+		{
+			count--;
+			if (!count)
+				return (token);
+		}
+		token = token->next;
+	}
+	return (token);
+}
+
 static int	check_open_close_parenthesis(t_dlist *tokens)
 {
 	int	result;
@@ -35,10 +55,15 @@ static int	check_open_close_parenthesis(t_dlist *tokens)
 			result++;
 		if (((t_token *)tokens->content)->type == TK_CLOSE_PARENTH)
 			result--;
+		if (result < 0)
+		{
+			show_error("syntax error: there are parenthesis mismatch\n");
+			return (result);
+		}
 		tokens = tokens->next;
 	}
 	if (result)
-		show_error("syntax error: the parenthesis are not evenly\n");
+		show_error("syntax error: there are parenthesis mismatch\n");
 	return (result);
 }
 
