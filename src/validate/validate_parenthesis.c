@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 19:35:46 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/27 20:41:30 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/28 22:56:47 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_dlist	*find_close_parenthesis(t_dlist *token)
 		}
 		token = token->next;
 	}
-	return (token);
+	return (NULL);
 }
 
 static int	check_open_close_parenthesis(t_dlist *tokens)

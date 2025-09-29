@@ -6,41 +6,82 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 19:22:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/27 21:48:50 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/28 23:11:28 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_dlis	*new_subshell(t_token *subshell, t_dlist *open, t_dlist *close)
+static void	manipulate_pointers(t_dlist *new, t_dlist *open, t_dlist *close)
+{
+	new->before = open->before;
+	new->next = close->next;
+	if (open->before)
+		open->before->next = new;
+	if (close->next)
+		close->next->before = new;
+	open->before = NULL;
+	close->next = NULL;
+}
+
+static t_dlist	*new_subshell(t_token *subshell, t_dlist *open, t_dlist *close)
 {
 	t_dlist	*new;
 	t_dlist **subshell_tokens;
 
+	subshell_tokens = safe_malloc(1, sizeof(t_dlist *), \
+			"Error When alloc subshell \n");
+	if (!subshell_tokens)
+		return (NULL);
+	*subshell_tokens = open;
 	new = ft_dlstnew(subshell);
-	if (!new
-	subshell_tokens = ft_calloc(1, sizeof(t_dlist*));
-	if (!new || subshell_tokens
+	if (!new)
+	{
+		free(subshell_tokens);
+		show_error("Error when alloc new token fod dubshell\n");
+		return (NULL);
+	}
+	manipulate_pointers(new, open, close);
+	return (new);
 }
 
-static int	turn_into_sushell(t_token **tokens)
+static t_token	*create_subshell_token(t_dlist *begin, t_dlist *close)
 {
 	t_token	*subshell;
-	t_token *close;
 	char	*subshell_inner_content;
-	t_dlist *new;
 
-	close = find_close_parenthesis(*tokens);
-	subshell_inner_content = join_all_words_between_tokens(*tonkens, close);
+	subshell_inner_content = join_all_words_between_tokens(begin, close);
 	if (!subshell_inner_content)
-		return (1);
-	subshell = creat_t_toke(subshell_inner_content, TK_SUBSHELL);
+		return (NULL);
+	subshell = create_t_token(subshell_inner_content, TK_SUBSHELL);
 	if (!subshell)
 	{
 		free(subshell_inner_content);
+		return (NULL);
+	}
+	return (subshell);
+}
+
+static int	turn_into_subshell(t_dlist **tokens)
+{
+	t_token	*subshell;
+	t_dlist *close;
+	t_dlist *new;
+
+	close = find_close_parenthesis((*tokens)->next);
+	subshell = create_subshell_token(*tokens, close);
+	if (!subshell)
+		return (1);
+	new = new_subshell(subshell, *tokens, close);
+	if (!new)
+	{
+		free(subshell);
 		return (1);
 	}
-	new = new_subshell(
+	*tokens = new;
+	if (!parenthesis_to_subshell_handler(subshell->subshell))
+		return (1);
+	return (0);
 }
 
 t_dlist	**parenthesis_to_subshell_handler(t_dlist **tokens)
@@ -50,6 +91,9 @@ t_dlist	**parenthesis_to_subshell_handler(t_dlist **tokens)
 	first = is_there_parenthesis(*tokens);
 	if (!first)
 		return (tokens);
-	if (subshell_handler(&first))
+	if (turn_into_subshell(&first))
+		return (NULL);
+	if (parenthesis_to_subshell_handler(&first))
+		return (NULL);
 	return (tokens);
 }
