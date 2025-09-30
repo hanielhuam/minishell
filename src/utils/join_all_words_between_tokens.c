@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 20:50:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/28 23:28:01 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/29 20:53:37 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static char	*get_words_together(char **str, t_dlist *token)
 	}
 	free(*str);
 	*str = temp;
-	free(temp);
 	return (*str);
 }
 
@@ -50,6 +49,8 @@ char	*join_all_words_between_tokens(t_dlist *begin, t_dlist *end)
 	str = initialization(begin, end);
 	if (!str)
 		return (NULL);
+	if (begin == end)
+		return (str);
 	begin = begin->next;
 	while (begin && begin != end)
 	{

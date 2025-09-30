@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 19:22:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/28 23:11:28 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/09/29 21:28:01 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ static void	manipulate_pointers(t_dlist *new, t_dlist *open, t_dlist *close)
 		open->before->next = new;
 	if (close->next)
 		close->next->before = new;
-	open->before = NULL;
-	close->next = NULL;
+	open->next->before = NULL;
+	close->before->next = NULL;
+	ft_dlstdelone(open, del_t_token);
+	ft_dlstdelone(close, del_t_token);
 }
 
 static t_dlist	*new_subshell(t_token *subshell, t_dlist *open, t_dlist *close)
@@ -33,11 +35,13 @@ static t_dlist	*new_subshell(t_token *subshell, t_dlist *open, t_dlist *close)
 			"Error When alloc subshell \n");
 	if (!subshell_tokens)
 		return (NULL);
-	*subshell_tokens = open;
+	*subshell_tokens = open->next;
+	subshell->subshell = subshell_tokens;
 	new = ft_dlstnew(subshell);
 	if (!new)
 	{
 		free(subshell_tokens);
+		subshell->subshell = NULL;
 		show_error("Error when alloc new token fod dubshell\n");
 		return (NULL);
 	}
@@ -50,7 +54,8 @@ static t_token	*create_subshell_token(t_dlist *begin, t_dlist *close)
 	t_token	*subshell;
 	char	*subshell_inner_content;
 
-	subshell_inner_content = join_all_words_between_tokens(begin, close);
+	subshell_inner_content = join_all_words_between_tokens(begin->next, \
+			close->before);
 	if (!subshell_inner_content)
 		return (NULL);
 	subshell = create_t_token(subshell_inner_content, TK_SUBSHELL);
@@ -93,7 +98,7 @@ t_dlist	**parenthesis_to_subshell_handler(t_dlist **tokens)
 		return (tokens);
 	if (turn_into_subshell(&first))
 		return (NULL);
-	if (parenthesis_to_subshell_handler(&first))
+	if (!parenthesis_to_subshell_handler(&first))
 		return (NULL);
 	return (tokens);
 }
