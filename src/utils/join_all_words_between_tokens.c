@@ -6,24 +6,35 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 20:50:09 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/29 20:53:37 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/03 20:31:47 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*get_words_together(char **str, t_dlist *token)
+char	*join_and_free(char *s1, char *s2)
 {
 	char	*temp;
 
-	temp = ft_strjoin(*str, ((t_token *)token->content)->str);
+	temp = ft_strjoin(s1, s2);
 	if (!temp)
 	{
 		show_error("error when alloc all words\n");
 		return (NULL);
 	}
-	free(*str);
-	*str = temp;
+	free(s1);
+	s1 = temp;
+	return (s1);
+}
+
+static char	*get_words_together(char **str, t_dlist *token)
+{
+	*str = join_and_free(*str, ((t_token *)token->content)->str);
+	if (!*str)
+		return (NULL);
+	*str = join_and_free(*str, " ");
+	if (!*str)
+		return (NULL);
 	return (*str);
 }
 
@@ -33,7 +44,7 @@ static char	*initialization(t_dlist *begin, t_dlist *end)
 
 	if (!begin || !end)
 		return (NULL);
-	str = ft_strjoin("", ((t_token *)begin->content)->str);
+	str = ft_strjoin(((t_token *)begin->content)->str, " ");
 	if (!str)
 	{
 		show_error("Error when alloc all words\n");

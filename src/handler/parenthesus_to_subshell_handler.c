@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 19:22:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/29 21:28:01 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/03 20:02:24 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,19 @@ t_dlist	**parenthesis_to_subshell_handler(t_dlist **tokens)
 	first = is_there_parenthesis(*tokens);
 	if (!first)
 		return (tokens);
-	if (turn_into_subshell(&first))
-		return (NULL);
-	if (!parenthesis_to_subshell_handler(&first))
-		return (NULL);
+	if (first == *tokens)
+	{
+		if (turn_into_subshell(tokens))
+			return (NULL);
+		if (!parenthesis_to_subshell_handler(tokens))
+			return (NULL);
+	}
+	else
+	{
+		if (turn_into_subshell(&first))
+			return (NULL);
+		if (!parenthesis_to_subshell_handler(&first))
+			return (NULL);
+	}
 	return (tokens);
 }

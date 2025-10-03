@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/28 22:54:35 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/03 20:21:59 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,5 +165,6 @@ t_dlist	**parenthesis_to_subshell_handler(t_dlist **tokens);
 int		validate_subshell(t_dlist *tokens);
 t_dlist	*find_close_parenthesis(t_dlist *token);
 char	*join_all_words_between_tokens(t_dlist *begin, t_dlist *end);
+char	*join_and_free(char *s1, char *s2);
 
 #endif
