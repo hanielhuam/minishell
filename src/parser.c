@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 20:24:00 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/29 20:12:44 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/04 19:32:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	show_t_token(void *content);
 
-static void show_token_or_subtoken(char **types, t_token *token)
+static void	show_token_or_subtoken(char **types, t_token *token)
 {
 	if (token->type != TK_SUBSHELL)
 	{

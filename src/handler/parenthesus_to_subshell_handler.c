@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 19:22:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/03 20:02:24 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/04 19:36:24 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	manipulate_pointers(t_dlist *new, t_dlist *open, t_dlist *close)
 static t_dlist	*new_subshell(t_token *subshell, t_dlist *open, t_dlist *close)
 {
 	t_dlist	*new;
-	t_dlist **subshell_tokens;
+	t_dlist	**subshell_tokens;
 
 	subshell_tokens = safe_malloc(1, sizeof(t_dlist *), \
 			"Error When alloc subshell \n");
@@ -70,8 +70,8 @@ static t_token	*create_subshell_token(t_dlist *begin, t_dlist *close)
 static int	turn_into_subshell(t_dlist **tokens)
 {
 	t_token	*subshell;
-	t_dlist *close;
-	t_dlist *new;
+	t_dlist	*close;
+	t_dlist	*new;
 
 	close = find_close_parenthesis((*tokens)->next);
 	subshell = create_subshell_token(*tokens, close);
