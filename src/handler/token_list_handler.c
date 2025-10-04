@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 14:14:12 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/03 21:24:27 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/03 23:01:00 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_dlist	**subshell_token_handler(t_dlist **tokens)
 {
 	if (!parenthesis_to_subshell_handler(tokens))
 		return (NULL);
-	if (!validate_subshell(*tokens))
+	if (validate_subshell(*tokens))
 		return (NULL);
 	return (tokens);
 }
