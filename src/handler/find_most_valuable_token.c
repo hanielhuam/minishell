@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build_tree.c                                       :+:      :+:    :+:   */
+/*   find_most_valuable_token.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 17:37:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/04 21:22:32 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/10/04 21:19:12 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/10/04 21:22:53 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_tree	*tree_head(t_dlist *tokens)
+t_dlist	*find_most_valuable_token(t_dlist *tokens)
 {
-	t_tree	*head;
-
-	find_most_valuable_token(tokens);
-}
-
-t_tree	**build_tree(t_dlist *tokens)
-{
-	t_tree	**tree;
-
-	tree = safe_malloc(1, sizeof(t_tree *), "Error when malloc tree\n");
-	if (!tree)
-		return (NULL);
-	*tree = tree_head(tokens);
-	return (tree);
+	return (tokens);
 }

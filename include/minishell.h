@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/03 20:21:59 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/04 21:21:31 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,18 +86,20 @@ typedef struct s_command
 	t_redir	*list;
 }			t_command;
 
-typedef union u_doable
+typedef union u_instruction
 {
-	t_pipe		pipe;
-	t_command	command;
-}				t_doable;
+	t_pipe		*pipe;
+	t_command	*command;
+	t_redir		*redir;
+	t_dlist		*token;
+}				t_instruction;
 
 typedef struct s_data_tree
 {
-	t_tok_type	*type;
-	t_tree		*subtree;
-	t_doable	*doable;
-}				t_data_tree;
+	t_tok_type			*type;
+	struct s_data_tree	*subtree;
+	t_instruction		*instruction;
+}					t_data_tree;
 
 typedef struct s_shell
 {
@@ -123,7 +125,7 @@ int		validate_quotes(char *input);
 int		size_into_quotes(const char *input);
 int		check_size_into_quotes(const char *input);
 t_dlist	**get_tokens(char *input);
-t_tree	**build_tree(t_dlist **tokens);
+t_tree	**build_tree(t_dlist *tokens);
 t_token	*create_t_token(char *str, t_tok_type type);
 void	executor(t_shell *shell);
 char	**get_meta_caracters(void);
@@ -166,5 +168,6 @@ int		validate_subshell(t_dlist *tokens);
 t_dlist	*find_close_parenthesis(t_dlist *token);
 char	*join_all_words_between_tokens(t_dlist *begin, t_dlist *end);
 char	*join_and_free(char *s1, char *s2);
+t_dlist	*find_most_valuable_token(t_dlist *tokens);
 
 #endif

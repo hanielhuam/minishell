@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 20:24:00 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/04 19:32:14 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/04 21:04:44 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	parser(t_shell *shell, char *input)
 	}
 	ft_printf("\n\napós a validação e manipulação da subshell\n\n");
 	ft_dlstiter(*tokens, show_t_token);
-	shell->tree = build_tree(tokens);
+	shell->tree = build_tree(*tokens);
 	del_token_list(tokens);
 	if (!shell->tree)
 		return (-1);
