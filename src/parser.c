@@ -6,56 +6,11 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 20:24:00 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/04 21:04:44 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/06 20:47:23 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static void	show_t_token(void *content);
-
-static void	show_token_or_subtoken(char **types, t_token *token)
-{
-	if (token->type != TK_SUBSHELL)
-	{
-		ft_printf("str = %s and token_type = %s\n", \
-				token->str, types[token->type]);
-	}
-	else
-	{
-		ft_printf("str = %s and token_type = %s\n", \
-				token->str, types[token->type]);
-		ft_printf("inside subshell\n");
-		ft_dlstiter(*(token->subshell), show_t_token);
-		ft_printf("outside subshell\n");
-	}
-}
-
-static void	show_t_token(void *content)
-{
-	t_token		*token;
-	static char	*types[16] = {
-		"TK_REDIRECT_IN",
-		"TK_FILE_IN",
-		"TK_HEREDOC",
-		"TK_DELIMITER",
-		"TK_REDIRECT_OUT",
-		"TK_REDIRECT_OUT_OUT",
-		"TK_FILE_OUT",
-		"TK_FILE_OUT_OUT",
-		"TK_COMMAND",
-		"TK_ARGUMENT",
-		"TK_PIPE",
-		"TK_AND",
-		"TK_OR",
-		"TK_OPEN_PARENTH",
-		"TK_CLOSE_PARENTH",
-		"TK_SUBSHELL"
-	};
-
-	token = content;
-	show_token_or_subtoken(types, token);
-}
 
 int	parser(t_shell *shell, char *input)
 {

@@ -6,17 +6,17 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:37:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/04 21:22:32 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/06 21:26:39 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_tree	*tree_head(t_dlist *tokens)
+static t_tree	*tree_head(t_dlist *tokens)
 {
 	t_tree	*head;
 
-	find_most_valuable_token(tokens);
+	tokens = find_most_valuable_token(tokens);
 }
 
 t_tree	**build_tree(t_dlist *tokens)
@@ -27,5 +27,7 @@ t_tree	**build_tree(t_dlist *tokens)
 	if (!tree)
 		return (NULL);
 	*tree = tree_head(tokens);
+
+	show_tree(*tree, 0);
 	return (tree);
 }

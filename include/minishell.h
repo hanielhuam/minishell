@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/04 21:21:31 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/06 21:26:49 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ typedef union u_instruction
 
 typedef struct s_data_tree
 {
-	t_tok_type			*type;
-	struct s_data_tree	*subtree;
-	t_instruction		*instruction;
+	t_tok_type		*type;
+	t_tree			**subtree;
+	t_instruction	*instruction;
 }					t_data_tree;
 
 typedef struct s_shell
@@ -169,5 +169,10 @@ t_dlist	*find_close_parenthesis(t_dlist *token);
 char	*join_all_words_between_tokens(t_dlist *begin, t_dlist *end);
 char	*join_and_free(char *s1, char *s2);
 t_dlist	*find_most_valuable_token(t_dlist *tokens);
+t_dlist	*compare_token_value(t_dlist *max, t_dlist *comp);
+int		get_tokens_type_order(t_token *token);
+void	show_token_or_subtoken(char **types, t_token *token);
+void	show_t_token(void *content);
+void	show_tree(t_tree *tree, int space);
 
 #endif
