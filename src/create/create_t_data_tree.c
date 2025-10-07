@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_most_valuable_token.c                         :+:      :+:    :+:   */
+/*   create_t_data_tree.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/04 21:19:12 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/07 16:20:27 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/10/07 15:22:08 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/10/07 15:35:43 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_dlist	*find_most_valuable_token(t_dlist *tokens)
+t_data_tree	*create_t_data_tree(t_tok_type type, t_instruction *instruction)
 {
-	t_dlist	*most_valuable;
-	
-	most_valuable = tokens;
-	tokens = tokens->next;
-	while (tokens)
-	{
-		if (compare_token_value(most_valuable, tokens) != most_valuable)
-			most_valuable = tokens;
-		tokens = tokens->next;
-	}
-	return (most_valuable);
+	t_data_tree	*node;
+
+	node = safe_malloc(1, sizeof(t_data_tree), "Error when malloc data tree\n");
+	if (!node)
+		return (NULL);
+	node->type = type;
+	node->instruction = instruction;
+	return (node);
 }
