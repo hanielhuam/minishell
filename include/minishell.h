@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/07 20:49:28 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:48:31 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ char		*join_and_free(char *s1, char *s2);
 t_dlist		*find_most_valuable_token(t_dlist *tokens);
 t_dlist		*compare_token_value(t_dlist *max, t_dlist *comp);
 int			type_value(t_tok_type type);
-t_tok_type	(*get_tokens_type_order(void))[5];
+t_tok_type	**get_tokens_type_order(void);
 t_dlist		*compare_token_value(t_dlist *max, t_dlist *comp);
 void		show_token_or_subtoken(char **types, t_token *token);
 void		show_t_token(void *content);

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 16:18:02 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/07 20:56:52 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:14:28 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	type_value(t_tok_type type)
 {
 	int			value;
 	int			j;
-	t_tok_type	(*types)[5];
+	t_tok_type	**types;
 
 	types = get_tokens_type_order();
 	value = 0;
-	while (types[value][0] != TK_NO_TYPE)
+	while (types[value])
 	{
 		j = 0;
 		while (types[value][j] != TK_NO_TYPE)
@@ -34,21 +34,22 @@ int	type_value(t_tok_type type)
 	return (0);
 }
 
-t_tok_type	(*get_tokens_type_order(void))[5]
+t_tok_type	**get_tokens_type_order(void)
 {
-	static t_tok_type types[8][5] = {
-		{TK_FILE_IN, TK_DELIMITER, TK_FILE_OUT, TK_FILE_OUT_OUT, TK_NO_TYPE},
-		{TK_ARGUMENT, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
-		{
-			TK_REDIRECT_IN, TK_HEREDOC, TK_REDIRECT_OUT, TK_REDIRECT_OUT_OUT,
-			TK_NO_TYPE
-		},
-		{TK_COMMAND, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
-		{TK_PIPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
-		{TK_SUBSHELL, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
-		{TK_AND, TK_OR, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
-		{TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE}
+	static t_tok_type type0[5] = {
+		TK_FILE_IN, TK_DELIMITER, TK_FILE_OUT, TK_FILE_OUT_OUT, TK_NO_TYPE
 	};
+	static t_tok_type type1[2] = {TK_ARGUMENT, TK_NO_TYPE};
+	static t_tok_type type2[5] = {
+		TK_REDIRECT_IN, TK_HEREDOC, TK_REDIRECT_OUT, TK_REDIRECT_OUT_OUT,
+		TK_NO_TYPE
+	};
+	static t_tok_type type3[2] = {TK_COMMAND, TK_NO_TYPE};
+	static t_tok_type type4[2] = {TK_PIPE, TK_NO_TYPE};
+	static t_tok_type type5[2] = {TK_SUBSHELL, TK_NO_TYPE};
+	static t_tok_type type6[3] = {TK_AND, TK_OR, TK_NO_TYPE};
+	static t_tok_type *types[8] = {
+		type0, type1, type2, type3, type4, type5, type6, NULL};
 
 	return (types);
 }
