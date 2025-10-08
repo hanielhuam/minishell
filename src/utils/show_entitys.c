@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:44:50 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/06 20:52:40 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/07 19:43:51 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ void	show_token_or_subtoken(char **types, t_token *token)
 	}
 }
 
-void	show_t_token(void *content)
+static char	**get_types_char(void)
 {
-	t_token		*token;
 	static char	*types[16] = {
 		"TK_REDIRECT_IN",
 		"TK_FILE_IN",
@@ -51,8 +50,15 @@ void	show_t_token(void *content)
 		"TK_SUBSHELL"
 	};
 
+	return (types);
+}
+
+void	show_t_token(void *content)
+{
+	t_token	*token;
+
 	token = content;
-	show_token_or_subtoken(types, token);
+	show_token_or_subtoken(get_types_char(), token);
 }
 
 void	show_tree(t_tree *tree, int space)
@@ -62,12 +68,13 @@ void	show_tree(t_tree *tree, int space)
 	if (!tree)
 		return ;
 	space += 10;
-	show_tree(tree->righr, space);
+	show_tree(tree->right, space);
 	i = 10;
 	while (i < space)
 	{
 		write(1," ", 1); 
 		i++;
 	}
-	ft_printf(tree->);
+	ft_printf("%s\n", get_types_char()[((t_data_tree *)tree->content)->type]);
+	show_tree(tree->left, space);
 }

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 16:18:02 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/07 17:49:54 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:56:52 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ int	type_value(t_tok_type type)
 {
 	int			value;
 	int			j;
-	t_tok_type	**types;
+	t_tok_type	(*types)[5];
 
 	types = get_tokens_type_order();
 	value = 0;
-	while (types[value])
+	while (types[value][0] != TK_NO_TYPE)
 	{
 		j = 0;
 		while (types[value][j] != TK_NO_TYPE)
 		{
-			if (type == *array)
+			if (type == types[value][j])
 				return (value);
 			j++;
 		}
-		vlue++;
+		value++;
 	}
 	return (0);
 }
 
-t_tok_type	**get_tokens_type_order(void)
+t_tok_type	(*get_tokens_type_order(void))[5]
 {
 	static t_tok_type types[8][5] = {
 		{TK_FILE_IN, TK_DELIMITER, TK_FILE_OUT, TK_FILE_OUT_OUT, TK_NO_TYPE},
@@ -47,7 +47,7 @@ t_tok_type	**get_tokens_type_order(void)
 		{TK_PIPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
 		{TK_SUBSHELL, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
 		{TK_AND, TK_OR, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
-		NULL
+		{TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE}
 	};
 
 	return (types);
@@ -56,7 +56,7 @@ t_tok_type	**get_tokens_type_order(void)
 t_dlist	*compare_token_value(t_dlist *max, t_dlist *comp)
 {
 	if (type_value(((t_token *)max->content)->type) > \
-			type_vlue(((t_token *)comp->content)->type))
+			type_value(((t_token *)comp->content)->type))
 		return (max);
 	return (comp);
 }

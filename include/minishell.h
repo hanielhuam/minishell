@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/07 17:49:42 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:49:28 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,14 +171,15 @@ char		*join_and_free(char *s1, char *s2);
 t_dlist		*find_most_valuable_token(t_dlist *tokens);
 t_dlist		*compare_token_value(t_dlist *max, t_dlist *comp);
 int			type_value(t_tok_type type);
-t_tok_type	**get_tokens_type_order(void);
+t_tok_type	(*get_tokens_type_order(void))[5];
 t_dlist		*compare_token_value(t_dlist *max, t_dlist *comp);
-int			get_tokens_type_order(t_token *token);
 void		show_token_or_subtoken(char **types, t_token *token);
 void		show_t_token(void *content);
 void		show_tree(t_tree *tree, int space);
 void		dell_tree(t_tree **tree);
 void		del_t_tree_with_token(void *content);
 void		del_t_tree(void *content);
+t_tree		*create_tree_by_token(t_dlist *token);
+t_data_tree	*create_t_data_tree(t_tok_type type, t_instruction *instruction);
 
 #endif
