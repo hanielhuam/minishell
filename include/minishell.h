@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/08 16:48:31 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:55:03 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,8 @@ char		**modified_split(char const *str, char c);
 int			token_list_handler(t_dlist **tokens);
 int			validate_token_list(t_dlist *tokens);
 t_token		is_redirect_file_token( t_token *token_before);
-t_token		is_command_token(t_token *token_before);
+t_token		is_command_token(t_dlist *token_before);
+int			check_unique_command(t_dlist *last_token);
 int			validate_first_token(t_token *token);
 int			forbidden_tokens(t_tok_type value, t_tok_type *fobidden_tokens);
 int			validate_last_token(t_token *token);

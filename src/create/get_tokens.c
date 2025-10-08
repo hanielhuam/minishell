@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:52:36 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/19 23:39:01 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/08 19:24:28 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_token	*create_token(char *str, t_dlist *token_before)
 	token = is_redirect_file_token(token_before->content);
 	if (token.type != TK_NO_TYPE)
 		return (create_t_token(dup, token.type));
-	token = is_command_token(token_before->content);
+	token = is_command_token(token_before);
 	if (token.type != TK_NO_TYPE)
 		return (create_t_token(dup, token.type));
 	else
