@@ -40,7 +40,8 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/handler/find_most_valuable_token.c \
 	   ${SRC_DIR}/utils/show_entitys.c ${SRC_DIR}/del/del_tree.c \
 	   ${SRC_DIR}/create/create_t_data_tree.c \
-	   ${SRC_DIR}/create/get_tokens_type_order.c
+	   ${SRC_DIR}/create/get_tokens_type_order.c \
+	   ${SRC_DIR}/handler/find_and_or.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

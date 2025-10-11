@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/08 18:55:03 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/10 20:15:58 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,12 @@ typedef union u_instruction
 	t_pipe		*pipe;
 	t_command	*command;
 	t_redir		*redir;
-	t_dlist		*token;
 }				t_instruction;
 
 typedef struct s_data_tree
 {
 	t_tok_type		type;
+	t_dlist			*token;
 	t_tree			**subtree;
 	t_instruction	*instruction;
 }					t_data_tree;
@@ -178,9 +178,11 @@ void		show_token_or_subtoken(char **types, t_token *token);
 void		show_t_token(void *content);
 void		show_tree(t_tree *tree, int space);
 void		dell_tree(t_tree **tree);
-void		del_t_tree_with_token(void *content);
 void		del_t_tree(void *content);
 t_tree		*create_tree_by_token(t_dlist *token);
-t_data_tree	*create_t_data_tree(t_tok_type type, t_instruction *instruction);
+t_data_tree	*create_t_data_tree(t_tok_type type, t_dlist *token);
+int			find_and_or(t_tree *tree);
+int			search_left(t_tree *tree, t_dlist *(*find)(t_dlist *, t_dlist *));
+int			search_right(t_tree *tree, t_dlist *(*find)(t_dlist *, t_dlist *));
 
 #endif

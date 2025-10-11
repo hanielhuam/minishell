@@ -6,19 +6,11 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 21:11:36 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/07 16:16:25 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/10 19:49:21 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	del_t_tree_with_token(void *content)
-{
-	t_data_tree *data;
-
-	data = content;
-	free(data);
-}
 
 void	del_t_tree(void *content)
 {

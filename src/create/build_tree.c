@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:37:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/07 19:42:33 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/10 21:32:25 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ t_tree	*create_tree_by_token(t_dlist *token)
 	t_data_tree	*data;
 	t_tree		*node;
 	
-	data = create_t_data_tree(((t_token *)token->content)->type, \
-			(t_instruction *)token);
+	data = create_t_data_tree(((t_token *)token->content)->type, token);
 	if (!data)
 		return (NULL);
 	node = ft_treenew(data);
@@ -55,6 +54,11 @@ t_tree	**build_tree(t_dlist *tokens)
 	tree = tree_head(tokens);
 	if (!tree)
 		return (NULL);
+	if (find_and_or(*tree))
+	{
+		dell_tree(tree);
+		return (NULL);
+	}
 	show_tree(*tree, 0);
 	return (tree);
 }
