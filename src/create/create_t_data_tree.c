@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-t_data_tree	*create_t_data_tree(t_tok_type type, t_token *token)
+t_data_tree	*create_t_data_tree(t_tok_type type, t_dlist *token)
 {
 	t_data_tree	*node;
 

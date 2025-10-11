@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:37:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/10 21:32:25 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:57:13 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_tree	*create_tree_by_token(t_dlist *token)
 	node = ft_treenew(data);
 	if (!node)
 	{
-		del_t_tree_with_token(data);
+		del_t_tree(data);
 		show_error("Error when alloc t_tree\n");
 		return (NULL);
 	}
