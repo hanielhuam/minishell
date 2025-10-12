@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 21:06:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/11 21:31:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/11 23:29:13 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ static int	executer(void *any)
 	return (0);
 }
 
-int	search_left(t_tree *start, t_tree *end, void *find, void *handler) 
+int	search_left(t_tree *tree, void *find, void *handler) 
 {
 	t_dlist	*token;
-	t_dlist *(*search)(t_dlist *, t_dlist *);
-	t_tree	*(*builder)(t_dlist *);
+	t_dlist *(*search)(t_tree *, t_tree *, int);
+	t_tree	*(*builder)(t_tree *, t_dlist *);
 
 	if (!start)
 		return (0);
@@ -44,13 +44,18 @@ int	search_left(t_tree *start, t_tree *end, void *find, void *handler)
 	{
 		search = find;
 		handle = handler;
-		token = search(start, end);
+		token = search(tree, tree->prev, 0);
 		if (!token)
 			return (0);
-		tree->left = builder(token);
+		tree->left = builder(tree, token);
 		if (!tree->left || search_left(tree->left, find, builder))
 			return (1);
 	}
+	if (tree->right && search_right(tree->right, find, builder))
+		return (1);
+	else if (search_right(tree, find, builder))
+		return (1);
+	return (0);
 }
 
 int	search_right(t_tree *tree, t_dlist *(*find)(t_dlist *, t_dlist *))
