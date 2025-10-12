@@ -6,21 +6,27 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:53:07 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/10 23:07:27 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/11 21:31:22 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_dlist	*find_and_or_left(t_dlist *init, t_dlist *end)
+static t_dlist	*find_and_or_left(t_dlist *init, t_dlist *end, int l_or_r)
 {
-	init = init->before;
+	if (l_or_r)
+		init = init->next;
+	else
+		init = init->before;
 	while (init && init != end)
 	{
 		if (((t_token *)init->content)->type == TK_AND || \
 				((t_token *)init->content)->type == TK_OR)
 			return (init);
-		init = init->before;
+		if (l_or_r)
+			init = init->next;
+		else
+			init = init->before;
 	}
 	return (NULL);
 }
