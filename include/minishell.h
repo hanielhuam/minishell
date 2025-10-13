@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/10 20:15:58 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/12 21:26:13 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,8 +181,11 @@ void		dell_tree(t_tree **tree);
 void		del_t_tree(void *content);
 t_tree		*create_tree_by_token(t_dlist *token);
 t_data_tree	*create_t_data_tree(t_tok_type type, t_dlist *token);
-int			find_and_or(t_tree *tree);
-int			search_left(t_tree *tree, t_dlist *(*find)(t_dlist *, t_dlist *));
-int			search_right(t_tree *tree, t_dlist *(*find)(t_dlist *, t_dlist *));
+int			forge_and_or_tree(t_tree *tree);
+int			search(t_tree *tree, void *find, void *build);
+t_dlist		*search_and_or(t_tree *init, t_tree *end, int l_or_r);
+t_tree		*and_or_builder(t_tree *tree, t_dlist *token);
+t_dlist		*increment_direction(t_dlist *token, int l_or_r);
+int			check_token_type(t_dlist *token, t_tok_type *types);
 
 #endif

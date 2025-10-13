@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_and_or.c                                      :+:      :+:    :+:   */
+/*   forge_and_or_tokem_tree.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:53:07 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/12 18:23:45 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/12 21:25:01 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_dlist	*increment_direction(t_dlist *token, int l_or_r)
+t_tree	*and_or_builder(t_tree *tree, t_dlist *token)
 {
-	if (l_or_r)
-		return (token->next);
-	return (token->before);
+	t_tree	*node;
+
+	node = create_tree_by_token(token);
+	if (node)
+		return (NULL);
+	node->prev = tree;
+	return (node);
 }
 
-static int	check_token_type(t_dlist *token, t_tok_type *types)
-{
-	t_toke_type	value;
-
-	value = ((t_token *)token->content)->type;
-	while (*types != TK_NO_TYPE)
-	{
-		if (value == *types)
-			return (1);
-		types++;
-	}
-	return (0);
-}
-
-static t_dlist	*find_and_or_left(t_tree *init, t_tree *end, int l_or_r)
+t_dlist	*search_and_or(t_tree *init, t_tree *end, int l_or_r)
 {
 	t_dlist	*first;
 	t_dlist	*last;
@@ -60,24 +50,9 @@ static t_dlist	*find_and_or_left(t_tree *init, t_tree *end, int l_or_r)
 	return (NULL);
 }
 
-static t_dlist	*find_and_or_right(t_dlist *init, t_dlist *end)
+int	forge_and_or_tree(t_tree *tree)
 {
-	init = init->next;
-	while (init && init != end)
-	{
-		if (((t_token *)init->content)->type == TK_AND || \
-				((t_token *)init->content)->type == TK_OR)
-			return (init);
-		init = init->next;
-	}
-	return (NULL);
-}
-
-int	find_and_or(t_tree *tree)
-{
-	if (search_left(tree, find_and_or_left))
-		return (1);
-	if (search_right(tree, find_and_or_right))
+	if (search(tree, search_and_or, and_or_builder)
 		return (1);
 	return (0);
 }
