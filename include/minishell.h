@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/12 21:26:13 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/12 23:25:09 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,5 +187,8 @@ t_dlist		*search_and_or(t_tree *init, t_tree *end, int l_or_r);
 t_tree		*and_or_builder(t_tree *tree, t_dlist *token);
 t_dlist		*increment_direction(t_dlist *token, int l_or_r);
 int			check_token_type(t_dlist *token, t_tok_type *types);
+int			forge_subshell_tree(t_tree *tree);
+t_dlist		*search_subshell(t_tree *init, t_tree *end, int l_or_r);
+t_tree		*subshell_builder(t_tree *tree, t_dlist *token);
 
 #endif
