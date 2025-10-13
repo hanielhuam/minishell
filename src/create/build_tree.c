@@ -54,7 +54,7 @@ t_tree	**build_tree(t_dlist *tokens)
 	tree = tree_head(tokens);
 	if (!tree)
 		return (NULL);
-	if (find_and_or(*tree))
+	if (forge_and_or_tree(*tree))
 	{
 		dell_tree(tree);
 		return (NULL);
