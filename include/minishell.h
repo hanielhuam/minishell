@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/12 23:25:09 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:40:50 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,5 +190,11 @@ int			check_token_type(t_dlist *token, t_tok_type *types);
 int			forge_subshell_tree(t_tree *tree);
 t_dlist		*search_subshell(t_tree *init, t_tree *end, int l_or_r);
 t_tree		*subshell_builder(t_tree *tree, t_dlist *token);
+int			forge_pipe_tree(t_tree *tree);
+t_dlist		*search_pipe(t_tree *init, t_tree *end, int l_or_r);
+t_tree		*pipe_builder(t_tree *tree, t_dlist *token);
+int			forge_command_tree(t_tree *tree);
+t_dlist		*search_command(t_tree *init, t_tree *end, int l_or_r);
+t_tree		*command_builder(t_tree *tree, t_dlist *token);
 
 #endif

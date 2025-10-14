@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:37:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/10 22:57:13 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:41:04 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ t_tree	**build_tree(t_dlist *tokens)
 	tree = tree_head(tokens);
 	if (!tree)
 		return (NULL);
-	if (forge_and_or_tree(*tree) || forge_subshell_tree(*tree))
+	if (forge_and_or_tree(*tree) || forge_subshell_tree(*tree) || \
+			forge_pipe_tree(*tree) || forge_command_tree(*tree))
 	{
 		dell_tree(tree);
 		return (NULL);

@@ -33,3 +33,6 @@ valgrind --suppressions=valgrind.supp --leak-check=full --track-origins=yes --tr
 
 
 (<< EOF ls | grep "test o test" > a > b) && ls || export $PAP:lasanha | touch 'test2 test3' test4 teste5 && env | < fork.xd cd .. | echo tchau >>nothing.txt
+
+
+ls | grep "test" && ls || expost $PAP:lasanha | touch test2 && env | cd .. | echo tchau
