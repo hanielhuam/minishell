@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 21:06:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/12 23:11:34 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/14 21:00:05 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,25 @@ static int	search_node_leed(t_tree *tree, void *find, void *build, int l_or_r)
 
 int	search(t_tree *tree, void *find, void *build) 
 {
-	if (tree->left && search(tree->left, find, build))
-		return (1);
-	else if (search_node_leed(tree, find, build, 0))
-		return (1);
-	if (tree->right && search(tree->right, find, build))
-		return (1);
-	else if (search_node_leed(tree, find, build, 1))
-		return (1);
+	if (tree->left)
+	{
+		if (search(tree->left, find, build))
+			return (1);
+	}
+	else
+	{
+		if (search_node_leed(tree, find, build, 0))
+			return (1);
+	}
+	if (tree->right)
+	{
+		if (search(tree->right, find, build))
+			return (1);
+	}
+	else
+	{
+		if (search_node_leed(tree, find, build, 1))
+			return (1);
+	}
 	return (0);
 }

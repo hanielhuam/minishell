@@ -41,7 +41,7 @@ t_dlist	*search_subshell(t_tree *init, t_tree *end, int l_or_r)
 		{
 			if (!end)
 				return (first);
-			else if (first == search_and_or(init, end->prev, l_or_r))
+			else if (first == search_subshell(init, end->prev, l_or_r))
 				return (first);
 			return (NULL);
 		}
