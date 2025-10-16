@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 23:20:13 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/12 23:23:05 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/15 21:15:59 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 t_tree	*subshell_builder(t_tree *tree, t_dlist *token)
 {
 	t_tree	*node;
+	t_dlist	*subshell;
 
 	node = create_tree_by_token(token);
 	if (!node)
 		return (NULL);
 	node->prev = tree;
+	subshell = build_tree((t_token *)token->content; 
+	*((t_data_tree *)node->content)->subtree = build_tree(subshell);
 	return (node);
 }
 
