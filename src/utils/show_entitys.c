@@ -89,5 +89,6 @@ void	show_subtree(void *content)
 		ft_printf("begin subtree:\n");
 		show_tree(*node->subtree, 0);
 		ft_printf("end subtree:\n");
+		ft_treeiter(*node->subtree, show_subtree);
 	}
 }
