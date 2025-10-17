@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/14 16:40:50 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/16 20:51:31 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ t_dlist		*compare_token_value(t_dlist *max, t_dlist *comp);
 void		show_token_or_subtoken(char **types, t_token *token);
 void		show_t_token(void *content);
 void		show_tree(t_tree *tree, int space);
+void		show_subtree(void *content);
 void		dell_tree(t_tree **tree);
 void		del_t_tree(void *content);
 t_tree		*create_tree_by_token(t_dlist *token);

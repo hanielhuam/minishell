@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:37:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/14 21:04:59 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/16 20:51:05 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ t_tree	**build_tree(t_dlist *tokens)
 		return (NULL);
 	}
 	show_tree(*tree, 0);
+	ft_treeiter(*tree, show_subtree);
 	return (tree);
 }

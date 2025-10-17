@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 21:28:25 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/13 21:53:58 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/16 20:44:24 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	ft_treeadd_left(t_tree **tree, t_tree *new);
 void	ft_treeadd_right(t_tree **tree, t_tree *new);
 void	ft_treedelone(t_tree *element, void (*del)(void *));
 void	ft_treeclear(t_tree **tree, void (*del)(void *));
+void    ft_treeiter(t_tree *node, void (*f)(void *));
 
 #endif 

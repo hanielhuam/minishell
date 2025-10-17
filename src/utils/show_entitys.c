@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:44:50 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/07 19:43:51 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/16 20:52:41 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,17 @@ void	show_tree(t_tree *tree, int space)
 	}
 	ft_printf("%s\n", get_types_char()[((t_data_tree *)tree->content)->type]);
 	show_tree(tree->left, space);
+}
+
+void	show_subtree(void *content)
+{
+	t_data_tree	*node;
+
+	node = content;
+	if (node->type == TK_SUBSHELL)
+	{
+		ft_printf("begin subtree:\n");
+		show_tree(*node->subtree, 0);
+		ft_printf("end subtree:\n");
+	}
 }

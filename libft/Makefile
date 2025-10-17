@@ -44,7 +44,8 @@ SRCS = ${SRC_DIR}/ft_isalpha.c ${SRC_DIR}/ft_isdigit.c \
 	${SRC_DIR}/dlist/ft_dlstsize.c ${SRC_DIR}/tree/ft_treenew.c \
 	${SRC_DIR}/tree/ft_treefar_left.c ${SRC_DIR}/tree/ft_treefar_right.c \
 	${SRC_DIR}/tree/ft_treeadd_left.c ${SRC_DIR}/tree/ft_treeadd_right.c \
-	${SRC_DIR}/tree/ft_treedelone.c ${SRC_DIR}/tree/ft_treeclear.c
+	${SRC_DIR}/tree/ft_treedelone.c ${SRC_DIR}/tree/ft_treeclear.c \
+	${SRC_DIR}/tree/ft_treeiter.c
 	
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
