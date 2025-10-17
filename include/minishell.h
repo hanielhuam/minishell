@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/16 20:51:31 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:45:26 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,5 +197,7 @@ t_tree		*pipe_builder(t_tree *tree, t_dlist *token);
 int			forge_command_tree(t_tree *tree);
 t_dlist		*search_command(t_tree *init, t_tree *end, int l_or_r);
 t_tree		*command_builder(t_tree *tree, t_dlist *token);
+t_tree		*(*get_token_builder(t_dlist *token))(t_dlist *, t_tree *);
+t_tree		*create_tree_by_token_builder(t_dlist *token);
 
 #endif

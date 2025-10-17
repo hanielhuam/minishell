@@ -6,29 +6,11 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:37:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/16 22:41:54 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:24:02 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_tree	*create_tree_by_token(t_dlist *token)
-{
-	t_data_tree	*data;
-	t_tree		*node;
-	
-	data = create_t_data_tree(((t_token *)token->content)->type, token);
-	if (!data)
-		return (NULL);
-	node = ft_treenew(data);
-	if (!node)
-	{
-		del_t_tree(data);
-		show_error("Error when alloc t_tree\n");
-		return (NULL);
-	}
-	return (node);
-}
 
 static t_tree	**tree_head(t_dlist *tokens)
 {
