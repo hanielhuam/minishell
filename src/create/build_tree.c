@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:37:26 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/17 15:24:02 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/17 18:20:18 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_tree	**tree_head(t_dlist *tokens)
 	if (!head)
 		return (NULL);
 	tokens = find_most_valuable_token(tokens);
-	*head = create_tree_by_token(tokens);
+	*head = create_tree_by_token_builder(tokens);
 	if (!*head)
 	{
 		free(head);

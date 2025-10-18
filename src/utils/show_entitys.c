@@ -83,7 +83,7 @@ void	show_subtree(void *content)
 {
 	t_data_tree	*node;
 
-	node = content;
+	node = (t_data_tree *)content;
 	if (node->type == TK_SUBSHELL)
 	{
 		ft_printf("begin subtree:\n");
