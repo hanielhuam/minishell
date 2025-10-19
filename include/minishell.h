@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/17 18:11:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/18 21:24:36 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,23 +83,16 @@ typedef struct s_command
 {
 	char	**cmd_args;
 	char	*path;
-	t_redir	*list;
+	t_dlist	*redirects;
 }			t_command;
-
-typedef union u_instruction
-{
-	t_pipe		*pipe;
-	t_command	*command;
-	t_redir		*redir;
-}				t_instruction;
 
 typedef struct s_data_tree
 {
-	t_tok_type		type;
-	t_dlist			*token;
-	t_tree			**subtree;
-	t_instruction	*instruction;
-}					t_data_tree;
+	t_tok_type	type;
+	t_dlist		*token;
+	t_tree		**subtree;
+	t_command	*command;
+}				t_data_tree;
 
 typedef struct s_shell
 {
@@ -199,5 +192,6 @@ t_dlist		*search_command(t_tree *init, t_tree *end, int l_or_r);
 t_tree		*command_builder(t_tree *tree, t_dlist *token);
 t_tree		*(*get_token_builder(t_dlist *token))(t_tree *, t_dlist *);
 t_tree		*create_tree_by_token_builder(t_dlist *token);
+t_dlist 	*search_token(t_tree *init, t_tree *end, int dir, t_tok_type *type);
 
 #endif
