@@ -6,13 +6,18 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 16:45:48 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/18 21:24:21 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/19 18:56:56 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static t_tree	*construct_command(t_dlist *token)
+{
+	t_command	command;
 
+	command
+}
 
 t_tree	*command_builder(t_tree *tree, t_dlist *token)
 {
@@ -39,7 +44,7 @@ static t_dlist	*find_type(t_tree *init, t_tree *end, int dir, t_tok_type *type)
 	first = increment_direction(first, dir);
 	while (first && first != last)
 	{
-		if (check_token_type(first, types))
+		if (check_token_type(first, type))
 		{
 			if (!end)
 				return (first);
