@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:44:50 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/16 20:52:41 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/19 19:53:59 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	show_tree(t_tree *tree, int space)
 	i = 10;
 	while (i < space)
 	{
-		write(1," ", 1); 
+		write(1, " ", 1);
 		i++;
 	}
 	ft_printf("%s\n", get_types_char()[((t_data_tree *)tree->content)->type]);

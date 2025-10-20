@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 20:14:32 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/19 18:56:48 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/19 20:30:38 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ t_command	*create_t_command(void)
 
 t_command	*create_command_by_token(t_dlist *token)
 {
-	
+	(void)token;
+	return (create_t_command());
 }

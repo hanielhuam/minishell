@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:53:07 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/12 23:03:27 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/19 19:40:29 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_tree	*and_or_builder(t_tree *tree, t_dlist *token)
 
 t_dlist	*search_and_or(t_tree *init, t_tree *end, int l_or_r)
 {
-	t_dlist	*first;
-	t_dlist	*last;
+	t_dlist				*first;
+	t_dlist				*last;
 	static t_tok_type	types[3] = {TK_AND, TK_OR, TK_NO_TYPE};
 
 	first = ((t_data_tree *)init->content)->token;

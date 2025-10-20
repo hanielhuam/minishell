@@ -6,18 +6,11 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 16:45:48 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/19 18:56:56 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/19 20:39:13 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static t_tree	*construct_command(t_dlist *token)
-{
-	t_command	command;
-
-	command
-}
 
 t_tree	*command_builder(t_tree *tree, t_dlist *token)
 {
@@ -27,7 +20,6 @@ t_tree	*command_builder(t_tree *tree, t_dlist *token)
 	if (!node)
 		return (NULL);
 	node->prev = tree;
-	node->command = 
 	return (node);
 }
 
@@ -59,7 +51,7 @@ static t_dlist	*find_type(t_tree *init, t_tree *end, int dir, t_tok_type *type)
 
 t_dlist	*search_command(t_tree *init, t_tree *end, int l_or_r)
 {
-	t_dlist	result;
+	t_dlist	*result;
 	static t_tok_type	command_types[2] = {TK_COMMAND, TK_NO_TYPE};
 	static t_tok_type	redirect_types[5] = {
 		TK_REDIRECT_IN, TK_HEREDOC,	TK_REDIRECT_OUT, TK_REDIRECT_OUT_OUT,

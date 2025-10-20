@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/18 21:24:36 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/19 20:37:10 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,8 +190,10 @@ t_tree		*pipe_builder(t_tree *tree, t_dlist *token);
 int			forge_command_tree(t_tree *tree);
 t_dlist		*search_command(t_tree *init, t_tree *end, int l_or_r);
 t_tree		*command_builder(t_tree *tree, t_dlist *token);
-t_tree		*(*get_token_builder(t_dlist *token))(t_tree *, t_dlist *);
 t_tree		*create_tree_by_token_builder(t_dlist *token);
-t_dlist 	*search_token(t_tree *init, t_tree *end, int dir, t_tok_type *type);
+t_dlist		*search_token(t_tree *init, t_tree *end, int dir, t_tok_type *type);
+t_redir		*creat_t_redir(void);
+t_command	*create_t_command(void);
+t_command	*create_command_by_token(t_dlist *token);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 21:06:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/14 21:00:05 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/19 19:38:40 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	search_right(t_tree *tree, t_dlist *token, void *find, void *build)
 static int	search_node_leed(t_tree *tree, void *find, void *build, int l_or_r)
 {
 	t_dlist	*token;
-	t_dlist *(*check)(t_tree *, t_tree *, int);
+	t_dlist	*(*check)(t_tree *, t_tree *, int);
 
 	check = find;
 	token = check(tree, tree->prev, l_or_r);
@@ -51,7 +51,7 @@ static int	search_node_leed(t_tree *tree, void *find, void *build, int l_or_r)
 	return (0);
 }
 
-int	search(t_tree *tree, void *find, void *build) 
+int	search(t_tree *tree, void *find, void *build)
 {
 	if (tree->left)
 	{

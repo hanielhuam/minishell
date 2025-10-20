@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 23:20:13 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/16 19:31:10 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/19 19:36:09 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ t_tree	*subshell_builder(t_tree *tree, t_dlist *token)
 	if (!node)
 		return (NULL);
 	node->prev = tree;
-	subshell = *((t_token *)token->content)->subshell; 
+	subshell = *((t_token *)token->content)->subshell;
 	((t_data_tree *)node->content)->subtree = build_tree(subshell);
 	return (node);
 }
 
 t_dlist	*search_subshell(t_tree *init, t_tree *end, int l_or_r)
 {
-	t_dlist	*first;
-	t_dlist	*last;
+	t_dlist				*first;
+	t_dlist				*last;
 	static t_tok_type	types[2] = {TK_SUBSHELL, TK_NO_TYPE};
 
 	first = ((t_data_tree *)init->content)->token;

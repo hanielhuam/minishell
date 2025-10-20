@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 16:41:51 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/14 16:45:22 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/19 19:39:38 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_tree	*pipe_builder(t_tree *tree, t_dlist *token)
 
 t_dlist	*search_pipe(t_tree *init, t_tree *end, int l_or_r)
 {
-	t_dlist	*first;
-	t_dlist	*last;
+	t_dlist				*first;
+	t_dlist				*last;
 	static t_tok_type	types[3] = {TK_PIPE, TK_NO_TYPE};
 
 	first = ((t_data_tree *)init->content)->token;
