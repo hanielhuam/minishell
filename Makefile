@@ -47,7 +47,7 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/handler/forge_pipe_token_tree.c \
 	   ${SRC_DIR}/handler/forge_command_token_tree.c \
 	   ${SRC_DIR}/create/create_t_tree.c ${SRC_DIR}/create/create_t_commad.c \
-	   ${SRC_DIR}/create/create_t_redir.c
+	   ${SRC_DIR}/create/create_t_redir.c ${SRC_DIR}/utils/command_utils.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

@@ -1,5 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
+
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -195,5 +194,9 @@ t_dlist		*search_token(t_tree *init, t_tree *end, int dir, t_tok_type *type);
 t_redir		*creat_t_redir(void);
 t_command	*create_t_command(void);
 t_command	*create_command_by_token(t_dlist *token);
+t_dlist		*start_command(t_dlist *token);
+t_dlist		*end_command(t_dlist *token);
+int			argument_count(t_dlist *start);
+int			is_command_delimitter(t_dlist *token);
 
 #endif

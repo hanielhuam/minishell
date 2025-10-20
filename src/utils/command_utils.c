@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_t_commad.c                                  :+:      :+:    :+:   */
+/*   command_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/18 20:14:32 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/20 17:23:08 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/10/20 16:58:57 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/10/20 17:05:38 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_command	*create_t_command(void)
+t_dlist	*start_command(t_dlist *token)
 {
-	t_command	*command;
-
-	command = safe_malloc(1, sizeof(t_command), "Error when alloc t_command\n");
-	if (!command)
-		return (NULL);
-	return (command);
-}
-
-static int	augment_command(t_command *command, t_dlist *token)
-{
-	t_dlist	*end;
-	int		argument_count;
-
 	
 }
 
-t_command	*create_command_by_token(t_dlist *token)
+t_dlist	*end_command(t_dlist *token)
 {
-	t_command	*command;
+	
+}
 
-	command = create_t_comman();
+int	argument_count(t_dlist *start)
+{
 
-	return ();
 }

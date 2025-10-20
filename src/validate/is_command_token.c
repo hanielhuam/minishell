@@ -35,7 +35,7 @@ static int	compare_types_command(t_tok_type type)
 	return (0);
 }
 
-static int	is_command_delimitter(t_dlist *token)
+int	is_command_delimitter(t_dlist *token)
 {
 	t_tok_type	type;
 
