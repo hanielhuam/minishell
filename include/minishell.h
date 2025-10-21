@@ -198,5 +198,6 @@ t_dlist		*start_command(t_dlist *token);
 t_dlist		*end_command(t_dlist *token);
 int			argument_count(t_dlist *start);
 int			is_command_delimitter(t_dlist *token);
+char		 **make_args(t_dlist *start, t_dlist *end, int len, char **args);
 
 #endif
