@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 20:14:32 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/21 19:46:35 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/21 21:23:02 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,16 @@ static int	assemble_arguments(t_command *command, t_dlist *token)
 
 static int	redirect_factory(t_command *command, t_dlist *token)
 {
-	
+	t_dlist	*redirects;
+	t_dlist *end;
+
+	end = end_command(token);
+	token = start_command(token);
+	while (token != end)
+	{
+
+		token = token->next;
+	}
 }
 
 t_command	*create_command_by_token(t_dlist *token)

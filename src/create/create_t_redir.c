@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 20:30:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/19 20:34:11 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/21 21:23:07 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,5 @@ t_redir	*creat_t_redir(void)
 		return (NULL);
 	return (redir);
 }
+
+
