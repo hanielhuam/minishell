@@ -191,13 +191,17 @@ t_dlist		*search_command(t_tree *init, t_tree *end, int l_or_r);
 t_tree		*command_builder(t_tree *tree, t_dlist *token);
 t_tree		*create_tree_by_token_builder(t_dlist *token);
 t_dlist		*search_token(t_tree *init, t_tree *end, int dir, t_tok_type *type);
-t_redir		*creat_t_redir(void);
+t_redir		*create_t_redir(void);
 t_command	*create_t_command(void);
 t_command	*create_command_by_token(t_dlist *token);
 t_dlist		*start_command(t_dlist *token);
 t_dlist		*end_command(t_dlist *token);
-int			argument_count(t_dlist *start);
+int			argument_count(t_dlist *start, t_dlist *end);
+void		make_args(t_dlist *start, int len, char **args);
 int			is_command_delimitter(t_dlist *token);
-char		 **make_args(t_dlist *start, t_dlist *end, int len, char **args);
+void		del_t_redirect(void *content);
+void		del_t_command(t_command *command);
+int			redirect_chain(t_dlist **redirects, t_dlist *token);
+t_redir		*create_t_redir_by_token(t_dlist *token);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:58:57 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/21 19:46:38 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/22 20:57:39 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	argument_count(t_dlist *start, t_dlist *end)
 	return (count);
 }
 
-void	make_args(t_dlist *start, t_dlist *end, int len, char **args)
+void	make_args(t_dlist *start, int len, char **args)
 {
 	int		i;
 

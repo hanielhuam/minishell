@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   del_tree.c                                         :+:      :+:    :+:   */
+/*   del_t_redirect.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 21:11:36 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/22 20:17:18 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/10/22 18:22:30 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/10/22 21:07:41 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	del_t_tree(void *content)
+void	del_t_redirect(void *content)
 {
-	t_data_tree	*data;
+	t_redir	*redir;
 
-	data = content;
-	if (data->type == TK_SUBSHELL)
-		dell_tree(data->subtree);
-	if (data->command)
-		del_t_command(data->command);
-	free(data);
-}
-
-void	dell_tree(t_tree **tree)
-{
-	ft_treeclear(tree, del_t_tree);
-	free(tree);
+	redir = content;
+	if (redir->file)
+		free(redir->file);
+	if (redir->eof)
+		free(redir->eof);
+	free(redir);
 }

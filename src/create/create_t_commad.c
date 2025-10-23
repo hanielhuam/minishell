@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 20:14:32 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/22 17:14:36 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/22 20:58:46 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_command	*create_t_command(void)
 static int	stablish_command(t_command *command, t_dlist *token)
 {
 	t_dlist	*end;
+	char	*command_str;
 	
 	token = start_command(token);
 	end = end_command(token);
@@ -32,24 +33,25 @@ static int	stablish_command(t_command *command, t_dlist *token)
 	{
 		if (((t_token *)token->content)->type == TK_COMMAND)
 			break;
-		start = start->next;
+		token = token->next;
 	}
 	if (!(((t_token *)token->content)->type == TK_COMMAND))
 		return (0);
 	command_str = ft_strdup(((t_token *)token->content)->str);
-	if (!commend_str)
+	if (!command_str)
 	{
 		show_error("Error when alloc command string\n");
 		return (-1);
 	}
 	command->path = command_str;
+	return (0);
 }
 
 static int	assemble_arguments(t_command *command, t_dlist *token)
 {
 	int		len;
 	t_dlist	*end;
-	char	**cmd_args;
+	char	**args;
 
 	if (!command->path)
 		return (0);
@@ -60,15 +62,14 @@ static int	assemble_arguments(t_command *command, t_dlist *token)
 	if (!args)
 		return (-1);
 	args[0] = ft_strdup(command->path);
+	if (args[0])
+		make_args(token, len, args);
 	if (!args[0])
 	{
-		show_error("Error when duplicate command path\n");
+		show_error("Error when duplicate command path or arguments\n");
 		free(args);
 		return (-1);
 	}
-	make_arguments(start, end, len, args);
-	if (!args[0] && free(args))
-		return (-1);
 	return (0);
 }
 
@@ -76,7 +77,7 @@ static int	redirect_factory(t_command *command, t_dlist *token)
 {
 	t_dlist		*redirects;
 	t_dlist		*end;
-	t_tok_token	type;
+	t_tok_type	type;
 
 	end = end_command(token);
 	token = start_command(token);
@@ -88,11 +89,12 @@ static int	redirect_factory(t_command *command, t_dlist *token)
 				type == TK_REDIRECT_OUT || type == TK_REDIRECT_OUT_OUT) &&
 				redirect_chain(&redirects, token))
 		{
-			ft_dlstclear(redirects, del_redirects);
+			ft_dlstclear(&redirects, del_t_redirect);
 			return (1);
 		}
 		token = token->next;
 	}
+	command->redirects = redirects;
 	return (0);
 }
 
@@ -100,7 +102,7 @@ t_command	*create_command_by_token(t_dlist *token)
 {
 	t_command	*command;
 
-	command = create_t_comman();
+	command = create_t_command();
 	if (!(command && !stablish_command(command, token) && \
 				!assemble_arguments(command, token) && \
 				!redirect_factory(command, token)))
@@ -108,6 +110,5 @@ t_command	*create_command_by_token(t_dlist *token)
 		del_t_command(command);
 		return (NULL);
 	}
-
 	return (command);
 }

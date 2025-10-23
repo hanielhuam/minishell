@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 16:45:48 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/19 20:39:13 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/22 20:21:11 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 t_tree	*command_builder(t_tree *tree, t_dlist *token)
 {
-	t_tree	*node;
+	t_tree		*node;
+	t_command	*command;
 
 	node = create_tree_by_token(token);
 	if (!node)
 		return (NULL);
 	node->prev = tree;
+	command = create_command_by_token(token);
+	if (!command)
+	{
+		ft_treeclear(&node, del_t_tree);
+		return (NULL);
+	}
+	((t_data_tree *)node->content)->command = command;
 	return (node);
 }
 
