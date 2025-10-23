@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 20:24:00 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/16 22:42:14 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:31:04 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	parser(t_shell *shell, char *input)
 	shell->tree = build_tree(*tokens);
 	show_tree(*shell->tree, 0);
 	ft_treeiter(*shell->tree, show_subtree);
+	ft_treeiter(*shell->tree, show_command);
 	del_token_list(tokens);
 	if (!shell->tree)
 		return (-1);

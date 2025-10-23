@@ -6,30 +6,13 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:44:50 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/19 19:53:59 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/23 16:42:16 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	show_token_or_subtoken(char **types, t_token *token)
-{
-	if (token->type != TK_SUBSHELL)
-	{
-		ft_printf("str = %s and token_type = %s\n", \
-				token->str, types[token->type]);
-	}
-	else
-	{
-		ft_printf("str = %s and token_type = %s\n", \
-				token->str, types[token->type]);
-		ft_printf("inside subshell\n");
-		ft_dlstiter(*(token->subshell), show_t_token);
-		ft_printf("outside subshell\n");
-	}
-}
-
-static char	**get_types_char(void)
+char	**get_types_char(void)
 {
 	static char	*types[16] = {
 		"TK_REDIRECT_IN",
@@ -56,9 +39,23 @@ static char	**get_types_char(void)
 void	show_t_token(void *content)
 {
 	t_token	*token;
+	char	**types;
 
 	token = content;
-	show_token_or_subtoken(get_types_char(), token);
+	types = get_types_char();
+	if (token->type != TK_SUBSHELL)
+	{
+		ft_printf("str = %s and token_type = %s\n", \
+				token->str, types[token->type]);
+	}
+	else
+	{
+		ft_printf("str = %s and token_type = %s\n", \
+				token->str, types[token->type]);
+		ft_printf("inside subshell\n");
+		ft_dlstiter(*(token->subshell), show_t_token);
+		ft_printf("outside subshell\n");
+	}
 }
 
 void	show_tree(t_tree *tree, int space)
@@ -91,4 +88,18 @@ void	show_subtree(void *content)
 		ft_printf("end subtree:\n");
 		ft_treeiter(*node->subtree, show_subtree);
 	}
+}
+
+void	show_t_redir(void *content)
+{
+	t_redir	*redir;
+	char	**types;
+
+	redir = content;
+	types = get_types_char();
+	ft_printf("%s\n", types[redir->type]);
+	if (redir->type == TK_HEREDOC)
+		ft_printf("   delimiter: %s\n", redir->eof);
+	else
+		ft_printf("   file: %s\n", redir->file);
 }

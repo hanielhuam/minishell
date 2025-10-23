@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:58:57 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/22 20:57:39 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/23 18:03:03 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,32 @@ void	make_args(t_dlist *start, int len, char **args)
 			i--;
 		}
 	}
+}
+
+void	show_command(void *content)
+{
+	int			i;
+	t_data_tree	*node;
+
+	node = content;
+	if (node->type == TK_SUBSHELL)
+	{
+		ft_printf("inside subtree commands\n");
+		ft_treeiter(*node->subtree, show_command);
+		ft_printf("outside subtree commands\n");
+	}
+	if (!node->command)
+		return ;
+	ft_printf("\n\ncommand:\ntoken_type = %s\n", get_types_char()[node->type]);
+	if (node->command->cmd_args)
+	{
+		i = 0;
+		ft_printf("command with args = ");
+		while (node->command->cmd_args[i])
+			ft_printf("%s ", node->command->cmd_args[i++]);
+	}
+	if (node->command->redirects)
+		ft_printf("\nlist of redirects:\n");
+	if (node->command->redirects)
+		ft_dlstiter(node->command->redirects, show_t_redir);
 }

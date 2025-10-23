@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 20:14:32 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/22 20:58:46 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:27:21 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static int	assemble_arguments(t_command *command, t_dlist *token)
 		free(args);
 		return (-1);
 	}
+	command->cmd_args = args;
 	return (0);
 }
 

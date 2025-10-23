@@ -166,7 +166,6 @@ t_dlist		*compare_token_value(t_dlist *max, t_dlist *comp);
 int			type_value(t_tok_type type);
 t_tok_type	**get_tokens_type_order(void);
 t_dlist		*compare_token_value(t_dlist *max, t_dlist *comp);
-void		show_token_or_subtoken(char **types, t_token *token);
 void		show_t_token(void *content);
 void		show_tree(t_tree *tree, int space);
 void		show_subtree(void *content);
@@ -203,5 +202,8 @@ void		del_t_redirect(void *content);
 void		del_t_command(t_command *command);
 int			redirect_chain(t_dlist **redirects, t_dlist *token);
 t_redir		*create_t_redir_by_token(t_dlist *token);
+void		show_command(void *content);
+char		**get_types_char(void);
+void		show_t_redir(void *content);
 
 #endif

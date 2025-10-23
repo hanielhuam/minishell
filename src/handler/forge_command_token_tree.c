@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 16:45:48 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/22 20:21:11 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/23 13:38:06 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,17 @@ static t_dlist	*find_type(t_tree *init, t_tree *end, int dir, t_tok_type *type)
 
 t_dlist	*search_command(t_tree *init, t_tree *end, int l_or_r)
 {
-	t_dlist	*result;
+	t_dlist				*result;
 	static t_tok_type	command_types[2] = {TK_COMMAND, TK_NO_TYPE};
 	static t_tok_type	redirect_types[5] = {
 		TK_REDIRECT_IN, TK_HEREDOC,	TK_REDIRECT_OUT, TK_REDIRECT_OUT_OUT,
 		TK_NO_TYPE
 	};
 
+	if (check_token_type(((t_data_tree *)init->content)->token, command_types) \
+			|| check_token_type(((t_data_tree *)init->content)->token, \
+				redirect_types))
+		return (NULL);
 	result = find_type(init, end, l_or_r, command_types);
 	if (result)
 		return (result);
