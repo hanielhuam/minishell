@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 20:14:32 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/23 15:27:21 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:09:57 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static int	stablish_command(t_command *command, t_dlist *token)
 {
 	t_dlist	*end;
 	char	*command_str;
-	
+
 	token = start_command(token);
 	end = end_command(token);
 	while (token != end)
 	{
 		if (((t_token *)token->content)->type == TK_COMMAND)
-			break;
+			break ;
 		token = token->next;
 	}
 	if (!(((t_token *)token->content)->type == TK_COMMAND))
@@ -87,7 +87,7 @@ static int	redirect_factory(t_command *command, t_dlist *token)
 	{
 		type = ((t_token *)token->content)->type;
 		if ((type == TK_REDIRECT_IN || type == TK_HEREDOC || \
-				type == TK_REDIRECT_OUT || type == TK_REDIRECT_OUT_OUT) &&
+				type == TK_REDIRECT_OUT || type == TK_REDIRECT_OUT_OUT) && \
 				redirect_chain(&redirects, token))
 		{
 			ft_dlstclear(&redirects, del_t_redirect);

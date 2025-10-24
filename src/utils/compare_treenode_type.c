@@ -25,6 +25,7 @@ int	compare_treenode_type(t_tree *node, int count, ...)
 	{
 		if (type == va_arg(args, t_tok_type))
 			return (1);
+		i++;
 	}
 	va_end(args);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:58:57 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/23 18:03:03 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:38:12 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	make_args(t_dlist *start, int len, char **args)
 		{
 			args[i] = ft_strdup(((t_token *)start->content)->str);
 			if (!args[i])
-				break;
+				break ;
 			i++;
 		}
 		start = start->next;

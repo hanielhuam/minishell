@@ -6,14 +6,15 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:06:14 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/09/25 21:18:16 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:33:00 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	(*get_validation_function(t_dlist *token))(t_dlist *)
+static int	token_validation(t_dlist *token, t_dlist *next_token)
 {
+	t_tok_type	type;
 	static int	(*validations[15])(t_dlist *) = {
 		validate_after_redirect_in_token,
 		validate_after_file_in_token,
@@ -32,7 +33,8 @@ static int	(*get_validation_function(t_dlist *token))(t_dlist *)
 		validate_after_close_parenthesis_token
 	};
 
-	return (validations[((t_token *)token->content)->type]);
+	type = ((t_token *)token->content)->type;
+	return (validations[type](next_token));
 }
 
 int	validate_token_list(t_dlist *tokens)
@@ -43,7 +45,7 @@ int	validate_token_list(t_dlist *tokens)
 		return (1);
 	while (tokens)
 	{
-		if (get_validation_function(tokens)(tokens->next))
+		if (token_validation(tokens, tokens->next))
 			return (1);
 		tokens = tokens->next;
 	}
