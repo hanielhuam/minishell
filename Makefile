@@ -50,7 +50,11 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/create/create_t_redir.c ${SRC_DIR}/utils/command_utils.c \
 	   ${SRC_DIR}/utils/file_utils.c ${SRC_DIR}/del/del_t_command.c \
 	   ${SRC_DIR}/del/del_t_redirect.c \
-	   ${SRC_DIR}/processor/command_processor.c
+	   ${SRC_DIR}/utils/compare_treenode_type.c \
+	   ${SRC_DIR}/processor/command_processor.c \
+	   ${SRC_DIR}/processor/and_or_processor.c \
+	   ${SRC_DIR}/processor/subshell_processor.c \
+	   ${SRC_DIR}/processor/pipe_processor.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <srdarg.h>
+# include <stdarg.h>
 # include "ft_printf.h"
 # include "ft_tree.h"
 # include "ft_list.h"
@@ -207,6 +207,11 @@ t_redir		*create_t_redir_by_token(t_dlist *token);
 void		show_command(void *content);
 char		**get_types_char(void);
 void		show_t_redir(void *content);
-int			execution_chain(t_tree *node, t_dlist **env);
+int			execution_chain(t_tree *node, t_list **env);
+int			compare_treenode_type(t_tree *node, int count, ...);
+int			and_or_processor(t_tree *node, t_list **env);
+int			subshell_processor(t_tree *node, t_list **env);
+int			pipe_processor(t_tree *node, t_list **env);
+int			command_processor(t_tree *node, t_list **env);
 
 #endif
