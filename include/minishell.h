@@ -1,4 +1,4 @@
-
+/* ************************************************************************** */
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <srdarg.h>
 # include "ft_printf.h"
 # include "ft_tree.h"
 # include "ft_list.h"
@@ -95,6 +96,7 @@ typedef struct s_data_tree
 
 typedef struct s_shell
 {
+	int		exit_code;
 	t_list	**env;
 	t_tree	**tree;
 }			t_shell;
@@ -205,5 +207,6 @@ t_redir		*create_t_redir_by_token(t_dlist *token);
 void		show_command(void *content);
 char		**get_types_char(void);
 void		show_t_redir(void *content);
+int			execution_chain(t_tree *node, t_dlist **env);
 
 #endif

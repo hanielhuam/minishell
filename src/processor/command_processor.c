@@ -1,23 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.c                                         :+:      :+:    :+:   */
+/*   command_processor.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/31 21:32:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/23 21:20:59 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/10/23 21:07:05 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/10/23 21:20:54 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	execution_chain(t_tree *node, t_dlist **env)
-{
-	if (
-}
 
-void	executor(t_shell *shell)
-{
-	execution_chain(*shell->tree, shell->env);
-}

@@ -49,7 +49,8 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/create/create_t_tree.c ${SRC_DIR}/create/create_t_commad.c \
 	   ${SRC_DIR}/create/create_t_redir.c ${SRC_DIR}/utils/command_utils.c \
 	   ${SRC_DIR}/utils/file_utils.c ${SRC_DIR}/del/del_t_command.c \
-	   ${SRC_DIR}/del/del_t_redirect.c 
+	   ${SRC_DIR}/del/del_t_redirect.c \
+	   ${SRC_DIR}/processor/command_processor.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
