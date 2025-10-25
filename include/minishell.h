@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/24 18:21:17 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/24 23:54:41 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,17 @@ typedef struct s_data_tree
 	t_command	*command;
 }				t_data_tree;
 
+typedef struct s_process
+{
+	int	pid;
+}
+
 typedef struct s_shell
 {
 	int		exit_code;
 	t_list	**env;
 	t_tree	**tree;
+	t_list	*process;
 }			t_shell;
 
 int			get_input(char	**imput);
