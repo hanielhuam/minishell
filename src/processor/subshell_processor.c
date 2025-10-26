@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	subshell_processor(t_tree *node, t_shell *shell)
+int	subshell_processor(t_tree *node, t_shell *shell, int dir)
 {
 	(void)node;
 	(void)env;

@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	pipe_processor(t_tree *node, t_shell *shell)
+int	pipe_processor(t_tree *node, t_shell *shell, int dir)
 {
 	(void)node;
 	(void)env;

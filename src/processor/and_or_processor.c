@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	and_or_processor(t_tree *node, t_shell *shell)
+int	and_or_processor(t_tree *node, t_shell *shell, int dirr)
 {
 	(void)node;
 	(void)env;
