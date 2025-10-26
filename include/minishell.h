@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/24 18:21:17 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/25 20:06:25 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,17 @@ typedef struct s_data_tree
 	t_command	*command;
 }				t_data_tree;
 
+typedef struct s_process
+{
+	int	pid;
+}		t_process;
+
 typedef struct s_shell
 {
 	int		exit_code;
 	t_list	**env;
 	t_tree	**tree;
+	t_list	*process;
 }			t_shell;
 
 int			get_input(char	**imput);
@@ -208,11 +214,11 @@ t_redir		*create_t_redir_by_token(t_dlist *token);
 void		show_command(void *content);
 char		**get_types_char(void);
 void		show_t_redir(void *content);
-int			execution_chain(t_tree *node, t_list **env);
+int			execution_chain(t_tree *node, t_shell *shell);
 int			compare_treenode_type(t_tree *node, int count, ...);
-int			and_or_processor(t_tree *node, t_list **env);
-int			subshell_processor(t_tree *node, t_list **env);
-int			pipe_processor(t_tree *node, t_list **env);
-int			command_processor(t_tree *node, t_list **env);
+int			and_or_processor(t_tree *node, t_shell *shell);
+int			subshell_processor(t_tree *node, t_shell *shell);
+int			pipe_processor(t_tree *node, t_shell *shell);
+int			command_processor(t_tree *node, t_shell *shell);
 
 #endif
