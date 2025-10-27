@@ -56,7 +56,8 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/processor/subshell_processor.c \
 	   ${SRC_DIR}/processor/pipe_processor.c \
 	   ${SRC_DIR}/processor/main_process_runner.c \
-	   ${SRC_DIR}/processor/child_process_runner.c
+	   ${SRC_DIR}/processor/child_process_runner.c \
+	   ${SRC_DIR}/validate/is_builtin.c ${SRC_DIR}/processor/wait_process.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/26 15:38:09 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/26 21:17:41 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_data_tree
 	t_dlist		*token;
 	t_tree		**subtree;
 	t_command	*command;
+	t_pipe		*pipe;
 }				t_data_tree;
 
 typedef struct s_process
@@ -220,5 +221,8 @@ int			and_or_processor(t_tree *node, t_shell *shell, int dir);
 int			subshell_processor(t_tree *node, t_shell *shell, int dir);
 int			pipe_processor(t_tree *node, t_shell *shell, int dir);
 int			command_processor(t_tree *node, t_shell *shell, int dir);
+int			is_builtin(t_command *command);
+int			wait_check(t_tree *node);
+int			wait_process(t_shell *shell);
 
 #endif
