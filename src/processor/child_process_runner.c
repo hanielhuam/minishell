@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 20:55:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/26 23:25:30 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:20:49 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ int	child_process_runner(t_tree *node, t_shell *shell)
 	{
 		execute_command(node, shell);
 		destroy_shell(shell);
+		exit(-1);
+		return (-1)
 	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/26 22:51:40 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/28 17:17:33 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,5 +224,6 @@ int			command_processor(t_tree *node, t_shell *shell, int dir);
 int			is_builtin(t_command *command);
 int			wait_check(t_tree *node);
 int			wait_process(t_shell *shell);
+void		execute_command(node, shell);
 
 #endif
