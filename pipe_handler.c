@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   command_executer.c                                 :+:      :+:    :+:   */
+/*   pipe_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/28 21:17:45 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/10/28 20:54:59 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/10/28 21:17:20 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	prepare_command(t_command *command)
+void	close_all_pipes(t_tree *node)
 {
-	
+	if (!node)
+		return ;
+	close_pipe_node(node);
+	close_all_pipes(node->left);
+	close_all_pipes(node->right);
 }
 
-static int	prepare_pipe(t_pipe *pipe)
+void	close_pipe_node(t_tree *node)
 {
-	
-}
+	t_pipe	*pipe;
 
-static int	close_pipe(t_tree *node)
-{
-
-}
-
-void	execute_command(t_tree *node, t_shell *shell)
-{
-	t_command	*command;
-	t_pipe		*pipe;
-	int			exec;
-
-	command = ((t_data_tree *)node->content)->command;
+	if (!node || node->type != TK_PIPE)
+		return ;
 	pipe = ((t_data_tree *)node->content)->pipe;
-	exec = prepare_command(commmand);
-	if (pipe)
-		exec = prepare_pipe(pipe);
-	if (exec)
-		execve(command->path, command->cmd_arg, list_env_matrix(shell->env));
+	close(pipe->pipe[0]);
+	clode(pipe->pipe[1]);
 }
