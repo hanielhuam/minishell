@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 20:55:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/28 15:20:49 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/28 21:18:43 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	create_t_process(pid_t pid, t_shell shell)
 	{
 		show_error("Error when alloc new node on process list\n");
 		free(process);
-		shel->exit_code = -1;
+		shell->exit_code = -1;
 		return (-1);
 	}
 	ft_lstaddback(&shell->process, new);
