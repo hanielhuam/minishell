@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/28 21:17:45 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:23:34 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ static int	prepare_pipe(t_pipe *pipe)
 	
 }
 
-static int	close_pipe(t_tree *node)
-{
-
-}
-
 void	execute_command(t_tree *node, t_shell *shell)
 {
 	t_command	*command;
@@ -35,7 +30,7 @@ void	execute_command(t_tree *node, t_shell *shell)
 
 	command = ((t_data_tree *)node->content)->command;
 	pipe = ((t_data_tree *)node->content)->pipe;
-	exec = prepare_command(commmand);
+	exec = prepare_command(commmand, shell->envlist );
 	if (pipe)
 		exec = prepare_pipe(pipe);
 	if (exec)
