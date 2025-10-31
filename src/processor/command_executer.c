@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/30 22:22:52 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:37:52 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,9 @@ static int	prepare_command(t_command *command, t_pipe *pipe, t_list *env)
 	char	*command_path;
 	char	*command_arg;
 
-	if (command->path)
-	{
-		command_path = check_command_path(command->path, env);
-		if (!command_path)
-			return (-1);
-		command->path = command_path;
-		command_arg = ft_strdup(command_path);
-		if (!command_arg)
-			free(command_path)
-	}
+	if (command->path && !manipulate_command_path(command, env))
+		return (-1);
+	if (command->redirects && !stablish_redirects
 }
 
 static int	prepare_pipe(t_pipe *pipe)
