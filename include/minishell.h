@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/31 21:14:37 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/10/31 23:20:19 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,5 +230,7 @@ void		close_pipe_node(t_tree *node);
 char		*manipulate_command_path(t_command *command, t_list *env);
 char		*check_command_path(char *command_path, t_list *env);
 int			stablish_redirects(t_dlist *redirects, t_pipe *pipe);
+t_redir		*find_last_redirect_out(t_dlist *redirects);
+t_redir		*find_last_redirect_out(t_dlist *redirects);
 
 #endif
