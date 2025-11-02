@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 22:59:11 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/31 23:15:22 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/02 16:35:00 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,11 @@ t_redir	*find_last_redirect_in(t_dlist *redirects)
 		redirects = redirects->before;
 	}
 	return (NULL);
+}
+
+void	atribute_pipe_redirect(int in_out, t_pipe *pipe, t_redir *redir)
+{
+	if ((*pipe)->fd[in_out])
+		close((*pipe)->fd[in_out]);
+	(*pipe)->fd[in_out] = redir->fd;
 }
