@@ -37,15 +37,15 @@ SRCS = ${SRC_DIR}/ft_isalpha.c ${SRC_DIR}/ft_isdigit.c \
 	${SRC_DIR}/ft_printf/ft_transl_no.c \
 	${SRC_DIR}/ft_printf/ft_transl_udigits.c ${SRC_DIR}/ft_printf/t_print.c \
 	${SRC_DIR}/GNL/get_next_line.c ${SRC_DIR}/GNL/get_next_line_utils.c \
-	${SRC_DIR}/dlist/ft_dlstadd_back.c ${SRC_DIR}/dlist/ft_dlstclear.c \
-	${SRC_DIR}/dlist/ft_dlstiter.c ${SRC_DIR}/dlist/ft_dlstlast.c \
-	${SRC_DIR}/dlist/ft_dlstnew.c ${SRC_DIR}/dlist/ft_dlstadd_front.c \
-	${SRC_DIR}/dlist/ft_dlstdelone.c ${SRC_DIR}/dlist/ft_dlstmap.c \
-	${SRC_DIR}/dlist/ft_dlstsize.c ${SRC_DIR}/tree/ft_treenew.c \
-	${SRC_DIR}/tree/ft_treefar_left.c ${SRC_DIR}/tree/ft_treefar_right.c \
-	${SRC_DIR}/tree/ft_treeadd_left.c ${SRC_DIR}/tree/ft_treeadd_right.c \
-	${SRC_DIR}/tree/ft_treedelone.c ${SRC_DIR}/tree/ft_treeclear.c \
-	${SRC_DIR}/tree/ft_treeiter.c
+	${SRC_DIR}/GNL/get_next_delimiter.c ${SRC_DIR}/dlist/ft_dlstadd_back.c \
+	${SRC_DIR}/dlist/ft_dlstclear.c ${SRC_DIR}/dlist/ft_dlstiter.c \
+	${SRC_DIR}/dlist/ft_dlstlast.c ${SRC_DIR}/dlist/ft_dlstnew.c \
+	${SRC_DIR}/dlist/ft_dlstadd_front.c ${SRC_DIR}/dlist/ft_dlstdelone.c \
+	${SRC_DIR}/dlist/ft_dlstmap.c ${SRC_DIR}/dlist/ft_dlstsize.c \
+	${SRC_DIR}/tree/ft_treenew.c ${SRC_DIR}/tree/ft_treefar_left.c \
+	${SRC_DIR}/tree/ft_treefar_right.c ${SRC_DIR}/tree/ft_treeadd_left.c \
+	${SRC_DIR}/tree/ft_treeadd_right.c ${SRC_DIR}/tree/ft_treedelone.c \
+	${SRC_DIR}/tree/ft_treeclear.c ${SRC_DIR}/tree/ft_treeiter.c
 	
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

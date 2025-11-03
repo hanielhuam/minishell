@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:00:53 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/02 18:05:34 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/02 23:21:19 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,43 @@ static char	*read_file(int fd, char *rest, char *delimiter)
 		}
 		buffer[bytes] = '\0';
 		rest = ft_strjoin_free(rest, buffer);
-		if (ft_
+		if (ft_strnstr(rest, delimiter, ft_strlen(delimiter)))
+			break;
 	}
 	return (rest);
+}
+
+char	*new_rest(char *rest, char *delimiter)
+{
+	char	*result;
+
+	result = ft_strnstr(rest, delimiter, ft_strlen(delimiter));
+	if (!result)
+	{
+		free(rest);
+		return (NULL);
+	}
+	result = ft_substr(rest, ft_strlen(result) + ft_
+}
+
+char	*next_limit(char *rest, char *delimiter)
+{
+	char	*result;
+
+	if (!*rest)
+		return (NULL);
+	result = ft_strnstr(rest, delimiter, ft_strlen(delimiter));
+	if (!result)
+	{
+		result = ft_strdup(rest);
+		if (!result)
+			return (NULL);
+		return (result);
+	}
+	result = ft_substr(rest, 0, ft_strlen(rest) - ft_strlen(result));
+	if (!result)
+		return (NULL);
+	return (result);
 }
 
 char	*get_next_delimiter(int fd, char *delimiter)
@@ -50,6 +84,8 @@ char	*get_next_delimiter(int fd, char *delimiter)
 	static char	*rest[OPEN_MAX] = NULL;
 	char		*result;
 
+	if (!delimiter || !*delimiter)
+		return (NULL);
 	if (!rest[fd])
 	{
 		rest[fd] = ft_calloc(1, sizeof(char));
