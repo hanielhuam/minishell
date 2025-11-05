@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:00:53 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/04 20:12:23 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:10:22 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,16 @@ char	*new_rest(char *rest, char *delimiter)
 		return (NULL);
 	}
 	result += ft_strlen(delimiter);
-	result = ft_substr(rest, ft_strlen(result), ft_strlen(rest));
-	if (
+	if (!*result)
+	{
+		free(rest);
+		return (NULL);
+	}
+	result = ft_strdup(result);
+	free(rest);
+	if (!result)
+		return (NULL);
+	return (result);
 }
 
 char	*next_limit(char *rest, char *delimiter)
