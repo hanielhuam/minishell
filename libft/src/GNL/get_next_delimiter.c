@@ -6,12 +6,11 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:00:53 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/05 18:10:22 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/05 19:35:44 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <limits.h>
 
 static char	*ft_strjoin_free(char *s1, char *s2)
 {
@@ -91,7 +90,7 @@ char	*next_limit(char *rest, char *delimiter)
 
 char	*get_next_delimiter(int fd, char *delimiter)
 {
-	static char	*rest[OPEN_MAX] = NULL;
+	static char	*rest[_POSIX_OPEN_MAX];
 	char		*result;
 
 	if (!delimiter || !*delimiter)
@@ -109,3 +108,22 @@ char	*get_next_delimiter(int fd, char *delimiter)
 	rest[fd] = new_rest(rest[fd], delimiter);
 	return (result);
 }
+/*
+#include <stdio.h>
+#include <fcntl.h>
+
+int	main(void)
+{
+	int		fd;
+	char	*line;
+
+	fd = open("test", O_RDONLY);
+	line = get_next_delimiter(fd, "\n");
+	while (line)
+	{
+		printf("%s", line);
+		free(line);
+		line = get_next_delimiter(fd, "\n");
+	}
+	return (0);
+}*/
