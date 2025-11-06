@@ -6,15 +6,30 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 19:12:24 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/02 16:59:58 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:58:31 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	dealwith_heredoc(t_redir *redirect)
+static int	dealwith_heredoc(t_redir *redirect)
 {
-	
+	int	fds[2];
+
+	if (pipe(fds))
+	{
+		show_error("Error when open hedoc pipe\n");
+		return (-1);
+	}
+	if (read_and_write_input(fds[1], redirect->delimiter))
+	{
+		close(fd[0]);
+		clode(fd[1]);
+		return (-1);
+	}
+	close(fds[1]);
+	resirect->fd = fds[0];
+	return (0);
 }
 
 static int	substitute_pipes(t_dlist *redirects, t_pipe **pipe)
