@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/02 16:36:03 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/06 22:28:13 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <stdarg.h>
+# include <stdio.h>
 # include "ft_printf.h"
 # include "ft_tree.h"
 # include "ft_list.h"
@@ -234,5 +235,6 @@ t_redir		*find_last_redirect_out(t_dlist *redirects);
 t_redir		*find_last_redirect_out(t_dlist *redirects);
 t_pipe		*create_t_pipe(int fd_in, int fd_out);
 void		atribute_pipe_redirect(int in_out, t_pipe *pipe, t_redir *redir);
+int			read_and_write_input(int fd_out, char *delimiter);
 
 #endif

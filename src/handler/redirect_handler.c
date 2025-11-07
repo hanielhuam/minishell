@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 19:12:24 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/06 17:58:31 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/06 23:23:11 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,28 @@ static int	dealwith_heredoc(t_redir *redirect)
 	return (0);
 }
 
+static int	dealwith_redirect(t_redir *redirect)
+{
+	int fd;
+	int	flgs;
+
+	flags = 0;
+	if (redirect->type == TK_REDIRECT_OUT)
+		flags = O_WRONLY | O_CREAT | O_TRUNC;
+	else if (redirect->type == TK_REDIRECT_OUT_OUT)
+		flags = O_WRONLY | O_CREAT | O_APPEND;
+	else
+		flgs = O_RDONLY;
+	fd = open(redirect->file, flgs);
+	if (fd < 0)
+	{
+		perror("Error when open file on redirect:");
+		return (-1);
+	}
+	redirect->file = fd;
+	return (0);
+}
+
 static int	substitute_pipes(t_dlist *redirects, t_pipe **pipe)
 {
 	t_redir	*in;
@@ -54,6 +76,19 @@ static int	substitute_pipes(t_dlist *redirects, t_pipe **pipe)
 	return (0);
 }
 
+static void	close_redirects(t_dlist *redirects)
+{
+	t_redir	*redir;
+
+	while (redirects)
+	{
+		redir = (t_redir *)resirect->content;
+		if (redir->fd > 2)
+			close(redir->fd);
+		redirects = redirects->next;
+	}
+}
+
 int	stablish_redirects(t_dlist *redirects, t_pipe **pipe)
 {
 	t_dlist	*init;
@@ -64,9 +99,9 @@ int	stablish_redirects(t_dlist *redirects, t_pipe **pipe)
 	while (redirects)
 	{
 		if (((t_redir *)redirects->content)->type == TK_HEREDOC)
-			error = dealwith_heredoc(redirects);
+			error = dealwith_heredoc((t_redir *)redirects->content);
 		else
-			error = dealwith_redirect(redirects);
+			error = dealwith_redirect((t_redir *)redirects->content);
 		if (error)
 		{
 			close_redirects(init);
