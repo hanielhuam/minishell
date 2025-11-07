@@ -61,7 +61,7 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/processor/command_executer.c \
 	   ${SRC_DIR}/handler/pipe_handler.c ${SRC_DIR}/handler/command_handler.c  \
 	   ${SRC_DIR}/utils/redirect_utils.c ${SRC_DIR}/create/create_t_pipe.c \
-	   ${SRC_DIR}/utils/read_utils.c
+	   ${SRC_DIR}/utils/read_utils.c ${SRC_DIR}/del/close_fds.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

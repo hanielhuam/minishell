@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 22:59:11 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/02 16:35:00 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:51:46 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_redir	*find_last_redirect_in(t_dlist *redirects)
 
 void	atribute_pipe_redirect(int in_out, t_pipe *pipe, t_redir *redir)
 {
-	if ((*pipe)->fd[in_out])
-		close((*pipe)->fd[in_out]);
-	(*pipe)->fd[in_out] = redir->fd;
+	if ((*pipe)->fds[in_out])
+		close((*pipe)->fds[in_out]);
+	(*pipe)->fds[in_out] = redir->fd;
 }

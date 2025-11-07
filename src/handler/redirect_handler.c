@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 19:12:24 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/07 16:30:59 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/07 20:37:48 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,19 +77,6 @@ static int	substitute_pipes(t_dlist *redirects, t_pipe **pipe)
 	if (out)
 		atribute_pipe_redirect(1, *pipe, out);
 	return (0);
-}
-
-void	close_redirects(t_dlist *redirects)
-{
-	t_redir	*redir;
-
-	while (redirects)
-	{
-		redir = (t_redir *)resirect->content;
-		if (redir->fd > 2)
-			close(redir->fd);
-		redirects = redirects->next;
-	}
 }
 
 int	stablish_redirects(t_dlist *redirects, t_pipe **pipe)

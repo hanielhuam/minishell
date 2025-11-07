@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/07 18:01:13 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:49:25 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	prepare_pipe(t_pipe *pipe)
 {
 	if (pipe->fd[0] > 2)
 	{
-		if (dup2(pipe->fd[0], STDIN_FILENO))
+		if (dup2(pipe->fds[0], STDIN_FILENO))
 		{
 			show_error("Error when dup pipe with STDIN\n");
 			return (1);
@@ -36,7 +36,7 @@ static int	prepare_pipe(t_pipe *pipe)
 	}
 	if (pipe->fd[1] > 2)
 	{
-		if (dup2(pipe->fd[1], STDOUT_FILENO))
+		if (dup2(pipe->fds[1], STDOUT_FILENO))
 		{
 			show_error("Error when dup pipe with STDOUT\n");
 			return (1);
@@ -56,7 +56,7 @@ void	execute_command(t_tree *node, t_shell *shell)
 	exec = prepare_command(commmand, &pipe, shell->env );
 	if (!exec && pipe)
 		exec = prepare_pipe(pipe);
-	close_all_fds();
+	close_all_fds(*shell->tree, command->redirects);
 	if (!exec)
 		execve(command->path, command->cmd_arg, list_env_matrix(shell->env));
 }
