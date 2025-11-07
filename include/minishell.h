@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/06 22:28:13 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/07 15:33:02 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,5 +236,6 @@ t_redir		*find_last_redirect_out(t_dlist *redirects);
 t_pipe		*create_t_pipe(int fd_in, int fd_out);
 void		atribute_pipe_redirect(int in_out, t_pipe *pipe, t_redir *redir);
 int			read_and_write_input(int fd_out, char *delimiter);
+void		close_redirects(t_dlist *redirects);
 
 #endif

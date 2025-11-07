@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 19:12:24 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/06 23:23:11 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/07 16:30:59 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,19 @@ static int	dealwith_heredoc(t_redir *redirect)
 static int	dealwith_redirect(t_redir *redirect)
 {
 	int fd;
-	int	flgs;
+	int	flags;
 
 	flags = 0;
-	if (redirect->type == TK_REDIRECT_OUT)
-		flags = O_WRONLY | O_CREAT | O_TRUNC;
-	else if (redirect->type == TK_REDIRECT_OUT_OUT)
-		flags = O_WRONLY | O_CREAT | O_APPEND;
-	else
-		flgs = O_RDONLY;
-	fd = open(redirect->file, flgs);
+	if (redirect->type == TK_REDIRECT_IN)
+		fd = open(redirect->file, O_RDONLY);
+	else 
+	{
+		if (redirect->type == TK_REDIRECT_OUT)
+			flags = O_WRONLY | O_CREAT | O_TRUNC;
+		else
+			flags = O_WRONLY | O_CREAT | O_APPEND;
+		fd = open(redirect->file, flgs, 0644);
+	}
 	if (fd < 0)
 	{
 		perror("Error when open file on redirect:");
@@ -76,7 +79,7 @@ static int	substitute_pipes(t_dlist *redirects, t_pipe **pipe)
 	return (0);
 }
 
-static void	close_redirects(t_dlist *redirects)
+void	close_redirects(t_dlist *redirects)
 {
 	t_redir	*redir;
 
