@@ -60,7 +60,7 @@ void	execute_command(t_tree *node, t_shell *shell)
 	close_all_fds(*shell->tree, command->redirects);
 	if (!exec)
 	{
-		env = list_env_matrix(*1shell->env);
+		env = list_env_matrix(*shell->env);
 		if (env)
 			execve(command->path, command->cmd_arg, env);
 	}

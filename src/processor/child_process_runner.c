@@ -20,7 +20,7 @@ static int	create_t_process(pid_t pid, t_shell *shell)
 	process = safe_malloc(1, sizeof(t_process), "Error when alloc t_process\n");
 	if (!process)
 	{
-		shell->exit_code = 1;
+		shell->exit_code = EXIT_FAILURE;
 		return (1)
 	}
 	process->pid = pid;
@@ -29,7 +29,7 @@ static int	create_t_process(pid_t pid, t_shell *shell)
 	{
 		show_error("Error when alloc new node on process list\n");
 		free(process);
-		shell->exit_code = 1;
+		shell->exit_code = EXIT_FAILURE;
 		return (1);
 	}
 	ft_lstaddback(&shell->process, new);
@@ -40,21 +40,20 @@ int	child_process_runner(t_tree *node, t_shell *shell)
 {
 	pid_t	pid;
 
-
 	pid = fork();
 	if (pid > 0 && create_t_process(pid, shell))
 		return (shell->exit_code);
 	if (pid < 0)
 	{
 		show_error("Error when fork a process\n");
-		shell->exit_code = 1;
+		shell->exit_code = EXIT_FAILURE;
 		return (shell->exit_code);
 	}
 	if (pid == 0)
 	{
 		execute_command(node, shell);
 		destroy_shell(shell);
-		exit(1);
+		exit(EXIT_FAILURE);
 		return (-1)
 	}
 	return (0);
