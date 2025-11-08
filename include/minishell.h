@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/07 20:37:55 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/07 23:45:40 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,5 +239,7 @@ int			read_and_write_input(int fd_out, char *delimiter);
 void		close_all_fds(t_tree *tree, t_dlist *redirects);
 void		close_redirects(t_dlist *redirects);
 void		close_pipes(t_tree *tree);
+char		**list_env_matrix(t_list env);
+void		free_matrix(char **matrix);
 
 #endif
