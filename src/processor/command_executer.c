@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/07 23:44:54 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:59:48 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ void	execute_command(t_tree *node, t_shell *shell)
 	{
 		env = list_env_matrix(*shell->env);
 		if (env)
+		{
 			execve(command->path, command->cmd_arg, env);
+			free_matrix(env);
+		}
 	}
 }

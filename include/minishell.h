@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/08 23:20:43 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 15:28:13 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,5 +242,6 @@ void		close_pipes(t_tree *tree);
 char		**list_env_matrix(t_list env);
 void		free_matrix(char **matrix);
 char		*exist_file(char *command_name, char *path);
+char		**get_env_path(t_list *envlist);
 
 #endif

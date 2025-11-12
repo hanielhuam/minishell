@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 19:43:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/07 23:44:48 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:00:10 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,15 @@ char	**list_env_matrix(t_list *envlist)
 		i++;
 	}
 	return (matrix);
+}
+
+char	**get_env_path(t_list *envlist)
+{
+	while (envlist)
+	{
+		if (envlist->name == "PATH")
+			return (modified_split(list->value, ':'));
+		envlist = envlist->next;
+	}
+	return (NULL);
 }
