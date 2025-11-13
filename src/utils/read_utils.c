@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 16:26:48 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/06 23:23:15 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 23:08:16 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	read_and_write_input(int fd_out, char *delimiter)
 	char	*input;
 
 	buffer = ft_calloc(1, sizeof(char));
-	innput = ft_calloc(1, sizeof(char));
-	while (buffer && !ft_strncnp(buffer, delimiter, ft_strlen(delimiter)))
+	input = ft_calloc(1, sizeof(char));
+	while (buffer && !ft_strncmp(buffer, delimiter, ft_strlen(delimiter)))
 	{
-		input = ft_merge(input, buffer);
+		input = ft_strmerge(input, buffer);
 		buffer = get_next_delimiter(STDIN_FILENO, delimiter);
 	}
 	if (buffer)

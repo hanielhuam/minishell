@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 16:36:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/08 23:27:29 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 22:58:52 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ char	*manipulate_command_path(t_command *command, t_list *env)
 		return (NULL);
 	}
 	free(command->path);
-	free(command->cmd_arg[0]);
+	free(command->cmd_args[0]);
 	command->path = command_path;
-	command->cmd_arg[0] = command_arg;
+	command->cmd_args[0] = command_arg;
 	return (command_path);
 }

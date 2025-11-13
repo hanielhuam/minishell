@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 19:21:45 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 19:33:34 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 23:10:58 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	close_pipes(t_tree *tree)
 			close(node->pipe->fds[1]);
 	}
 	close_pipes(tree->left);
-	clode_pipes(tree->right);
+	close_pipes(tree->right);
 }
 
 void	close_redirects(t_dlist *redirects)

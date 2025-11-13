@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 19:44:53 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/26 20:51:27 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 22:41:58 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	wait_process(t_shell *shell)
 	init = shell->process;
 	while (init)
 	{
-		waitpid(init->pid, &shell->exit_code, 0);
+		waitpid(((t_process *)init->content)->pid, &shell->exit_code, 0);
 		init = init->next;
 	}
 	ft_lstclear(&shell->process, free);

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 16:09:04 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/07 19:50:15 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 23:03:20 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 t_pipe	*create_t_pipe(int fd_in, int fd_out)
 {
-	*pipe = safe_malloc(1, sizeof(t_pipe), "Error when alloc t_pipe\n");
+	t_pipe	*pipe;
+
+	pipe = safe_malloc(1, sizeof(t_pipe), "Error when alloc t_pipe\n");
 	if (!pipe)
 		return (NULL);
 	pipe->fds[0] = fd_in;

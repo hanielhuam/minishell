@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 20:55:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 21:29:33 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 22:36:44 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	create_t_process(pid_t pid, t_shell *shell)
 		shell->exit_code = EXIT_FAILURE;
 		return (1);
 	}
-	ft_lstaddback(&shell->process, new);
+	ft_lstadd_back(&shell->process, new);
 	return (0);
 }
 
@@ -54,7 +54,7 @@ int	child_process_runner(t_tree *node, t_shell *shell)
 		execute_command(node, shell);
 		destroy_shell(shell);
 		exit(EXIT_FAILURE);
-		return (-1)
+		return (-1);
 	}
 	return (0);
 }

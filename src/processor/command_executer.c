@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 17:59:48 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 22:52:52 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 
 static int	prepare_command(t_command *command, t_pipe **pipe, t_list *env)
 {
-	char	*command_path;
-	char	*command_arg;
-
 	if (command->path && !manipulate_command_path(command, env))
 		return (-1);
-	if (command->redirects && !stablish_redirects(command->redirects, pipe))
+	if (command->redirects && !stablish_redirects(command->redirects, *pipe))
 		return (-1);
 	return (0);
 }
 
 static int	prepare_pipe(t_pipe *pipe)
 {
-	if (pipe->fd[0] > 2)
+	if (pipe->fds[0] > 2)
 	{
 		if (dup2(pipe->fds[0], STDIN_FILENO))
 		{
@@ -34,7 +31,7 @@ static int	prepare_pipe(t_pipe *pipe)
 			return (1);
 		}
 	}
-	if (pipe->fd[1] > 2)
+	if (pipe->fds[1] > 2)
 	{
 		if (dup2(pipe->fds[1], STDOUT_FILENO))
 		{
@@ -50,11 +47,11 @@ void	execute_command(t_tree *node, t_shell *shell)
 	t_command	*command;
 	t_pipe		*pipe;
 	int			exec;
-	char		**env
+	char		**env;
 
 	command = ((t_data_tree *)node->content)->command;
 	pipe = ((t_data_tree *)node->content)->pipe;
-	exec = prepare_command(commmand, &pipe, shell->env );
+	exec = prepare_command(command, &pipe, *shell->env );
 	if (!exec && pipe)
 		exec = prepare_pipe(pipe);
 	close_all_fds(*shell->tree, command->redirects);
@@ -63,7 +60,7 @@ void	execute_command(t_tree *node, t_shell *shell)
 		env = list_env_matrix(*shell->env);
 		if (env)
 		{
-			execve(command->path, command->cmd_arg, env);
+			execve(command->path, command->cmd_args, env);
 			free_matrix(env);
 		}
 	}

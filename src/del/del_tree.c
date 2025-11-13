@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 21:11:36 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 19:17:41 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 22:35:03 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	del_t_tree(void *content)
 	if (data->command)
 		del_t_command(data->command);
 	if (data->pipe)
-		free(pipe);
+		free(data->pipe);
 	free(data);
 }
 

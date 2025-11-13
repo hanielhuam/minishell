@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 20:51:26 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 23:09:51 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 # include <readline/history.h>
 # include <stdarg.h>
 # include <stdio.h>
+# include <sys/wait.h>
 # include "ft_printf.h"
 # include "ft_tree.h"
 # include "ft_list.h"
 # include "ft_dlist.h"
+# include "get_next_line.h"
 
 # define REDIRECT_IN "<"
 # define HEREDOC "<<"
@@ -239,7 +241,7 @@ int			read_and_write_input(int fd_out, char *delimiter);
 void		close_all_fds(t_tree *tree, t_dlist *redirects);
 void		close_redirects(t_dlist *redirects);
 void		close_pipes(t_tree *tree);
-char		**list_env_matrix(t_list env);
+char		**list_env_matrix(t_list *env);
 void		free_matrix(char **matrix);
 char		*exist_file(char *command_name, char *path);
 char		**get_env_path(t_list *envlist);
