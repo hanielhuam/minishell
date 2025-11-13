@@ -78,7 +78,7 @@ char	**get_env_path(t_list *envlist)
 	while (envlist)
 	{
 		env = (t_env *)envlist->content;
-		if (ft_strncmp(env->name, "PATH", ft_strlen(env->name)))
+		if (!ft_strncmp(env->name, "PATH", ft_strlen(env->name)))
 			return (modified_split(env->value, ':'));
 		envlist = envlist->next;
 	}

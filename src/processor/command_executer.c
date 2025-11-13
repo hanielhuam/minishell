@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 22:52:52 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/13 13:32:06 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	prepare_command(t_command *command, t_pipe **pipe, t_list *env)
 {
 	if (command->path && !manipulate_command_path(command, env))
 		return (-1);
-	if (command->redirects && !stablish_redirects(command->redirects, *pipe))
+	if (command->redirects && !stablish_redirects(command->redirects, pipe))
 		return (-1);
 	return (0);
 }

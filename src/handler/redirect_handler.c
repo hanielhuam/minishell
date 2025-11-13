@@ -6,11 +6,12 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 19:12:24 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 19:25:02 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/13 13:34:25 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <fcntl.h>
 
 static int	dealwith_heredoc(t_redir *redirect)
 {
@@ -21,14 +22,14 @@ static int	dealwith_heredoc(t_redir *redirect)
 		show_error("Error when open hedoc pipe\n");
 		return (-1);
 	}
-	if (read_and_write_input(fds[1], redirect->delimiter))
+	if (read_and_write_input(fds[1], redirect->eof))
 	{
-		close(fd[0]);
-		clode(fd[1]);
+		close(fds[0]);
+		close(fds[1]);
 		return (-1);
 	}
 	close(fds[1]);
-	resirect->fd = fds[0];
+	redirect->fd = fds[0];
 	return (0);
 }
 
@@ -46,14 +47,14 @@ static int	dealwith_redirect(t_redir *redirect)
 			flags = O_WRONLY | O_CREAT | O_TRUNC;
 		else
 			flags = O_WRONLY | O_CREAT | O_APPEND;
-		fd = open(redirect->file, flgs, 0644);
+		fd = open(redirect->file, flags, 0644);
 	}
 	if (fd < 0)
 	{
 		perror("Error when open file on redirect:");
 		return (-1);
 	}
-	redirect->file = fd;
+	redirect->fd = fd;
 	return (0);
 }
 
@@ -99,5 +100,5 @@ int	stablish_redirects(t_dlist *redirects, t_pipe **pipe)
 		}
 		redirects = redirects->next;
 	}
-	return (substitute_pipes(init, &pipe));
+	return (substitute_pipes(init, pipe));
 }
