@@ -24,7 +24,7 @@ int	execution_command_tree(t_tree *node, t_shell *shell, int dir)
 		return (pipe_processor(node, shell, dir));
 	else if (compare_treenode_type(node, 5, TK_COMMAND, TK_REDIRECT_IN, \
 			TK_REDIRECT_OUT, TK_HEREDOC, TK_REDIRECT_OUT_OUT))
-		return (command_processor(node, shell, dir));
+		return (command_processor(node, shell));
 	return (0);
 }
 

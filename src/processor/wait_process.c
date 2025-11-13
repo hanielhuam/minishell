@@ -26,7 +26,7 @@ int	wait_process(t_shell *shell)
 	t_list	*init;
 
 	if (!shell->process)
-		return (shell->exit_code);
+		return (0);
 	init = shell->process;
 	while (init)
 	{

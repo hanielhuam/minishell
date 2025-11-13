@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 20:25:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/08 23:27:43 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 19:37:18 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*join_path(char	*path, char *command_name)
 	result = ft_strjoin(temp, command_name);
 	free(temp);
 	if (!result)
-		show_erro("Error when join path with command_name\n");
+		show_error("Error when join path with command_name\n");
 	return (result);
 }
 

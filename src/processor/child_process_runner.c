@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 20:55:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/07 16:07:02 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 21:29:33 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	create_t_process(pid_t pid, t_shell *shell)
 	if (!process)
 	{
 		shell->exit_code = EXIT_FAILURE;
-		return (1)
+		return (1);
 	}
 	process->pid = pid;
 	new = ft_lstnew(process);

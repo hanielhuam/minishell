@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 15:28:13 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 20:51:26 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,11 +221,11 @@ int			compare_treenode_type(t_tree *node, int count, ...);
 int			and_or_processor(t_tree *node, t_shell *shell, int dir);
 int			subshell_processor(t_tree *node, t_shell *shell, int dir);
 int			pipe_processor(t_tree *node, t_shell *shell, int dir);
-int			command_processor(t_tree *node, t_shell *shell, int dir);
+int			command_processor(t_tree *node, t_shell *shell);
 int			is_builtin(t_command *command);
 int			wait_check(t_tree *node);
 int			wait_process(t_shell *shell);
-void		execute_command(node, shell);
+void		execute_command(t_tree *node, t_shell *shell);
 void		close_all_pipes(t_tree *node);
 void		close_pipe_node(t_tree *node);
 char		*manipulate_command_path(t_command *command, t_list *env);
@@ -243,5 +243,8 @@ char		**list_env_matrix(t_list env);
 void		free_matrix(char **matrix);
 char		*exist_file(char *command_name, char *path);
 char		**get_env_path(t_list *envlist);
+int			check_main_runner(t_tree *node);
+int			child_process_runner(t_tree *node, t_shell *shell);
+int			main_process_runner(t_tree *node, t_shell *shell);
 
 #endif

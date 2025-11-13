@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 19:21:45 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/07 19:45:48 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/12 19:33:34 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	close_redirects(t_dlist *redirects)
 		return ;
 	redir = (t_redir *)redirects->content;
 	if (redir->fd > 2)
-		clode(redir->fd);
+		close(redir->fd);
 	close_redirects(redirects->next);
 }
 
