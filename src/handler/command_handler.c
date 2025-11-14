@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 16:36:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 22:58:52 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:25:34 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ char	*check_command_path(char *command_path, t_list *env)
 	path = get_env_path(env);
 	if (!path)
 		return (NULL);
+	result = NULL;
 	i = 0;
 	while (path[i])
 	{
 		result = exist_file(command_path, path[i++]);
 		if (result)
-			return (result);
+			break ;
 	}
-	return (NULL);
+	free_matrix(path);
+	return (result);
 }
 
 char	*manipulate_command_path(t_command *command, t_list *env)

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 19:43:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 23:18:52 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:39:13 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**list_env_matrix(t_list *envlist)
 	int		i;
 
 	size = ft_lstsize(envlist);
-	matrix = safe_malloc(size, sizeof(char *), "Error when alloc matrix\n");
+	matrix = safe_malloc(size + 1, sizeof(char *), "Error when alloc matrix\n");
 	if (!matrix)
 		return (NULL);
 	i = 0;
