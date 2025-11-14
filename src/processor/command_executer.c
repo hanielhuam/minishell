@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/13 21:31:37 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:21:56 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	prepare_command(t_command *command, t_pipe **pipe, t_list *env)
 {
 	if (command->path && !manipulate_command_path(command, env))
 		return (-1);
-	if (command->redirects && !stablish_redirects(command->redirects, pipe))
+	if (command->redirects && stablish_redirects(command->redirects, pipe))
 		return (-1);
 	return (0);
 }
@@ -25,7 +25,7 @@ static int	prepare_pipe(t_pipe *pipe)
 {
 	if (pipe->fds[0] > 2)
 	{
-		if (dup2(pipe->fds[0], STDIN_FILENO))
+		if (dup2(pipe->fds[0], STDIN_FILENO) < 0)
 		{
 			show_error("Error when dup pipe with STDIN\n");
 			return (1);
@@ -33,7 +33,7 @@ static int	prepare_pipe(t_pipe *pipe)
 	}
 	if (pipe->fds[1] > 2)
 	{
-		if (dup2(pipe->fds[1], STDOUT_FILENO))
+		if (dup2(pipe->fds[1], STDOUT_FILENO) < 0)
 		{
 			show_error("Error when dup pipe with STDOUT\n");
 			return (1);

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 20:25:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 19:37:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/13 22:45:51 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ char	*exist_file(char *command_name, char *path)
 	if (!result)
 		return (NULL);
 	if (access(result, F_OK) == -1)
+	{
+		free(result);
 		return (NULL);
+	}
 	return (result);
 }
