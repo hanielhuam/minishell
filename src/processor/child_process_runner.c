@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 20:55:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 22:36:44 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:56:48 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,11 @@ int	child_process_runner(t_tree *node, t_shell *shell)
 
 	pid = fork();
 	if (pid > 0 && create_t_process(pid, shell))
-		return (shell->exit_code);
+		return (-1);
 	if (pid < 0)
 	{
 		show_error("Error when fork a process\n");
-		shell->exit_code = EXIT_FAILURE;
-		return (shell->exit_code);
+		return (-1);
 	}
 	if (pid == 0)
 	{

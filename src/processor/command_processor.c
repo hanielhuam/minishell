@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 21:07:05 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 20:50:36 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:52:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 int	command_processor(t_tree *node, t_shell *shell)
 {
 	if (check_main_runner(node))
-	{
-		if (main_process_runner(node, shell))
-			return (1);
-	}
+		return (main_process_runner(node, shell));
 	else
 	{
 		if (child_process_runner(node, shell))
