@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/13 23:21:56 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:23:46 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ static int	prepare_pipe(t_pipe *pipe)
 void	execute_command(t_tree *node, t_shell *shell)
 {
 	t_command	*command;
-	t_pipe		*pipe;
+	t_pipe		**pipe;
 	int			exec;
 	char		**env;
 
 	command = ((t_data_tree *)node->content)->command;
-	pipe = ((t_data_tree *)node->content)->pipe;
-	exec = prepare_command(command, &pipe, *shell->env );
-	if (!exec && pipe)
-		exec = prepare_pipe(pipe);
+	pipe = &((t_data_tree *)node->content)->pipe;
+	exec = prepare_command(command, pipe, *shell->env );
+	if (!exec && *pipe)
+		exec = prepare_pipe(*pipe);
 	close_all_fds(*shell->tree, command->redirects);
-	if (!exec)
+	if (!exec && command->path)
 	{
 		env = list_env_matrix(*shell->env);
 		if (env)
