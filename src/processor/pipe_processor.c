@@ -6,22 +6,49 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 22:54:53 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/15 21:19:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/15 23:41:07 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	config_pipe(t_pipe *pipe, t_tree *node, int dir)
+static int	confg_prev(t_tree *prev, t_data_tree *le, t_data_tree *ri, int dir)
 {
-
+	t_data_tree	*parent;
+	
+	if (!prev)
+		return (0);
+	parent = (t_data_tree *)prev->content;
+	if (parent->type != TK_PIPE)
+		return (0);
+	if (dir)
+		le->pipe->fds[0] = parent->pipe->fds[0];
+	else
+		ri->pipe->fds[1] = parent->pipe->fds[1];
+	return (0);
 }
 
-static void	finalize_pipe(t_pipe *pipe)
+static int	config_pipe(t_pipe *pipe, t_tree *node, int dir)
 {
-	close(pipe->fds[0]);
-	close(pipe->fds[1]);
-	free(pipe);
+	t_data_tree	*left;
+	t_data_tree	*right;
+
+	left = (t_data_tree *)node->left->content;
+	right = (t_data_tree *)node->right->content;
+	if (left->type != TK_PIPE)
+	{
+		left->pipe = create_t_pipe(0, pipe->fds[1]);
+		if (!left->pipe)
+			return (-1);
+	}
+	if (right->type != TK_PIPE)
+	{
+		right->pipe = create_t_pipe(pipe->fds[0], 0);
+		if (!right->pipe)
+			return (-1);
+	}
+	config_prev(node->prev, left, right, dir);
+	return (0);
 }
 
 static t_pipe	*generate_pipe(void)
@@ -37,7 +64,9 @@ static t_pipe	*generate_pipe(void)
 	pipe = create_t_pipe(fds[0], fds[1]);
 	if (!pipe)
 	{
-		finalize_pipe(pipe, fds);
+		close(pipe->fds[0]);
+		close(pipe->fds[1]);
+		free(pipe);
 		return (NULL);
 	}
 	return (pipe);
@@ -68,7 +97,9 @@ int	pipe_processor(t_tree *node, t_shell *shell, int dir)
 		return (-1);
 	if (config_pipes(node, pipe, dir))
 	{
-		finalize_pipe(pipe);
+		close(pipe->fds[0]);
+		close(pipe->fds[1]);
+		free(pipe);
 		return (-1);
 	}
 	return (pipe_execution(node, shell));
