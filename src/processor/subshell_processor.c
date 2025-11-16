@@ -12,10 +12,8 @@
 
 #include "minishell.h"
 
-int	subshell_processor(t_tree *node, t_shell *shell, int dir)
+int	subshell_processor(t_tree *node)
 {
 	(void)node;
-	(void)shell;
-	(void)dir;
 	return (0);
 }

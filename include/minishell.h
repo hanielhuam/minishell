@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/13 13:13:12 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/16 16:38:10 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,8 +220,8 @@ char		**get_types_char(void);
 void		show_t_redir(void *content);
 int			execution_command_tree(t_tree *node, t_shell *shell, int dir);
 int			compare_treenode_type(t_tree *node, int count, ...);
-int			and_or_processor(t_tree *node, t_shell *shell, int dir);
-int			subshell_processor(t_tree *node, t_shell *shell, int dir);
+int			and_or_processor(t_tree *node, t_shell *shell);
+int			subshell_processor(t_tree *node);
 int			pipe_processor(t_tree *node, t_shell *shell, int dir);
 int			command_processor(t_tree *node, t_shell *shell);
 int			is_builtin(t_command *command);
