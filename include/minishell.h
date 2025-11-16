@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/16 16:38:10 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/16 20:24:35 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,7 @@ void		show_t_redir(void *content);
 int			execution_command_tree(t_tree *node, t_shell *shell, int dir);
 int			compare_treenode_type(t_tree *node, int count, ...);
 int			and_or_processor(t_tree *node, t_shell *shell);
-int			subshell_processor(t_tree *node);
+int			subshell_processor(t_tree *node, t_shell *shell);
 int			pipe_processor(t_tree *node, t_shell *shell, int dir);
 int			command_processor(t_tree *node, t_shell *shell);
 int			is_builtin(t_command *command);
@@ -248,5 +248,6 @@ char		**get_env_path(t_list *envlist);
 int			check_main_runner(t_tree *node);
 int			child_process_runner(t_tree *node, t_shell *shell);
 int			main_process_runner(t_tree *node, t_shell *shell);
+int			create_t_process(pid_t pid, t_shell *shell);
 
 #endif

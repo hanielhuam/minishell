@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 19:44:53 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/12 22:41:58 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/16 20:05:45 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	wait_check(t_tree *node)
 	if (!node->prev)
 		return (1);
 	if (compare_treenode_type(node, 2, TK_AND, TK_OR))
+		return (1);
+	if (compare_treenode_type(node, 1, TK_SUBSHELL))
 		return (1);
 	return (0);
 }

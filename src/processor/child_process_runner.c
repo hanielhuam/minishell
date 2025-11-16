@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static int	create_t_process(pid_t pid, t_shell *shell)
+int	create_t_process(pid_t pid, t_shell *shell)
 {
 	t_process	*process;
 	t_list		*new;
