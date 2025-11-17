@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/15 16:23:46 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:29:57 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ static int	prepare_pipe(t_pipe *pipe)
 	return (0);
 }
 
+static int	run_proc_builtin(t_command *command, t_shell *shell)
+{
+	int	result;
+
+	result = builtin_processor(command, shell->env, STDOUT_FILENO);
+	destroy_shell(shell);
+	exit(result);
+	return (-1);
+}
+
 void	execute_command(t_tree *node, t_shell *shell)
 {
 	t_command	*command;
@@ -57,6 +67,8 @@ void	execute_command(t_tree *node, t_shell *shell)
 	close_all_fds(*shell->tree, command->redirects);
 	if (!exec && command->path)
 	{
+		if (is_builtin(command) && run_proc_builtin(command, shell))
+			return ;
 		env = list_env_matrix(*shell->env);
 		if (env)
 		{
