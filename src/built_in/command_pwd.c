@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_builtin.c                                       :+:      :+:    :+:   */
+/*   command_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/26 18:27:45 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/17 19:43:08 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/11/17 19:38:48 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/11/17 21:11:12 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**get_builtins(void)
+int	command_pwd(t_command *command, t_list **env, int fd)
 {
-	static char	*builtins[8] = {
-		"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL
-	};
+	char	dir[PATH_MAX];
 
-	return (builtins);
-}
-
-int	is_builtin(t_command *command)
-{
-	int		i;
-	char	**builtins;
-
-	if (!command->path)
-		return (0);
-	builtins = get_builtins();
-	i = 0;
-	while (builtins[i])
+	(void)command;
+	(void)env;
+	dir = getcwd(dir, PATH_MAX);
+	if (!dir)
 	{
-		if (!ft_strncmp(command->path, builtins[i++], ft_strlen(command->path)))
-			return (1);
+		perror("minishell: ");
+		return (1);
 	}
+	ft_putstr_fd(fd, dir);
 	return (0);
 }

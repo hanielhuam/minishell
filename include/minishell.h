@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/16 20:24:35 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/17 19:51:00 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,13 @@ void		del_env_list(t_list	**env_list);
 void		del_t_token(void *content);
 void		del_token_list(t_dlist **tokens);
 void		del_split(char **split);
-void		command_env(t_list **env_list);
+int			command_env(t_list **env_list);
+int			command_pwd(t_command *command, t_list **env, int fd);
+int			command_echo(t_command *command, t_list **env, int fd);
+int			command_export(t_command *command, t_list **env, int fd);
+int			command_unset(t_command *command, t_list **env, int fd);
+int			command_exit(t_command *command, t_list **env, int fd);
+int			command_cd(t_command *command, t_list **env, int fd);
 int			parser(t_shell *shell, char *input);
 void		destroy_shell(t_shell *shell);
 char		*pre_process_input(char	*input);
@@ -223,8 +229,10 @@ int			compare_treenode_type(t_tree *node, int count, ...);
 int			and_or_processor(t_tree *node, t_shell *shell);
 int			subshell_processor(t_tree *node, t_shell *shell);
 int			pipe_processor(t_tree *node, t_shell *shell, int dir);
+int			builtin_processor(t_command *command, t_list **env, int fd);
 int			command_processor(t_tree *node, t_shell *shell);
 int			is_builtin(t_command *command);
+char		**get_builtins(void);
 int			wait_check(t_tree *node);
 int			wait_process(t_shell *shell);
 void		execute_command(t_tree *node, t_shell *shell);
