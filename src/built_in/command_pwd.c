@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	command_pwd(t_command *command, t_list **env, int fd)
+int	command_pwd(t_command *command, t_dlist **env, int fd)
 {
 	char	dir[PATH_MAX];
 

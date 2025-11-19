@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/17 19:51:00 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/18 22:38:12 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,22 +113,22 @@ typedef struct s_shell
 }			t_shell;
 
 int			get_input(char	**imput);
-t_list		**get_env_list(char **env);
+t_dlist		**get_env_list(char **env);
 void		show_error(char *str);
 void		syntax_error(char *err_msg, char *etc);
 void		*safe_malloc(size_t nmemb, size_t size, char *err_mensage);
 void		del_t_env(void *content);
-void		del_env_list(t_list	**env_list);
+void		del_env_list(t_dlist **env_list);
 void		del_t_token(void *content);
 void		del_token_list(t_dlist **tokens);
 void		del_split(char **split);
-int			command_env(t_list **env_list);
-int			command_pwd(t_command *command, t_list **env, int fd);
-int			command_echo(t_command *command, t_list **env, int fd);
-int			command_export(t_command *command, t_list **env, int fd);
-int			command_unset(t_command *command, t_list **env, int fd);
-int			command_exit(t_command *command, t_list **env, int fd);
-int			command_cd(t_command *command, t_list **env, int fd);
+int			command_env(t_dlist **env_list);
+int			command_pwd(t_command *command, t_dlist **env, int fd);
+int			command_echo(t_command *command, t_dlist **env, int fd);
+int			command_export(t_command *command, t_dlist **env, int fd);
+int			command_unset(t_command *command, t_dlist **env, int fd);
+int			command_exit(t_command *command, t_dlist **env, int fd);
+int			command_cd(t_command *command, t_dlist **env, int fd);
 int			parser(t_shell *shell, char *input);
 void		destroy_shell(t_shell *shell);
 char		*pre_process_input(char	*input);
@@ -229,7 +229,7 @@ int			compare_treenode_type(t_tree *node, int count, ...);
 int			and_or_processor(t_tree *node, t_shell *shell);
 int			subshell_processor(t_tree *node, t_shell *shell);
 int			pipe_processor(t_tree *node, t_shell *shell, int dir);
-int			builtin_processor(t_command *command, t_list **env, int fd);
+int			builtin_processor(t_command *command, t_dlist **env, int fd);
 int			command_processor(t_tree *node, t_shell *shell);
 int			is_builtin(t_command *command);
 char		**get_builtins(void);
@@ -238,8 +238,8 @@ int			wait_process(t_shell *shell);
 void		execute_command(t_tree *node, t_shell *shell);
 void		close_all_pipes(t_tree *node);
 void		close_pipe_node(t_tree *node);
-char		*manipulate_command_path(t_command *command, t_list *env);
-char		*check_command_path(char *command_path, t_list *env);
+char		*manipulate_command_path(t_command *command, t_dlist *env);
+char		*check_command_path(char *command_path, t_dlist *env);
 int			stablish_redirects(t_dlist *redirects, t_pipe **pipe);
 t_redir		*find_last_redirect_out(t_dlist *redirects);
 t_redir		*find_last_redirect_in(t_dlist *redirects);
@@ -249,13 +249,15 @@ int			read_and_write_input(int fd_out, char *delimiter);
 void		close_all_fds(t_tree *tree, t_dlist *redirects);
 void		close_redirects(t_dlist *redirects);
 void		close_pipes(t_tree *tree);
-char		**list_env_matrix(t_list *env);
+char		**list_env_matrix(t_dlist *env);
 void		free_matrix(char **matrix);
 char		*exist_file(char *command_name, char *path);
-char		**get_env_path(t_list *envlist);
+char		**get_env_path(t_dlist *envlist);
 int			check_main_runner(t_tree *node);
 int			child_process_runner(t_tree *node, t_shell *shell);
 int			main_process_runner(t_tree *node, t_shell *shell);
 int			create_t_process(pid_t pid, t_shell *shell);
+t_env		*str_to_t_env(char *str_env);
+t_dlist		*find_env(t_dlist *env_list, char *env_name);
 
 #endif

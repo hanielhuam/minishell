@@ -12,11 +12,11 @@
 
 #include "minishell.h"
 
-int	builtin_processor(t_command *command, t_list **env, int fd)
+int	builtin_processor(t_command *command, t_dlist **env, int fd)
 {
 	int			i;
 	char		**builtins;
-	static int	(*functions[7])(t_command *, t_list *, int) = {
+	static int	(*functions[7])(t_command *, t_dlist **, int) = {
 		command_echo, command_cd, command_pwd, command_export,
 		command_unset, command_env, command_exit
 	};
@@ -26,7 +26,7 @@ int	builtin_processor(t_command *command, t_list **env, int fd)
 	while (builtins[i])
 	{
 		if (!ft_strncmp(command->path, builtins[i], ft_strlen(command->path)))
-			return (functions[i](command, t_list **env, fd);
+			return (functions[i](command, env, fd);
 		i++;
 	}
 	return (-1);

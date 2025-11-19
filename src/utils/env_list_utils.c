@@ -47,13 +47,13 @@ void	free_matrix(char **matrix)
 	matrix = NULL;
 }
 
-char	**list_env_matrix(t_list *envlist)
+char	**list_env_matrix(t_dlist *envlist)
 {
 	char	**matrix;
 	int		size;
 	int		i;
 
-	size = ft_lstsize(envlist);
+	size = ft_dlstsize(envlist);
 	matrix = safe_malloc(size + 1, sizeof(char *), "Error when alloc matrix\n");
 	if (!matrix)
 		return (NULL);
@@ -71,7 +71,7 @@ char	**list_env_matrix(t_list *envlist)
 	return (matrix);
 }
 
-char	**get_env_path(t_list *envlist)
+char	**get_env_path(t_dlist *envlist)
 {
 	t_env	*env;
 

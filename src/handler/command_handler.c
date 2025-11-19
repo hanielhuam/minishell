@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-char	*check_command_path(char *command_path, t_list *env)
+char	*check_command_path(char *command_path, t_dlist *env)
 {
 	char	*result;
 	char	**path;
@@ -33,7 +33,7 @@ char	*check_command_path(char *command_path, t_list *env)
 	return (result);
 }
 
-char	*manipulate_command_path(t_command *command, t_list *env)
+char	*manipulate_command_path(t_command *command, t_dlist *env)
 {
 	char	*command_path;
 	char	*command_arg;

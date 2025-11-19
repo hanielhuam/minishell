@@ -22,8 +22,8 @@ void	del_t_env(void *env)
 	free(env);
 }
 
-void	del_env_list(t_list **env_list)
+void	del_env_list(t_dlist **env_list)
 {
-	ft_lstclear(env_list, del_t_env);
+	ft_dlstclear(env_list, del_t_env);
 	free(env_list);
 }

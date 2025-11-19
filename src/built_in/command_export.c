@@ -6,60 +6,59 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 21:11:29 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/17 23:21:30 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/18 23:18:23 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	contain_env(t_env *env, t_list *ordered_list)
+static char	*lower_str(char **matrix, int i)
 {
-	while (ordered_list)
+	char	*result;
+
+	j = i + 1;
+	result = matrix[i];
+	ehile (matrix[j])
 	{
-		if (!ft_strncmp(env->name, ((t_env *)ordered_list->content)->name))
-			return (1);
-		ordered_list = ordered_list->next;
+		if (ft_strcmp(result, matrix[j], ft_strlen(result)) > 0)
+			result = matrix[j];
+		j++;
 	}
-	return (0);
+	return (result);
 }
 
-static t_list	*find_next_ordered(t_list *env, t_list *ordered_list)
+static int	show_env_ordered(t_dlist *env, int fd)
 {
-	t_list	*min;
-
-	min = env;
-	env = env->next;
-	while (env)
-	{
-		if (ft_strncmp(min
-		env = env->net;
-	}
-	min = ft_lstnew(mint);
-	if (!min)
-		show_error("Error when alloc new node on ordered env list at export\n");
-	return (min);
-}
-
-static int	show_env_ordered(t_list *env)
-{
-	t_list	*temp;
-	t_list	*ordered_list;
+	char	**matrix;
 	int		i;
 
-	ordered_list = NULL;
+	matrix = list_env_matrix(env);
+	if (!matrix)
+		return (1);
 	i = 0;
-	while (i < ft_lstsize(env))
+	while (matrix[i])
 	{
-		temp = find_next_ordered(env, ordered_list);
-		if (!temp)
-			return (1);
-		ft_lstadd_back(ordered_list, temp);
+		matrix[i] = lower_str(matrix, i); 
+		i++;
 	}
-	return (0);
+	i = 0;
+	while (matrix[i])
+	{
+		ft_putstr_fd(matrix[i], fd);
+		if (matrix[i++])
+			ft_putstr_fd("\n", fd);
+	}
+	free_matrix(matrix);
 }
 
-int	command_export(t_command *command, t_list **env, int fd)
+int	command_export(t_command *command, t_dlist **env, int fd)
 {
+	t_dlist	*found;
+	t_env	*new;
+
 	if (!command->cmd_args[1])
 		return (show_env_ordered(*env));
+	new = str_to_t_env(command->cmd_args[1]);
+	if (!new)
+		return ()
 }

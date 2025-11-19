@@ -20,7 +20,7 @@ static void	show_env(void *content)
 	ft_printf("%s=%s\n", env->name, env->value);
 }
 
-void	command_env(t_list	**env_list)
+void	command_env(t_dlist	**env_list)
 {
-	ft_lstiter(*env_list, show_env);
+	ft_dlstiter(*env_list, show_env);
 }

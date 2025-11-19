@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:57:03 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/31 21:36:41 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/18 21:56:17 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static t_env	*build_t_env(char *str_env, int count)
 	return (env);
 }
 
-static t_env	*str_to_t_env(char *str_env)
+t_env	*str_to_t_env(char *str_env)
 {
 	int		count;
 	int		lenght;
@@ -58,15 +58,15 @@ static t_env	*str_to_t_env(char *str_env)
 	return (env);
 }
 
-static t_list	*str_to_t_list(char *str_env)
+static t_dlist	*str_to_t_list(char *str_env)
 {
-	t_list	*node;
+	t_dlist	*node;
 	t_env	*env;
 
 	env = str_to_t_env(str_env);
 	if (!env)
 		return (NULL);
-	node = ft_lstnew(env);
+	node = ft_dlstnew(env);
 	if (!node)
 	{
 		del_t_env(env);
@@ -78,8 +78,8 @@ static t_list	*str_to_t_list(char *str_env)
 
 t_list	**get_env_list(char **env)
 {
-	t_list	*temp;
-	t_list	**list;
+	t_dlist	*temp;
+	t_dlist	**list;
 
 	if (!env || !*env)
 	{
@@ -94,11 +94,11 @@ t_list	**get_env_list(char **env)
 		temp = str_to_t_list(*env++);
 		if (!temp)
 		{
-			ft_lstclear(list, del_t_env);
+			ft_dlstclear(list, del_t_env);
 			free(list);
 			return (NULL);
 		}
-		ft_lstadd_back(list, temp);
+		ft_dlstadd_back(list, temp);
 	}
 	return (list);
 }

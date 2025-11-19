@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static int	change_pwd(t_list **env)
+static int	change_pwd(t_dlist **env)
 {
 	char	*dir;
 
@@ -25,7 +25,7 @@ static int	change_pwd(t_list **env)
 
 }
 
-int	command_cd(t_command *command, t_list **env, int fd)
+int	command_cd(t_command *command, t_dlist **env, int fd)
 {
 	(void)fd;
 	if (chdir(command->cmd_args[1]))
