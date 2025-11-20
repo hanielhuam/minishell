@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:57:03 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/18 21:56:17 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/19 19:08:38 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,8 @@ t_env	*str_to_t_env(char *str_env)
 	while (str_env[count] && str_env[count] != '=')
 		count++;
 	lenght = ft_strlen(str_env);
-	if (count == lenght || count - 1 == lenght)
-	{
-		show_error("Enviroment variable with text error\n");
+	if (count == lenght)
 		return (NULL);
-	}
 	env = build_t_env(str_env, count);
 	if (!env)
 		return (NULL);
