@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 19:23:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/20 16:06:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/21 15:47:51 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	change_pwd(t_dlist **env_list)
 	if (!env)
 		return (1);
 	update_env(env, env_list);
+	free(env);
 	return (0);
 }
 

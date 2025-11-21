@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 21:38:56 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/20 23:19:33 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/21 15:22:24 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	command_unset(t_command *command, t_dlist **env, int fd)
 	else
 	{
 		found->before->next = found->next;
-		found->next->before = found->before;
+		if (found->next)
+			found->next->before = found->before;
 		ft_dlstdelone(found, del_t_env);
 	}
-	show_env(env);
 	return (0);
 }

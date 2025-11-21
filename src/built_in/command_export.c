@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 21:11:29 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/20 19:03:08 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/21 15:20:08 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,5 @@ int	command_export(t_command *command, t_dlist **env, int fd)
 	if (!command->cmd_args[1])
 		return (show_env_ordered(*env, fd));
 	update_env(command->cmd_args[1], env);
-	show_env(env);
 	return (0);
 }
