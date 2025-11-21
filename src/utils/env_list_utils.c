@@ -6,13 +6,13 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 19:43:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/13 21:39:13 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/20 18:35:01 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*ganerate_env_string(t_env *env, char **string)
+char	*ganerate_env_string(t_env *env)
 {
 	char	*result;
 	char	*temp;
@@ -30,7 +30,6 @@ static char	*ganerate_env_string(t_env *env, char **string)
 		show_error("Error when alloc new env string\n");
 		return (NULL);
 	}
-	*string = result;
 	return (result);
 }
 
@@ -60,13 +59,13 @@ char	**list_env_matrix(t_dlist *envlist)
 	i = 0;
 	while (i < size)
 	{
-		if (!ganerate_env_string((t_env *)envlist->content, &matrix[i]))
+		matrix[i] = ganerate_env_string((t_env *)envlist->content);
+		if (!matrix[i++])
 		{
 			free_matrix(matrix);
 			return (NULL);
 		}
 		envlist = envlist->next;
-		i++;
 	}
 	return (matrix);
 }

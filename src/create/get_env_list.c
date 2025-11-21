@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 21:57:03 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/19 19:08:38 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/20 14:22:03 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static t_dlist	*str_to_t_list(char *str_env)
 	return (node);
 }
 
-t_list	**get_env_list(char **env)
+t_dlist	**get_env_list(char **env)
 {
 	t_dlist	*temp;
 	t_dlist	**list;

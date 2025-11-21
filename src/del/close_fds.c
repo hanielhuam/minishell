@@ -30,7 +30,7 @@ void	close_pipes(t_tree *tree)
 		return ;
 	node = (t_data_tree *)tree->content;
 	if (node->type == TK_PIPE)
-		close_one_pipe(node->pipe)
+		close_one_pipe(node->pipe);
 	close_pipes(tree->left);
 	close_pipes(tree->right);
 }

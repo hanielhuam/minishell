@@ -38,7 +38,7 @@ static void	start_shell(char **env)
 		free(shell);
 		exit(EXIT_FAILURE);
 	}
-	command_env(shell->env);
+	show_env(shell->env);
 	begin_loop(shell);
 	destroy_shell(shell);
 }

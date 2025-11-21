@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 18:44:48 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/17 19:46:00 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/20 14:40:33 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	builtin_processor(t_command *command, t_dlist **env, int fd)
 	while (builtins[i])
 	{
 		if (!ft_strncmp(command->path, builtins[i], ft_strlen(command->path)))
-			return (functions[i](command, env, fd);
+			return (functions[i](command, env, fd));
 		i++;
 	}
 	return (-1);

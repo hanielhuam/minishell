@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/18 22:38:12 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:45:50 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef struct s_process
 typedef struct s_shell
 {
 	int		exit_code;
-	t_list	**env;
+	t_dlist	**env;
 	t_tree	**tree;
 	t_list	*process;
 }			t_shell;
@@ -122,7 +122,9 @@ void		del_env_list(t_dlist **env_list);
 void		del_t_token(void *content);
 void		del_token_list(t_dlist **tokens);
 void		del_split(char **split);
-int			command_env(t_dlist **env_list);
+void		show_env(t_dlist **env_list);
+char		*ganerate_env_string(t_env *env);
+int			command_env(t_command *command, t_dlist **env, int fd);
 int			command_pwd(t_command *command, t_dlist **env, int fd);
 int			command_echo(t_command *command, t_dlist **env, int fd);
 int			command_export(t_command *command, t_dlist **env, int fd);
@@ -248,6 +250,7 @@ void		atribute_pipe_redirect(int in_out, t_pipe *pipe, t_redir *redir);
 int			read_and_write_input(int fd_out, char *delimiter);
 void		close_all_fds(t_tree *tree, t_dlist *redirects);
 void		close_redirects(t_dlist *redirects);
+void		close_one_pipe(t_pipe *pipe);
 void		close_pipes(t_tree *tree);
 char		**list_env_matrix(t_dlist *env);
 void		free_matrix(char **matrix);
@@ -259,5 +262,6 @@ int			main_process_runner(t_tree *node, t_shell *shell);
 int			create_t_process(pid_t pid, t_shell *shell);
 t_env		*str_to_t_env(char *str_env);
 t_dlist		*find_env(t_dlist *env_list, char *env_name);
+void		update_env(char *str_env, t_dlist **env);
 
 #endif

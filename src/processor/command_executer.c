@@ -6,13 +6,13 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/17 16:29:57 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/20 14:38:48 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	prepare_command(t_command *command, t_pipe **pipe, t_list *env)
+static int	prepare_command(t_command *command, t_pipe **pipe, t_dlist *env)
 {
 	if (command->path && !manipulate_command_path(command, env))
 		return (-1);

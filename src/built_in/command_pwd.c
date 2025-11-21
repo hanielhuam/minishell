@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 19:38:48 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/17 21:11:12 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/20 19:13:35 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	command_pwd(t_command *command, t_dlist **env, int fd)
 
 	(void)command;
 	(void)env;
-	dir = getcwd(dir, PATH_MAX);
-	if (!dir)
+	if (!getcwd(dir, PATH_MAX))
 	{
-		perror("minishell: ");
+		perror("minishell");
 		return (1);
 	}
-	ft_putstr_fd(fd, dir);
+	ft_putstr_fd(dir, fd);
+	ft_putstr_fd("\n", fd);
 	return (0);
 }
