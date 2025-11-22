@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 18:08:30 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/20 18:04:01 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/21 23:10:57 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main_process_runner(t_tree *node, t_shell *shell)
 
 	command = ((t_data_tree *)node->content)->command;
 	pipe = &((t_data_tree *)node->content)->pipe;
+	variable_expansion(command);
 	if (command->redirects && stablish_redirects(command->redirects, pipe))
 		return (-1);
 	builtin_processor(command, shell->env, get_fd_out(*pipe));

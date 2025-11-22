@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/20 17:45:50 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/21 23:01:26 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,5 +263,6 @@ int			create_t_process(pid_t pid, t_shell *shell);
 t_env		*str_to_t_env(char *str_env);
 t_dlist		*find_env(t_dlist *env_list, char *env_name);
 void		update_env(char *str_env, t_dlist **env);
+int			variable_expansion(t_command *command);
 
 #endif
