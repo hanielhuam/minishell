@@ -6,14 +6,41 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:59:38 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/21 23:38:49 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/22 21:16:28 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	variable_expansion(t_command *command)
+static int	variable_expander(char **str, t_dlist *env)
 {
+	char	*result;
+	char	*temp;
 
+	if (!str || !*str)
+		return (1);
+	temp = replace_env(*str, env);
+	free(*str);
+	result = remove_quotes(temp);
+	free(temp);
+	*str = result;
+	return (0);
+}
+
+int	variable_expansion(t_command *command, t_dlist *env)
+{
+	int		i;
+	t_dlist	*init;
+
+	variable_expander(command->path);
+	i = 0;
+	while (command->cmd_args[i])
+		variable_expander(&command->cmd_args[i++], env);
+	init = command->redirects;
+	while (init)
+	{
+		variable_expander(&((t_redir *)init->content)->file);
+		init = init->next;
+	}
 	return (0);
 }
