@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:59:38 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/22 21:16:28 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/22 23:25:44 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	variable_expander(char **str, t_dlist *env)
 	if (!str || !*str)
 		return (1);
 	temp = replace_env(*str, env);
+	if (!temp)
+		return (1);
 	free(*str);
 	result = remove_quotes(temp);
 	free(temp);
