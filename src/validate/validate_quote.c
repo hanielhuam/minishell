@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static char	*first_quote_occurrence(char *input)
+char	*first_quote_occurrence(char *input)
 {
 	char	*is_double;
 	char	*is_single;

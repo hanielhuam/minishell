@@ -6,15 +6,59 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 20:30:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/22 20:33:29 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/23 23:32:22 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char *remove_quotes(char *str)
+static char	*remove_quote(char *str, char *quote)
 {
-	char	*result;
+	char	*temp;
 
+	temp = ft_substr(str, 0, ft_strlen(str) - ft_strlen(quote));
+	if (!temp)
+		return (NULL);
+	return (ft_strmerge(temp, ft_strdup(quote + 1)));
+}
+
+static char	*del_quotes(char *str, char q)
+{
+	char	*temp;
+	char	*result;
+	char	*quote;
+
+	quote = ft_strchr(str, q);
+	temp = remove_quote(str, quote);
+	if (!temp)
+		return (NULL);
+	quote = ft_strchr(temp, q);
+	result = remove_quote(temp, quote);
+	free(temp);
+	return (result);
+}
+
+char	*remove_quotes(char *str)
+{
+	char	*temp;
+	char	*quote;
+	char	*result;
+	int		len;
+
+	result = ft_strdup(str);
+	if (!result)
+		return (NULL);
+	quote = first_quote_occurrence(result);
+	while (quote)
+	{
+		quote = ft_strchr(quote + 1, *quote);
+		len = ft_strlen(result) - ft_strlen(quote);
+		temp = del_quotes(result, *quote);
+		if (!temp)
+			return (result);
+		free(result);
+		result = temp;
+		quote = first_quote_occurrence(result + len - 2);
+	}
 	return (result);
 }

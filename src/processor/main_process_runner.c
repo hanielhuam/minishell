@@ -35,7 +35,7 @@ int	main_process_runner(t_tree *node, t_shell *shell)
 
 	command = ((t_data_tree *)node->content)->command;
 	pipe = &((t_data_tree *)node->content)->pipe;
-	variable_expansion(command);
+	variable_expansion(command, *shell->env);
 	if (command->redirects && stablish_redirects(command->redirects, pipe))
 		return (-1);
 	builtin_processor(command, shell->env, get_fd_out(*pipe));

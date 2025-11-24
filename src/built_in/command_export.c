@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 21:11:29 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/22 22:29:56 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/23 21:20:21 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,18 @@ void	update_env(char *str_env, t_dlist **env)
 	}
 }
 
-validate_variable(char *str)
+static int	validate_variable(char *str)
 {
 	char	*result;
 	int		i;
 
 	result = ft_strchr(str, '=');
-	if (!equal)
+	if (!result)
 		return (1);
 	result = ft_substr(str, 0, ft_strlen(str) - ft_strlen(result));
 	if (!result)
 		return (1);
+	i = 0;
 	while (result[i])
 	{
 		if (!ft_isalnum(result[i]) && result[i] != '_')
@@ -88,13 +89,14 @@ validate_variable(char *str)
 		i++;
 	}
 	free(result);
+	return (1);
 }
 
 int	command_export(t_command *command, t_dlist **env, int fd)
 {
 	if (!command->cmd_args[1])
 		return (show_env_ordered(*env, fd));
-	if (!validate_variable)
+	if (!validate_variable(command->cmd_args[1]))
 	{
 		show_error("minishell: export: not valid identifier\n");
 		return (1);
