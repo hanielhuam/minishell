@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 20:30:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/23 23:32:22 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/24 16:48:35 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ char	*remove_quotes(char *str)
 			return (result);
 		free(result);
 		result = temp;
-		quote = first_quote_occurrence(result + len - 2);
+		if (ft_strlen(result) < 2)
+			break ;
+		quote = first_quote_occurrence(result + len - 1);
 	}
 	return (result);
 }
