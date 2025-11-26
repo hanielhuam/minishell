@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 20:27:21 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/23 21:22:22 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/25 21:25:37 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,11 @@ static char	*expand(char *str, char *variable, t_dlist *env)
 	return (ft_strmerge(init, result));
 }
 
-char	*replace_env(char *str, t_dlist *env)
+static char *evaluate_expand_variable(char *result, t_dlist *env)
 {
+	char    *temp;
 	char	*variable;
-	char	*result;
-	char	*temp;
 
-	result = ft_strdup(str);
-	if (!result)
-	{
-		show_error("Error When dup str on variable expansion\n");
-		return (NULL);
-	}
 	variable = ft_strchr(result, '$');
 	while (variable)
 	{
@@ -89,8 +82,23 @@ char	*replace_env(char *str, t_dlist *env)
 			if (!temp)
 				return (NULL);
 			result = temp;
+			variable = ft_strchr(result, '$');
 		}
-		variable = ft_strchr(result, '$');
+		else
+			variable = ft_strchr(variable + 1, '$');
 	}
 	return (result);
+}
+
+char	*replace_env(char *str, t_dlist *env)
+{
+	char	*result;
+
+	result = ft_strdup(str);
+	if (!result)
+	{
+		show_error("Error When dup str on variable expansion\n");
+		return (NULL);
+	}
+	return (evaluate_expand_variable(result, env));
 }
