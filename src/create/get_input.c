@@ -11,9 +11,29 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <signal.h>
 
+void	signalc(int signalnum)
+{
+	(void)signalnum;
+	ft_printf("\n");
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
+
+}
+/*
+WIFEXITED(status)
+WEXITSTATUS
+WIFSIGNALED
+WTERMSIG
+SIGINT
+SIGQUIT
+SIG_IGN
+*/
 int	get_input(char	**input)
 {
+	signal(SIGINT, signalc);
 	*input = readline("minishell> ");
 	if (!*input || !**input || is_all_space(*input))
 	{
