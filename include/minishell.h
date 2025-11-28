@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/23 21:21:02 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:27:50 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int			command_pwd(t_command *command, t_dlist **env, int fd);
 int			command_echo(t_command *command, t_dlist **env, int fd);
 int			command_export(t_command *command, t_dlist **env, int fd);
 int			command_unset(t_command *command, t_dlist **env, int fd);
-int			command_exit(t_command *command, t_dlist **env, int fd);
+int			command_exit(t_command *command, t_shell *shell, int fd);
 int			command_cd(t_command *command, t_dlist **env, int fd);
 int			parser(t_shell *shell, char *input);
 void		destroy_shell(t_shell *shell);

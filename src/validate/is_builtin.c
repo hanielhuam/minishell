@@ -14,8 +14,8 @@
 
 char	**get_builtins(void)
 {
-	static char	*builtins[8] = {
-		"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL
+	static char	*builtins[7] = {
+		"echo", "cd", "pwd", "export", "unset", "env", NULL
 	};
 
 	return (builtins);
