@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/20 14:38:48 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/27 22:52:03 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	prepare_command(t_command *command, t_pipe **pipe, t_dlist *env)
 {
+	variable_expansion(command, env);
 	if (command->path && !manipulate_command_path(command, env))
 		return (-1);
 	if (command->redirects && stablish_redirects(command->redirects, pipe))

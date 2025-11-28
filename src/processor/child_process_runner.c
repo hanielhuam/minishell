@@ -53,7 +53,6 @@ int	child_process_runner(t_tree *node, t_shell *shell)
 		execute_command(node, shell);
 		destroy_shell(shell);
 		exit(EXIT_FAILURE);
-		return (-1);
 	}
 	return (0);
 }
