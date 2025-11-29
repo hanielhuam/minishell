@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/27 22:52:03 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/28 21:25:34 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ static int	run_proc_builtin(t_command *command, t_shell *shell)
 {
 	int	result;
 
-	result = builtin_processor(command, shell->env, STDOUT_FILENO);
+	if (!ft_strncmp(command->path, "exit", 4))
+		result = command_exit(command, shell, STDOUT_FILENO);
+	else
+		result = builtin_processor(command, shell->env, STDOUT_FILENO);
 	destroy_shell(shell);
 	exit(result);
 	return (-1);

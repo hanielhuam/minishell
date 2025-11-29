@@ -21,8 +21,8 @@ static void	begin_loop(t_shell *shell)
 		destroy_shell(shell);
 		exit(EXIT_FAILURE);
 	}
-	executor(shell);
 	free(input);
+	executor(shell);
 }
 
 static void	start_shell(char **env)
@@ -38,7 +38,6 @@ static void	start_shell(char **env)
 		free(shell);
 		exit(EXIT_FAILURE);
 	}
-	show_env(shell->env);
 	begin_loop(shell);
 	destroy_shell(shell);
 }
