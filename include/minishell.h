@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/28 20:21:14 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/29 23:10:23 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct s_shell
 	t_list	*process;
 }			t_shell;
 
-int			get_input(char	**imput);
+char		*get_input(t_shell *shell);
 t_dlist		**get_env_list(char **env);
 void		show_error(char *str);
 void		syntax_error(char *err_msg, char *etc);
@@ -269,5 +269,8 @@ char		*replace_env(char *str, t_dlist *env);
 char		*remove_quotes(char *str);
 int			is_expandable(char **str, char **variable);
 char		*first_quote_occurrence(char *input);
+void		redisplay_on_new_line(void);
+void		set_signals_readline(void);
+void		end_shell(int result, t_shell *shell);
 
 #endif

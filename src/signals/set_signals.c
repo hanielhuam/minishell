@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   set_signals.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 20:24:00 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/29 22:03:04 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/11/29 22:07:14 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/11/29 23:18:46 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <signal.h>
 
-int	parser(t_shell *shell, char *input)
+static void	sigint_redsplay(int signalnum)
 {
-	t_dlist		**tokens;
+	(void)signalnum;
+	redisplay_on_new_line();
+	// ajustar a variável global para 130
+}
 
-	tokens = get_tokens(input);
-	if (!tokens)
-		return (-1);
-	ft_dlstiter(*tokens, show_t_token);
-	if (token_list_handler(tokens))
-	{
-		del_token_list(tokens);
-		return (-1);
-	}
-	shell->tree = build_tree(*tokens);
-	del_token_list(tokens);
-	if (!shell->tree)
-		return (-1);
-	//atualiza variável "global" do status code com 2
-	return (0);
+void	set_signals_readline(void)
+{
+	signal(SIGINT, sigint_redsplay);
 }

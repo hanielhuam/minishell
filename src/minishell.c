@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 19:29:49 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/08/31 22:03:08 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/29 23:08:39 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ static void	begin_loop(t_shell *shell)
 {
 	char	*input;
 
-	if (get_input(&input) || parser(shell, input))
+	while (1)
 	{
-		destroy_shell(shell);
-		exit(EXIT_FAILURE);
+		input = get_input(shell);
+		if (!parser(shell, input))
+			executor(shell);
+		free(input);
+		erase_shell(shell);
 	}
-	free(input);
-	executor(shell);
 }
 
 static void	start_shell(char **env)

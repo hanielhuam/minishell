@@ -70,7 +70,8 @@ SRCS = ${SRC_DIR}/minishell.c ${SRC_DIR}/pre_process/pre_process_input.c \
 	   ${SRC_DIR}/variable_expansion/variable_expansion.c \
 	   ${SRC_DIR}/variable_expansion/replace_env.c \
 	   ${SRC_DIR}/variable_expansion/remove_quotes.c \
-	   ${SRC_DIR}/validate/is_expandable.c
+	   ${SRC_DIR}/validate/is_expandable.c ${SRC_DIR}/utils/read_line_utils.c \
+	   ${SRC_DIR}/signals/set_signals.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
