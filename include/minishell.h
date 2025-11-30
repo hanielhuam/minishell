@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/29 23:10:23 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/30 18:42:59 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,5 +272,7 @@ char		*first_quote_occurrence(char *input);
 void		redisplay_on_new_line(void);
 void		set_signals_readline(void);
 void		end_shell(int result, t_shell *shell);
+void		set_exit_code(int status);
+int			*get_exit_code(void);
 
 #endif

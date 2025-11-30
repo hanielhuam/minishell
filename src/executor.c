@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 21:32:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/16 18:28:18 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/30 16:31:19 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ int	execution_command_tree(t_tree *node, t_shell *shell, int dir)
 void	executor(t_shell *shell)
 {
 	shell->exit_code = execution_command_tree(*shell->tree, shell, 0);
+	set_exit_code(shell->exit_code);
 }
