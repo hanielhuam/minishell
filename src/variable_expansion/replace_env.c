@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 20:27:21 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/25 21:25:37 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/11/30 20:50:04 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ static char	*expand(char *str, char *variable, t_dlist *env)
 	init = ft_substr(str, 0, ft_strlen(str) - ft_strlen(variable));
 	if (!init)
 		return (NULL);
-	result = replace_variable(variable, env);
+	if (variable[1] && variable[1] == '?')
+		result = ft_itoa(*get_exit_code());
+	else
+		result = replace_variable(variable, env);
 	if (!result)
 	{
 		free(init);
