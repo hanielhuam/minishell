@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/30 18:42:59 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/01 16:48:07 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,7 +238,7 @@ int			is_builtin(t_command *command);
 char		**get_builtins(void);
 int			wait_check(t_tree *node);
 int			wait_process(t_shell *shell);
-void		execute_command(t_tree *node, t_shell *shell);
+int			execute_command(t_tree *node, t_shell *shell);
 void		close_all_pipes(t_tree *node);
 void		close_pipe_node(t_tree *node);
 char		*manipulate_command_path(t_command *command, t_dlist *env);

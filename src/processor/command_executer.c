@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/28 21:25:34 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/01 17:49:53 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	prepare_command(t_command *command, t_pipe **pipe, t_dlist *env)
 {
 	variable_expansion(command, env);
 	if (command->path && !manipulate_command_path(command, env))
-		return (-1);
+		return (1);
 	if (command->redirects && stablish_redirects(command->redirects, pipe))
-		return (-1);
+		return (1);
 	return (0);
 }
 
@@ -53,10 +53,10 @@ static int	run_proc_builtin(t_command *command, t_shell *shell)
 		result = builtin_processor(command, shell->env, STDOUT_FILENO);
 	destroy_shell(shell);
 	exit(result);
-	return (-1);
+	return (1);
 }
 
-void	execute_command(t_tree *node, t_shell *shell)
+int	execute_command(t_tree *node, t_shell *shell)
 {
 	t_command	*command;
 	t_pipe		**pipe;
@@ -72,12 +72,13 @@ void	execute_command(t_tree *node, t_shell *shell)
 	if (!exec && command->path)
 	{
 		if (is_builtin(command) && run_proc_builtin(command, shell))
-			return ;
+			return (1);
 		env = list_env_matrix(*shell->env);
 		if (env)
 		{
-			execve(command->path, command->cmd_args, env);
+			exec = execve(command->path, command->cmd_args, env);
 			free_matrix(env);
 		}
 	}
+	return (exec);
 }

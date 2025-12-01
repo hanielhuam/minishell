@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 19:44:53 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/16 20:05:45 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/01 15:55:39 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,18 @@ int	wait_check(t_tree *node)
 	return (0);
 }
 
+static int	extract_statuscode(int status)
+{
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	else if (WIFSIGNALED(status))
+		return (WTERMSIG(status));
+	return (status);
+}
+
 int	wait_process(t_shell *shell)
 {
+	int 	status;
 	t_list	*init;
 
 	if (!shell->process)
@@ -32,9 +42,11 @@ int	wait_process(t_shell *shell)
 	init = shell->process;
 	while (init)
 	{
-		waitpid(((t_process *)init->content)->pid, &shell->exit_code, 0);
+		waitpid(((t_process *)init->content)->pid, &status, 0);
 		init = init->next;
 	}
 	ft_lstclear(&shell->process, free);
+	shell->exit_code = extract_statuscode(status);
+	set_exit_code(shell->exit_code);
 	return (shell->exit_code);
 }

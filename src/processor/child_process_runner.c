@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 20:55:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/15 16:56:48 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/01 17:49:40 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,33 @@ int	create_t_process(pid_t pid, t_shell *shell)
 	return (0);
 }
 
+static int	emit_exitcode(t_tree *node, int exec)
+{
+	t_command	*command;
+	DIR			*directory;
+
+	command = ((t_data_tree *)node->content)->command;
+	if (!exec)
+		return (0);
+	if (command->path)
+	{
+		directory = opendir(command->path);
+		if (direcory)
+		{
+			show_error("minishell: can not run a directory\n");
+			closedir(directory);
+			return (126);
+		}
+		show_error("minishell: command not found\n");
+		return (127);
+	}
+	return (EXIT_FALURE)
+}
+
 int	child_process_runner(t_tree *node, t_shell *shell)
 {
 	pid_t	pid;
+	int		exit_code;
 
 	pid = fork();
 	if (pid > 0 && create_t_process(pid, shell))
@@ -50,9 +74,10 @@ int	child_process_runner(t_tree *node, t_shell *shell)
 	}
 	if (pid == 0)
 	{
-		execute_command(node, shell);
+		exit_code = execute_command(node, shell);
+		exit_code = emit_exitcode(node, exit_code);
 		destroy_shell(shell);
-		exit(EXIT_FAILURE);
+		exit(exit_code);
 	}
 	return (0);
 }

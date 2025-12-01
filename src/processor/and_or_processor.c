@@ -18,7 +18,7 @@ static int	execute_side(t_tree *node, t_shell *shell, int dir)
 
 	result = execution_command_tree(node, shell, dir);
 	if (result < 0)
-		return (-1);
+		return (1);
 	if (shell->process)
 		result = wait_process(shell);
 	return (result);

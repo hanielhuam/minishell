@@ -19,11 +19,11 @@ static int	execute_subshell(t_tree *tree, t_shell *shell)
 
 	pid = fork();
 	if (pid > 0 && create_t_process(pid, shell))
-		return (-1);
+		return (1);
 	if (pid < 0)
 	{
 		show_error("Error when fork a process\n");
-		return (-1);
+		return (1);
 	}
 	if (pid == 0)
 	{

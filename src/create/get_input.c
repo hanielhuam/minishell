@@ -12,15 +12,6 @@
 
 #include "minishell.h"
 
-/*
-WIFEXITED(status)
-WEXITSTATUS
-WIFSIGNALED
-WTERMSIG
-SIGINT
-SIGQUIT
-SIG_IGN
-*/
 char	*get_input(t_shell *shell)
 {
 	char *input;
