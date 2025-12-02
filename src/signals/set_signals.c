@@ -13,15 +13,33 @@
 #include "minishell.h"
 #include <signal.h>
 
-static void	sigint_redsplay(int signalnum)
+static void	sigint_redisplay(int signalnum)
 {
 	(void)signalnum;
 	redisplay_on_new_line();
 	set_exit_code(130);
 }
 
+static void	sigint_no_redisplay(int signalnum)
+{
+	(void)signalnum;
+	new_line_no_redisplay();
+}
+
 void	set_signals_readline(void)
 {
-	signal(SIGINT, sigint_redsplay);
+	signal(SIGINT, sigint_redisplay);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void	set_signal_heredoc(void)
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void	set_signal_on_fork(void)
+{
+	signal(SIGINT, sigint_no_redisplay);
 	signal(SIGQUIT, SIG_IGN);
 }

@@ -67,6 +67,7 @@ int	child_process_runner(t_tree *node, t_shell *shell)
 	pid_t	pid;
 	int		exit_code;
 
+	set_signal_on_fork();
 	pid = fork();
 	if (pid > 0 && create_t_process(pid, shell))
 		return (1);

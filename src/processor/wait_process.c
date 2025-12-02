@@ -28,7 +28,7 @@ static int	extract_statuscode(int status)
 	if (WIFEXITED(status))
 		return (WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))
-		return (WTERMSIG(status));
+		return (WTERMSIG(status) + 128);
 	return (status);
 }
 

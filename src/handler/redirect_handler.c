@@ -22,12 +22,14 @@ static int	dealwith_heredoc(t_redir *redirect)
 		show_error("Error when open hedoc pipe\n");
 		return (-1);
 	}
+	set_signal_heredoc();
 	if (read_and_write_input(fds[1], redirect->eof))
 	{
 		close(fds[0]);
 		close(fds[1]);
 		return (-1);
 	}
+	set_signal_on_fork();
 	close(fds[1]);
 	redirect->fd = fds[0];
 	return (0);

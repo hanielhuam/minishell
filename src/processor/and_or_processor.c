@@ -39,7 +39,7 @@ static int	or_process(t_tree *node, t_shell *shell)
 	int result;
 
 	result = execute_side(node->left, shell, 0);
-	if (!result)
+	if (!result || result == 130)
 		return (result);
 	return (execute_side(node->right, shell, 1));
 }

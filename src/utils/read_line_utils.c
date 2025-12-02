@@ -19,3 +19,10 @@ void	redisplay_on_new_line(void)
 	rl_on_new_line();
 	rl_redisplay();
 }
+
+void	new_line_no_redisplay(void)
+{
+	ft_printf("\n");
+	rl_replace_line("", 0);
+	rl_on_new_line();
+}

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 19:23:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/21 22:46:49 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/01 23:19:42 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static int	change_pwd(t_dlist **env_list)
 int	command_cd(t_command *command, t_dlist **env, int fd)
 {
 	(void)fd;
+
+	//if (!command->cmd_args[1])
 	if (chdir(command->cmd_args[1]))
 	{
 		perror("minishell");

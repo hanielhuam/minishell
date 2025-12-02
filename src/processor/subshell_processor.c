@@ -17,6 +17,7 @@ static int	execute_subshell(t_tree *tree, t_shell *shell)
 	pid_t	pid;
 	int		result;
 
+	set_signal_on_fork();
 	pid = fork();
 	if (pid > 0 && create_t_process(pid, shell))
 		return (1);
