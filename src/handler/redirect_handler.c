@@ -51,7 +51,7 @@ static int	dealwith_redirect(t_redir *redirect)
 	}
 	if (fd < 0)
 	{
-		perror("Error when open file on redirect:");
+		perror("Error when open file on redirect");
 		return (-1);
 	}
 	redirect->fd = fd;

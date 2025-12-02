@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:59:38 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/23 22:38:05 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/01 19:20:31 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	variable_expansion(t_command *command, t_dlist *env)
 
 	variable_expander(&command->path, env);
 	i = 0;
-	while (command->cmd_args[i])
+	while (command->cmd_args && command->cmd_args[i])
 		variable_expander(&command->cmd_args[i++], env);
 	init = command->redirects;
 	while (init)

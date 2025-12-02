@@ -19,7 +19,6 @@ int	parser(t_shell *shell, char *input)
 	tokens = get_tokens(input);
 	if (!tokens)
 		return (-1);
-	ft_dlstiter(*tokens, show_t_token);
 	if (token_list_handler(tokens))
 	{
 		del_token_list(tokens);
@@ -29,6 +28,5 @@ int	parser(t_shell *shell, char *input)
 	del_token_list(tokens);
 	if (!shell->tree)
 		return (-1);
-	//atualiza variável "global" do status code com 2
 	return (0);
 }

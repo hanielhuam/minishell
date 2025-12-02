@@ -6,11 +6,12 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 20:55:54 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/01 17:49:40 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/01 19:29:21 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <dirent.h>
 
 int	create_t_process(pid_t pid, t_shell *shell)
 {
@@ -44,10 +45,12 @@ static int	emit_exitcode(t_tree *node, int exec)
 	command = ((t_data_tree *)node->content)->command;
 	if (!exec)
 		return (0);
+	if (exec == -2)
+		return (EXIT_FAILURE);
 	if (command->path)
 	{
 		directory = opendir(command->path);
-		if (direcory)
+		if (directory)
 		{
 			show_error("minishell: can not run a directory\n");
 			closedir(directory);
@@ -56,7 +59,7 @@ static int	emit_exitcode(t_tree *node, int exec)
 		show_error("minishell: command not found\n");
 		return (127);
 	}
-	return (EXIT_FALURE)
+	return (EXIT_FAILURE);
 }
 
 int	child_process_runner(t_tree *node, t_shell *shell)
@@ -66,11 +69,11 @@ int	child_process_runner(t_tree *node, t_shell *shell)
 
 	pid = fork();
 	if (pid > 0 && create_t_process(pid, shell))
-		return (-1);
+		return (1);
 	if (pid < 0)
 	{
 		show_error("Error when fork a process\n");
-		return (-1);
+		return (1);
 	}
 	if (pid == 0)
 	{

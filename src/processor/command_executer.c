@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/01 17:49:53 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/01 19:33:27 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	prepare_command(t_command *command, t_pipe **pipe, t_dlist *env)
 {
 	variable_expansion(command, env);
 	if (command->path && !manipulate_command_path(command, env))
-		return (1);
+		return (-2);
 	if (command->redirects && stablish_redirects(command->redirects, pipe))
-		return (1);
+		return (-2);
 	return (0);
 }
 
@@ -29,7 +29,7 @@ static int	prepare_pipe(t_pipe *pipe)
 		if (dup2(pipe->fds[0], STDIN_FILENO) < 0)
 		{
 			show_error("Error when dup pipe with STDIN\n");
-			return (1);
+			return (-2);
 		}
 	}
 	if (pipe->fds[1] > 2)
@@ -37,7 +37,7 @@ static int	prepare_pipe(t_pipe *pipe)
 		if (dup2(pipe->fds[1], STDOUT_FILENO) < 0)
 		{
 			show_error("Error when dup pipe with STDOUT\n");
-			return (1);
+			return (-2);
 		}
 	}
 	return (0);
@@ -72,7 +72,7 @@ int	execute_command(t_tree *node, t_shell *shell)
 	if (!exec && command->path)
 	{
 		if (is_builtin(command) && run_proc_builtin(command, shell))
-			return (1);
+			return (-1);
 		env = list_env_matrix(*shell->env);
 		if (env)
 		{
