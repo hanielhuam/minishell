@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 22:50:15 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/16 17:12:48 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:43:51 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	execute_side(t_tree *node, t_shell *shell, int dir)
 
 static int	and_process(t_tree *node, t_shell *shell)
 {
-	int result;
+	int	result;
 
 	result = execute_side(node->left, shell, 0);
 	if (result)
@@ -36,7 +36,7 @@ static int	and_process(t_tree *node, t_shell *shell)
 
 static int	or_process(t_tree *node, t_shell *shell)
 {
-	int result;
+	int	result;
 
 	result = execute_side(node->left, shell, 0);
 	if (!result || result == 130)

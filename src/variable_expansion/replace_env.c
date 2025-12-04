@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 20:27:21 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/30 20:50:04 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:46:52 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ static char	*expand(char *str, char *variable, t_dlist *env)
 	return (ft_strmerge(init, result));
 }
 
-static char *evaluate_expand_variable(char *result, t_dlist *env)
+static char	*evaluate_expand_variable(char *result, t_dlist *env)
 {
-	char    *temp;
+	char	*temp;
 	char	*variable;
 
 	variable = ft_strchr(result, '$');

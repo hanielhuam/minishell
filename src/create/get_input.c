@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:42:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/29 23:12:41 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:09:43 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_input(t_shell *shell)
 {
-	char *input;
+	char	*input;
 
 	set_signals_readline();
 	input = readline("minishell> ");

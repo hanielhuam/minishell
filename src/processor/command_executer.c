@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:35:47 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/01 19:33:27 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:38:45 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	execute_command(t_tree *node, t_shell *shell)
 
 	command = ((t_data_tree *)node->content)->command;
 	pipe = &((t_data_tree *)node->content)->pipe;
-	exec = prepare_command(command, pipe, *shell->env );
+	exec = prepare_command(command, pipe, *shell->env);
 	if (!exec && *pipe)
 		exec = prepare_pipe(*pipe);
 	close_all_fds(*shell->tree, command->redirects);

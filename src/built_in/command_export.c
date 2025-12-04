@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 21:11:29 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/23 21:20:21 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:30:00 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	show_env_ordered(t_dlist *env, int fd)
 		return (1);
 	i = 0;
 	while (matrix[i])
-		find_changelower_str(matrix, i++); 
+		find_changelower_str(matrix, i++);
 	i = 0;
 	while (matrix[i])
 	{

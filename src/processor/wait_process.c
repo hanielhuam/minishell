@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 19:44:53 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/01 15:55:39 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:41:33 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	extract_statuscode(int status)
 
 int	wait_process(t_shell *shell)
 {
-	int 	status;
+	int		status;
 	t_list	*init;
 
 	if (!shell->process)

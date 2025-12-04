@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 19:12:24 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/13 13:34:25 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:14:08 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ static int	dealwith_heredoc(t_redir *redirect)
 
 static int	dealwith_redirect(t_redir *redirect)
 {
-	int fd;
+	int	fd;
 	int	flags;
 
 	flags = 0;
 	if (redirect->type == TK_REDIRECT_IN)
 		fd = open(redirect->file, O_RDONLY);
-	else 
+	else
 	{
 		if (redirect->type == TK_REDIRECT_OUT)
 			flags = O_WRONLY | O_CREAT | O_TRUNC;

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 16:36:33 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/13 21:25:34 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:14:52 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*manipulate_command_path(t_command *command, t_dlist *env)
 {
 	char	*command_path;
 	char	*command_arg;
-	
+
 	command_path = check_command_path(command->path, env);
 	if (!command_path)
 		return (command->path);

@@ -40,7 +40,7 @@ static char	*read_file(int fd, char *rest, char *delimiter)
 		buffer[bytes] = '\0';
 		rest = ft_strjoin_free(rest, buffer);
 		if (ft_strnstr(rest, delimiter, ft_strlen(delimiter)))
-			break;
+			break ;
 	}
 	return (rest);
 }

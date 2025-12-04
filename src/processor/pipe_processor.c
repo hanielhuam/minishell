@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 22:54:53 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/11/16 15:00:21 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:40:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	config_prev(t_tree *prev, t_data_tree *le, t_data_tree *ri, int dir)
 {
 	t_data_tree	*parent;
-	
+
 	if (!prev)
 		return (0);
 	parent = (t_data_tree *)prev->content;
@@ -72,7 +72,7 @@ static t_pipe	*generate_pipe(void)
 	return (pip);
 }
 
-int pipe_execution(t_tree *node, t_shell *shell)
+int	pipe_execution(t_tree *node, t_shell *shell)
 {
 	int	ex1;
 	int	ex2;

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:17 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/01 22:59:26 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:25:00 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,7 +273,7 @@ void		redisplay_on_new_line(void);
 void		new_line_no_redisplay(void);
 void		set_signals_readline(void);
 void		set_signal_on_fork(void);
-void        set_signal_heredoc(void);
+void		set_signal_heredoc(void);
 void		end_shell(int result, t_shell *shell);
 void		set_exit_code(int status);
 int			*get_exit_code(void);
