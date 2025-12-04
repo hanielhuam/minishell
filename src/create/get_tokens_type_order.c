@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 16:18:02 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/10/24 18:42:07 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:23:35 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ t_tok_type	**get_tokens_type_order(void)
 	static int			initialized = -1;
 	static t_tok_type	*types[8];
 	static t_tok_type	stypes[7][5] = {
-		{TK_FILE_IN, TK_DELIMITER, TK_FILE_OUT, TK_FILE_OUT_OUT, TK_NO_TYPE},
-		{TK_ARGUMENT, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
-		{
-			TK_REDIRECT_IN, TK_HEREDOC, TK_REDIRECT_OUT, TK_REDIRECT_OUT_OUT,
-			TK_NO_TYPE
-		},
-		{TK_COMMAND, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
-		{TK_PIPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
-		{TK_SUBSHELL, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
-		{TK_AND, TK_OR, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
+	{TK_FILE_IN, TK_DELIMITER, TK_FILE_OUT, TK_FILE_OUT_OUT, TK_NO_TYPE},
+	{TK_ARGUMENT, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
+	{
+		TK_REDIRECT_IN, TK_HEREDOC, TK_REDIRECT_OUT, TK_REDIRECT_OUT_OUT,
+		TK_NO_TYPE
+	},
+	{TK_COMMAND, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
+	{TK_PIPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
+	{TK_SUBSHELL, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE},
+	{TK_AND, TK_OR, TK_NO_TYPE, TK_NO_TYPE, TK_NO_TYPE}
 	};
 
 	if (initialized < 0)
